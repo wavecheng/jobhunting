@@ -29,7 +29,6 @@ public class JobService {
 	private UserApplyRepository userApplyRepository;
 	
 	public List<Job> getAllOpenJobs() {
-		
 		//最后一天的日期减少一天（当天截止的job才会显示）
 		Calendar c = Calendar.getInstance();
 		c.add(Calendar.DATE, -1);
