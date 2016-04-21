@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="com.citrix.apac.recruiting"/>
+    
+	<context:property-placeholder location="classpath:*.properties"/>
+	
+    <mvc:annotation-driven/>
+
+    <!-- Efficiently serving static resources.
+    e.g. test.png will be access-able directly by <SERVER>/resources/images/test.png URL -->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!--Prevent browsers from caching contents except the static resources content-->
+<!--     <mvc:interceptors> -->
+<!--         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="lang"/> -->
+<!--         <mvc:interceptor> -->
+<!--             <mvc:mapping path="/**"/> -->
+<!--             <mvc:exclude-mapping path="/resources/**"/> -->
+<!--             <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor"> -->
+<!--                 <property name="cacheSeconds" value="0"/> -->
+<!--                 <property name="useExpiresHeader" value="true"/> -->
+<!--                 <property name="useCacheControlHeader" value="true"/> -->
+<!--                 <property name="useCacheControlNoStore" value="true"/> -->
+<!--             </bean> -->
+<!--         </mvc:interceptor> -->
+<!--     </mvc:interceptors> -->
+
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:lang/messages"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"/>
+        </bean>
+    </mvc:interceptors>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="en"/>
+        <property name="cookieName" value="localeCookieName"/>
+        <property name="cookieMaxAge" value="3600"/>
+    </bean>
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
