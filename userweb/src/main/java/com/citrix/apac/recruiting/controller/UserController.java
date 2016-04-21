@@ -20,7 +20,8 @@ import com.citrix.apac.recruiting.service.JobService;
 import com.citrix.apac.recruiting.service.WorkerService;
 
 @Controller
-public class HomeController {
+@RequestMapping(value="/user")
+public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -31,7 +32,7 @@ public class HomeController {
 	@Autowired
 	private JobService jobService;
 	
-	@RequestMapping(value="/")
+	@RequestMapping(value="/mine")
 	public String index(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName(); // get logged in username
