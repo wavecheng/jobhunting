@@ -5,14 +5,47 @@
 
 <jsp:include page="header.jsp" /> 
 
-<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
-	<p class="alert alert-error">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
-</c:if>
-		<form action="<c:url value='/j_spring_security_check'/>" method="post">
-			<input type="text" name='j_username'>
-			<input type="password" name='j_password'>
-			<input type="submit" value="submit" >
-		</form>
+         <section class="margin-bottom margin-top">
+             <div class="container">
+                 <div class="row">
+                 	<div class="col-md-6 col-md-offset-3">
+                 <div class="panel panel-default">
+
+			  	  <div class="panel-body">
+					 <form class="form-horizontal" action="<c:url value='/j_spring_security_check'/>" method="post">
+					  <div class="form-group">
+					    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+					    <div class="col-sm-10">
+					      <input type="email" class="form-control"  placeholder="Email" name='j_username' required="required">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+					    <div class="col-sm-10">
+					      <input type="password" class="form-control"  placeholder="Password" name='j_password' required="required">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="inputPassword3" class="col-sm-2 control-label"></label>
+					    <div class="col-sm-10">
+					      <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+					      	<div class="alert alert-warning" role="alert">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
+						</c:if>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-success">Log in</button>  
+					      <a href="<c:url value="/register" />" class="btn btn-default">Sign up</a>								      
+					    </div>
+					  </div>
+					</form>
+				  </div>
+				</div>
+				</div>
+                 </div>
+             </div>
+         </section>
 		
 		<%@ include file="footer.jsp" %>
         </div>
