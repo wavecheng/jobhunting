@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-04-21 15:57:33
+-- Generation Time: 2016-04-23 17:19:39
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -62,14 +62,15 @@ CREATE TABLE IF NOT EXISTS `job` (
   `worker_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_6uo6443osm2hu62va5gbwca50` (`worker_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `job`
 --
 
 INSERT INTO `job` (`id`, `description`, `from_date`, `hire_count`, `is_campus`, `status`, `job_type`, `title`, `to_date`, `update_time`, `work_location`, `worker_id`) VALUES
-(1, '职位描述：\r\n岗位职责:\r\n1、负责集团办公打印类设备、门店收银打印类设备的架构规划、设计与持续优化；\r\n2、负责集团办公电脑的持续优化、改进；\r\n3、负责集团虚拟桌面的设计、改进和规划；\r\n4、负责整体办公桌面的整理，规划、设计等；\r\n5、负责门店信息架构的改造。\r\n\r\n任职资格:\r\n1、精通windows桌面和windows服务器操作系统；熟悉微软的AD域相关知识，了解SQL server；熟悉微软的SCCM或类似产品；\r\n2、具备基础网络和IT基础知识；\r\n3、精通Citrix、Vmware、vworkspace或华为、中兴虚拟桌面，曾经实施过大型的虚拟桌面项目；\r\n4、熟悉主流品牌打印类设备，如施乐、立思辰、震旦、惠普、佳能等，了解大型办公打印系统的基础知识，曾参与过大型企业打印机系统架构设计的优先；\r\n5、具有良好的敬业精神和团队协作能力，做事主动、认真，负责。\r\n职能类别：系统架构设计师', '2016-04-01', 11, b'1', 'Ongoing', 'FullTime', '高级架构师(Nanjing) ', '2016-04-20', '2016-04-18 00:00:00', 'Nanjing', 1);
+(1, '职位描述：\r\n岗位职责:\r\n1、负责集团办公打印类设备、门店收银打印类设备的架构规划、设计与持续优化；\r\n2、负责集团办公电脑的持续优化、改进；\r\n3、负责集团虚拟桌面的设计、改进和规划；\r\n4、负责整体办公桌面的整理，规划、设计等；\r\n5、负责门店信息架构的改造。\r\n\r\n任职资格:\r\n1、精通windows桌面和windows服务器操作系统；熟悉微软的AD域相关知识，了解SQL server；熟悉微软的SCCM或类似产品；\r\n2、具备基础网络和IT基础知识；\r\n3、精通Citrix、Vmware、vworkspace或华为、中兴虚拟桌面，曾经实施过大型的虚拟桌面项目；\r\n4、熟悉主流品牌打印类设备，如施乐、立思辰、震旦、惠普、佳能等，了解大型办公打印系统的基础知识，曾参与过大型企业打印机系统架构设计的优先；\r\n5、具有良好的敬业精神和团队协作能力，做事主动、认真，负责。\r\n职能类别：系统架构设计师', '2016-04-01', 11, b'1', 'Ongoing', 'FullTime', '高级架构师(Nanjing) ', '2016-12-20', '2016-04-18 00:00:00', 'Nanjing', 1),
+(2, '                  <em>Position Summary：</em>\r\n                  <p> The Software Development Engineer is an entry level engineer who develops, tests, troubleshoots and maintains software components for existing or new products. The role works within a team of software engineers on problems of limited scope and complexity which are structured to develop knowledge and experience; receives general guidance and direction on work that may span multiple disciplines of software engineering; and follows established practices and procedures to achieve overall program performance, schedule and quality standards.</p>\r\n                  \r\n                   <em>Qualifications and Requirements:</em>\r\n                   <p><strong>·</strong>&nbsp;&nbsp;Bachelor''s degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</br>\r\n<strong>·</strong>&nbsp;&nbsp;Demonstrated understanding of Computer Science fundamentals (e.g., algorithms, data structures); </br>\r\n<strong>·</strong>&nbsp;&nbsp;Proficiency in a programming language(s) (e.g., C, C++, C#, Java or Python) </br>\r\n<strong>·</strong>&nbsp;&nbsp;Good knowledge of Windows and/or Linux OS</br>\r\n<strong>·</strong>&nbsp;&nbsp;Good understanding of networking, web based software/protocols, and database concepts</br>\r\n<strong>·</strong>&nbsp;&nbsp;Demonstrated capability for solving problems across multiple sub‐disciplines of software engineering;</br>\r\n<strong>·</strong>&nbsp;&nbsp;Proven capability for finding solutions to algorithm and programming problems, developing solutions, and &nbsp;&nbsp;&nbsp;&nbsp;finding defects in software.</p>\r\n', '2016-04-01', 11, b'1', 'Ongoing', 'FullTime', 'Software Development Engineer', '2016-12-20', '2016-04-18 00:00:00', 'Nanjing', 1);
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,15 @@ CREATE TABLE IF NOT EXISTS `university` (
   `province` varchar(100) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_ru212k5vib3yvu360fuy3h1g5` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+
+--
+-- 转存表中的数据 `university`
+--
+
+INSERT INTO `university` (`id`, `name`, `popular`, `province`) VALUES
+(1, 'Others', 1, 'Other'),
+(2, '南京大学', 1, '江苏');
 
 -- --------------------------------------------------------
 
@@ -151,7 +160,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_6dotkott2kjsp8vw4d0m25fb7` (`email`),
   KEY `FK_rebo2xbcgxy60wi2e79gd4o86` (`university_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+
+--
+-- 转存表中的数据 `users`
+--
+
+INSERT INTO `users` (`id`, `awards`, `birth_city`, `birth_province`, `city_to_exam`, `current_city`, `current_province`, `degree`, `depart`, `email`, `enabled`, `eng_highest_score`, `eng_highest_level`, `gender`, `gmat`, `graduate_date`, `gre`, `id_no`, `id_type`, `major`, `married`, `mobile`, `name`, `name_eng`, `oral`, `password`, `register_time`, `salary_expect`, `second_lang`, `second_lang_level`, `toefl`, `toeic`, `user_type`, `university_name`, `university_id`) VALUES
+(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'a@b.com', b'1', 0, 0, 0, 0, NULL, 0, NULL, NULL, NULL, b'0', NULL, '测试', 'test', NULL, '123456', '2016-04-21 00:00:00', NULL, NULL, NULL, 0, 0, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 

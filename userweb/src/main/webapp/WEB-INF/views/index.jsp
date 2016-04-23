@@ -16,166 +16,30 @@
                         <div class="cont_title_txt_c">招聘职位</div>
                         <div class="cont_title_txt_e">JOB RECRUITMENT</div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="row">                      
                         <c:forEach var="job" items="${jobs}"  >
-                        	${job.title}
-                        </c:forEach>
-                                <div class="panel panel-default">
+                        <div class="col-md-6">
+                        	
+                        	<div class="panel panel-default">
                                     <div class="panel-heading">                                       
                                         <div class="panel-heading-link">                                              
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#job-1"  class="collapsed">
-                                                <h4>Software Development Engineer</h4>
-                                             <span class="h4" title="work location:Nanjing "><i class="glyphicon glyphicon-map-marker"></i> Nanjing </span>
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#job-${job.id}"  class="collapsed">
+                                                <h4>${job.title}</h4>
+                                             <span class="h4" title="work location:Nanjing "><i class="glyphicon glyphicon-map-marker"></i> ${job.workLocation} </span>
                                             </a>
                                         </div>
                                     </div>                                       
-                                    <div id="job-1" class="panel-collapse collapse " >
+                                    <div id="job-${job.id}" class="panel-collapse collapse" >
                                         <div class="panel-body">
-                                            <em>Open to：</em>
-                                            <p><i class="fa fa-university"></i> Students <i class="fa fa-users"></i> Social</p>
-                                            <em>Position Summary：</em>
-                                            <p>The Software Development Engineer is an entry level engineer who develops, tests, troubleshoots and maintains software components for existing or new products. The role works within a team of software engineers on problems of limited scope and complexity which are structured to develop knowledge and experience; receives general guidance and direction on work that may span multiple disciplines of software engineering; and follows established practices and procedures to achieve overall program performance, schedule and quality standards.</p>
-                                            <em>Qualifications and Requirements:</em>
-                                            <ul class="list-unstyled pl10">
-                                                <li><i class="fa fa-check-square"></i> Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</li>
-                                                <li><i class="fa fa-check-square"></i>  Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</li>
-                                                <li><i class="fa fa-check-square"></i>  Demonstrated understanding of Computer Science fundamentals (e.g., algorithms, data structures);</li>
-                                                <li><i class="fa fa-check-square"></i>  Proficiency in a programming language(s) (e.g., C, C++, C#, Java or Python) </li>
-                                                <li><i class="fa fa-check-square"></i> Proven capability for finding solutions to algorithm and programming problems, developing solutions, and &nbsp;&nbsp;&nbsp;&nbsp;finding defects in software.</li>
-                                            </ul>
+                                        		${job.description }
                                             <p>
-                                                <button class="btn btn-primary">Apply</button>
+                                                <a href="user/apply/${job.id}" class="btn btn-primary">Apply</a>
                                             </p>
                                         </div>
                                     </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-heading-link">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#job-2" aria-expanded="true" class="collapsed">
-                                            <h4>Software Test Engineer</h4>
-                                            <span class="h4" title="work location:Nanjing "><i class="glyphicon glyphicon-map-marker"></i> Nanjing </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div id="job-2" class="panel-collapse collapse " aria-expanded="true">
-                                    <div class="panel-body">
-                                        <em>Open to：</em>
-                                        <p><i class="fa fa-university"></i> Students </p>
-                                        <em>Position Summary：</em>
-                                        <p>The Software Test Engineer is an entry level engineer who designs, develops, executes and maintains software test plans and test automation frameworks. The software Test Engineer is responsible for utilizing test technologies to automate test environment construction, performance tests, scalability and load tests, functional and regression tests, and is responsible for facilitating and/or performing the creation and execution of automated tests across a diverse set of software.</p>
-                                        <em>Qualifications and Requirements:</em>
-                                        <ul class="list-unstyled pl10">
-                                            <li><i class="fa fa-check-square"></i> Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent experience may be substituted for formal education</li>
-                                            <li><i class="fa fa-check-square"></i>  Good knowledge of Windows and/or Linux OS</li>
-                                            <li><i class="fa fa-check-square"></i>  Good understanding of networking, web based software/protocols, and database concepts</li>
-                                            <li><i class="fa fa-check-square"></i> Knowledge of one or more object oriented languages (e.g., C++, C# or Java), and one or more scripting     languages (e.g., Unix shell, Python, PERL, or JavaScript);</li>
-                                            <li><i class="fa fa-check-square"></i> Knowledge of OOAD principles and methodologies (e.g., UML)</li>
-                                        </ul>
-                                        <p>
-                                            <button class="btn btn-primary">Apply</button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-heading-link">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#job-3" aria-expanded="true" class="collapsed">
-                                            <h4>Software Development Engineer</h4>
-                                            <span class="h4" title="work location:Nanjing "><i class="glyphicon glyphicon-map-marker"></i> Nanjing </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div id="job-3" class="panel-collapse collapse " aria-expanded="true">
-                                    <div class="panel-body">
-                                        <em>Open to：</em>
-                                        <p><i class="fa fa-users"></i> Social</p>
-                                        <em>Position Summary：</em>
-                                        <p>The Software Development Engineer is an entry level engineer who develops, tests, troubleshoots and maintains software components for existing or new products. The role works within a team of software engineers on problems of limited scope and complexity which are structured to develop knowledge and experience; receives general guidance and direction on work that may span multiple disciplines of software engineering; and follows established practices and procedures to achieve overall program performance, schedule and quality standards.</p>
-                                        <em>Qualifications and Requirements:</em>
-                                        <ul class="list-unstyled pl10">
-                                            <li><i class="fa fa-check-square"></i> Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</li>
-                                            <li><i class="fa fa-check-square"></i>  Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</li>
-                                            <li><i class="fa fa-check-square"></i>  Demonstrated understanding of Computer Science fundamentals (e.g., algorithms, data structures);</li>
-                                            <li><i class="fa fa-check-square"></i>  Proficiency in a programming language(s) (e.g., C, C++, C#, Java or Python) </li>
-                                            <li><i class="fa fa-check-square"></i> Proven capability for finding solutions to algorithm and programming problems, developing solutions, and &nbsp;&nbsp;&nbsp;&nbsp;finding defects in software.</li>
-                                        </ul>
-                                        <p>
-                                            <button class="btn btn-primary">Apply</button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-heading-link">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#job-4" aria-expanded="true" class="collapsed">
-                                            <h4>Software Development Engineer</h4>
-                                            <span class="h4" title="work location:Nanjing "><i class="glyphicon glyphicon-map-marker"></i> Nanjing </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div id="job-4" class="panel-collapse  collapse" aria-expanded="true">
-                                    <div class="panel-body">
-                                        <em>Open to：</em>
-                                        <p><i class="fa fa-university"></i> Students <i class="fa fa-users"></i> Social</p>
-                                        <em>Position Summary：</em>
-                                        <p>The Software Development Engineer is an entry level engineer who develops, tests, troubleshoots and maintains software components for existing or new products. The role works within a team of software engineers on problems of limited scope and complexity which are structured to develop knowledge and experience; receives general guidance and direction on work that may span multiple disciplines of software engineering; and follows established practices and procedures to achieve overall program performance, schedule and quality standards.</p>
-                                        <em>Qualifications and Requirements:</em>
-                                        <ul class="list-unstyled pl10">
-                                            <li><i class="fa fa-check-square"></i> Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</li>
-                                            <li><i class="fa fa-check-square"></i>  Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</li>
-                                            <li><i class="fa fa-check-square"></i>  Demonstrated understanding of Computer Science fundamentals (e.g., algorithms, data structures);</li>
-                                            <li><i class="fa fa-check-square"></i>  Proficiency in a programming language(s) (e.g., C, C++, C#, Java or Python) </li>
-                                            <li><i class="fa fa-check-square"></i> Proven capability for finding solutions to algorithm and programming problems, developing solutions, and &nbsp;&nbsp;&nbsp;&nbsp;finding defects in software.</li>
-                                        </ul>
-                                        <p>
-                                            <button class="btn btn-primary">Apply</button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-heading-link">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#job-5" aria-expanded="true" class="collapsed">
-                                            <h4>Software Development Engineer</h4>
-                                            <span class="h4" title="work location:Nanjing "><i class="glyphicon glyphicon-map-marker"></i> Nanjing </span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div id="job-5" class="panel-collapse collapse" aria-expanded="true">
-                                    <div class="panel-body">
-                                        <em>Open to：</em>
-                                        <p><i class="fa fa-university"></i> Students <i class="fa fa-users"></i> Social</p>
-                                        <em>Position Summary：</em>
-                                        <p>The Software Development Engineer is an entry level engineer who develops, tests, troubleshoots and maintains software components for existing or new products. The role works within a team of software engineers on problems of limited scope and complexity which are structured to develop knowledge and experience; receives general guidance and direction on work that may span multiple disciplines of software engineering; and follows established practices and procedures to achieve overall program performance, schedule and quality standards.</p>
-                                        <em>Qualifications and Requirements:</em>
-                                        <ul class="list-unstyled pl10">
-                                            <li><i class="fa fa-check-square"></i> Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</li>
-                                            <li><i class="fa fa-check-square"></i>  Bachelor's degree or equivalent in computer science, electrical engineering, or related field; equivalent &nbsp;&nbsp;&nbsp;&nbsp;experience may be substituted for formal education</li>
-                                            <li><i class="fa fa-check-square"></i>  Demonstrated understanding of Computer Science fundamentals (e.g., algorithms, data structures);</li>
-                                            <li><i class="fa fa-check-square"></i>  Proficiency in a programming language(s) (e.g., C, C++, C#, Java or Python) </li>
-                                            <li><i class="fa fa-check-square"></i> Proven capability for finding solutions to algorithm and programming problems, developing solutions, and &nbsp;&nbsp;&nbsp;&nbsp;finding defects in software.</li>
-                                        </ul>
-                                        <p>
-                                            <button class="btn btn-primary">Apply</button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                     
+                        </c:forEach>
                     </div>
                 </div>
             </section>

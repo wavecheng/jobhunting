@@ -34,7 +34,7 @@ public class HomeController {
 	@RequestMapping(value="/")
 	public String index(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
+		String name = auth.getName(); 
 		model.addAttribute("username", name);
 
 		List<Job> jobs = jobService.getAllOpenJobs();
