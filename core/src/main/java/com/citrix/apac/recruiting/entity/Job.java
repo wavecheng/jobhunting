@@ -48,7 +48,7 @@ public class Job {
     
     @Column(name="description")
     @Lob
-    @Basic(fetch=FetchType.LAZY)  
+    @Basic(fetch=FetchType.EAGER)  
     private String description;
     
     @ManyToOne

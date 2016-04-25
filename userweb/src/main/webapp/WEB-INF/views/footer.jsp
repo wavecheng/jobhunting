@@ -14,3 +14,5 @@
     </div> <!-- container -->
 </aside> <!-- footer-widgets -->
 <script src="${pageContext.request.contextPath}/resources/js/vendors.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.validator.min.js"></script>
+

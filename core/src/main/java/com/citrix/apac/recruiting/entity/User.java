@@ -141,6 +141,9 @@ public class User {
     @Column(name="register_time")
     private Timestamp registerTime = new Timestamp(System.currentTimeMillis());
     
+    @Column(name="verified")
+    private boolean verified = false;
+    
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<UserEducation> userEducation;
 
@@ -386,6 +389,22 @@ public class User {
 
 	public void setOral(String oral) {
 		this.oral = oral;
+	}
+
+	public String getUniversityName() {
+		return universityName;
+	}
+
+	public void setUniversityName(String universityName) {
+		this.universityName = universityName;
+	}
+
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
 	}
 
 	public String getSecLanguage() {

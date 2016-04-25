@@ -26,6 +26,13 @@
 					    </div>
 					  </div>
 					  <div class="form-group">
+					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+					    <div class="col-sm-10">
+					      <img src="jcaptcha.jpg" /> <input type="text" name="jcaptcha" value="" />
+					    </div>
+					  </div>					  
+					  					  
+					  <div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 control-label"></label>
 					    <div class="col-sm-10">
 					      <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">

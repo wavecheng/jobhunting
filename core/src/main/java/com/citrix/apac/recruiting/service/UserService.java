@@ -22,7 +22,7 @@ public class UserService {
 	private UserApplyRepository userApplyRepository;
 	
 	public void saveUser(User user) {
-		
+		userRepository.save(user);
 	}
 
 	public User disableUser(Long id) {
