@@ -25,12 +25,12 @@
 					      <input type="password" class="form-control"  placeholder="Password" name='j_password' required="required">
 					    </div>
 					  </div>
-					  <div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-					    <div class="col-sm-10">
-					      <img src="jcaptcha.jpg" /> <input type="text" name="jcaptcha" value="" />
-					    </div>
-					  </div>					  
+<!-- 					  <div class="form-group"> -->
+<!-- 					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label> -->
+<!-- 					    <div class="col-sm-10"> -->
+<!-- 					      <img src="jcaptcha.jpg" /> <input type="text" name="jcaptcha" value="" /> -->
+<!-- 					    </div> -->
+<!-- 					  </div>					   -->
 					  					  
 					  <div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 control-label"></label>

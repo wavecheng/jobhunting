@@ -12,7 +12,7 @@
                  <div class="panel panel-default">
 				  <h3 style="padding-left:10px;">注册新用户</h3>
 			  	  <div class="panel-body">		  	  
-					 <form class="form-horizontal" action="register_user" method="post" data-toggle="validator" role="form">
+					 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
 					  <div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 control-label">姓名</label>
 					    <div class="col-sm-10">

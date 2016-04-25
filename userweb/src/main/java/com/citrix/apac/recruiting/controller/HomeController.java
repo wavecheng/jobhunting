@@ -54,19 +54,26 @@ public class HomeController {
 		return "register";
 	}
 
-	@RequestMapping(value="/register_user" , method=RequestMethod.POST)
+	@RequestMapping(value="/register" , method=RequestMethod.POST)
 	public String registerUser(@RequestParam Map<String,String> p){
 		User user = new User();
 		user.setName(p.get("name"));
 		user.setPassword(p.get("password"));
 		user.setEmail(p.get("email"));
 		userService.saveUser(user);
-		return "redirect:login";
+		return "redirect:message?success=true";
 	}
 	
 	@RequestMapping(value="/aboutus")
 	public String aboutUs(){
 		return "aboutus";
+	}
+
+	@RequestMapping(value="/message")
+	public String message(@RequestParam(required=false) boolean success, ModelMap m){
+		m.put("register_success", success);
+		m.put("message", "注册成功，请检查你的邮箱进行Email确认！");
+		return "message";
 	}
 	
 	@RequestMapping(value="/work")
