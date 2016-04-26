@@ -9,13 +9,12 @@
              <div class="container">
                  <div class="row">
                  	<div class="alert alert-info">
-                 		<c:if test="${register_success == true}">
-                 			${message}
+                 		<c:if test="${success == true}">
+                 			${type}
                  		</c:if>
-                 		${message}
+                 		${type}
                  	</div>
 				</div>
-                 </div>
              </div>
          </section>
 		

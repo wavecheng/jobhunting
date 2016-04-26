@@ -3,6 +3,7 @@ package com.citrix.apac.recruiting.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,30 +50,17 @@ public class HomeController {
 		return "login";
 	}
 
-	@RequestMapping(value="/register" , method=RequestMethod.GET)
-	public String register(){
-		return "register";
-	}
 
-	@RequestMapping(value="/register" , method=RequestMethod.POST)
-	public String registerUser(@RequestParam Map<String,String> p){
-		User user = new User();
-		user.setName(p.get("name"));
-		user.setPassword(p.get("password"));
-		user.setEmail(p.get("email"));
-		userService.saveUser(user);
-		return "redirect:message?success=true";
-	}
-	
 	@RequestMapping(value="/aboutus")
 	public String aboutUs(){
 		return "aboutus";
 	}
 
 	@RequestMapping(value="/message")
-	public String message(@RequestParam(required=false) boolean success, ModelMap m){
-		m.put("register_success", success);
-		m.put("message", "注册成功，请检查你的邮箱进行Email确认！");
+	public String message(@RequestParam(required=false,name="success") boolean success, 
+			@RequestParam(required=false,name="type") String type, ModelMap m){
+		m.addAttribute("success", success);
+		m.addAttribute("type", type);
 		return "message";
 	}
 	
