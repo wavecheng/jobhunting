@@ -1,5 +1,6 @@
 package com.citrix.apac.recruiting.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.service.JobService;
+import com.citrix.apac.recruiting.service.MailService;
 import com.citrix.apac.recruiting.service.UserService;
 
 @Controller
@@ -32,6 +35,9 @@ public class RegisterController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MailService mailService;
 	
 	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -47,22 +53,27 @@ public class RegisterController {
 		user.setPassword(encoder.encode(p.get("password")));
 		user.setEmail(p.get("email"));
 		userService.saveUser(user);
-		return "redirect:message?sucess=true&type=register";
+		
+		String validHash = generateValidateHash(user.getEmail(), user.getEmail());
+		Map<String, Object> contentParam = new HashMap<>();
+		contentParam.put("@email", user.getEmail());
+		contentParam.put("@code", validHash);
+		mailService.composeMailFromTemplate(user.getEmail(), "register_verify", null,contentParam);
+		
+		return "redirect:/message?sucess=true&type=register";
 	}
 	
-	
-	@RequestMapping(value="/validate/{hash}")
+	@RequestMapping(value="/verify/{email}/{hash}")
 	public String validateEmail(@PathVariable String hash){	
 		String ids[] = StringUtils.split(hash, "$");
 		System.out.println(ids[1] + ", " + hash + ",==>" + generateValidateHash("gmail",ids[1]));
-		return "redirect:message?sucess=true&type=validate";
+		return "redirect:/message?sucess=true&type=validate";
 	}
 	
 	
-	private String generateValidateHash(String email, String userId){
+	private String generateValidateHash(String email, String salt){
 		Md5PasswordEncoder encoder = new Md5PasswordEncoder();
-		//encoder.setEncodeHashAsBase64(true);
-		String hash = encoder.encodePassword(email, userId);
+		String hash = encoder.encodePassword(email, salt);
 		System.out.println(hash);
 		return hash;
 	}
