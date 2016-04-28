@@ -33,6 +33,18 @@ public class UserService {
 		return u;
 	}
 
+	public boolean verifyUserCode(String code){
+		User u = userRepository.findByPassword(code);
+		ensureUserExists(u);
+		if(!u.isVerified()){
+			u.setVerified(true);
+			u.setEnabled(true);
+			userRepository.save(u);
+			return true;
+		}
+		return false;
+	}
+	
 	private void ensureUserExists(User u){
 		if(u == null)
 			throw new NullPointerException("User does't exist");		
