@@ -1,38 +1,21 @@
 package com.citrix.apac.recruiting.controller;
 
-import java.util.Base64;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.Base64Utils;
-import org.springframework.util.FileSystemUtils;
-import org.springframework.util.StringUtils;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UrlPathHelper;
 
-import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
-import com.citrix.apac.recruiting.reporsitory.UserRepository;
 import com.citrix.apac.recruiting.service.ConstString;
-import com.citrix.apac.recruiting.service.JobService;
 import com.citrix.apac.recruiting.service.MailService;
 import com.citrix.apac.recruiting.service.UserService;
 
@@ -72,7 +55,12 @@ public class RegisterController {
 	@RequestMapping(value="/verify/{code}")
 	public String validateEmail(@PathVariable String code){	
 		String password = new String(Base64Utils.decodeFromUrlSafeString(code));
-		boolean verify = userService.verifyUserCode(password);
+		boolean verify = false;
+		try{
+			verify = userService.verifyUserCode(password);
+		}catch(Exception ex){
+			
+		}
 		return String.format("redirect:/message?success=%1s&type=%2s",verify,ConstString.verify);
 	}
 	

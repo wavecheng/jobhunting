@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -46,7 +47,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/login" , method=RequestMethod.GET)
-	public String login(){
+	public String login(@RequestParam(required=false,defaultValue="false") boolean error,Model m){	
+		m.addAttribute("error", error);
 		return "login";
 	}
 
@@ -56,6 +58,11 @@ public class HomeController {
 		return "aboutus";
 	}
 
+	@RequestMapping(value="/error")
+	public String error(){
+		return "error";
+	}
+	
 	@RequestMapping(value="/message")
 	public String message(@RequestParam(required=false,name="success") boolean success, 
 			@RequestParam(required=false,name="type") String type, ModelMap m){

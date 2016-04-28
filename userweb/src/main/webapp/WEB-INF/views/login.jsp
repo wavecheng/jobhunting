@@ -35,7 +35,7 @@
 					  <div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 control-label"></label>
 					    <div class="col-sm-10">
-					      <c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
+					      <c:if test="${error && SPRING_SECURITY_LAST_EXCEPTION != null}">
 					      	<div class="alert alert-warning" role="alert">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
 						</c:if>
 					    </div>

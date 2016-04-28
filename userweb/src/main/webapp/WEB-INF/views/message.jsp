@@ -7,23 +7,31 @@
 
          <section class="margin-bottom margin-top">
              <div class="container">
-                 <div class="row">
-                 	<div class="alert alert-info center">               		
-	                 		<c:if test="${success == true}">
+                 <div class="row">                	          		
+	                <c:if test="${success == true}">
+	                 	<div class="alert alert-info text-center">     
 	                 		<c:choose>
 	                 			<c:when test="${type=='register' }">
-	                 				注册成功，请检查您的邮箱进行Email地址确认来激活！
+	                 				注册成功，请检查您的邮箱进行账号激活！
 	                 			</c:when>
 	                 			<c:when test="${type=='verify' }">
-	                 				Email验证成功，请<a href="login">登录</a>
+	                 				Email验证成功，请 <a href="login" class="alert-link">登录</a>
 	                 			</c:when>
-	                 			<c:otherwise>
-							        No comment sir...
-							    </c:otherwise>
-							    </c:choose>
-                 		</c:if>
-                 		
-                 	</div>
+							 </c:choose>
+						</div>
+                 	</c:if>
+	                <c:if test="${success == false}">
+	                 	<div class="alert alert-danger text-center">     
+	                 		<c:choose>
+	                 			<c:when test="${type=='register' }">
+	                 				注册失败！
+	                 			</c:when>
+	                 			<c:when test="${type=='verify' }">
+	                 				无效的验证信息!
+	                 			</c:when>
+							 </c:choose>
+						</div>
+                 	</c:if>
 				</div>
              </div>
          </section>
