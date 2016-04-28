@@ -17,7 +17,7 @@
 	
     <authentication-manager >
         <authentication-provider user-service-ref="jobUserService">       	     	
-
+			<password-encoder hash="bcrypt"></password-encoder>
         </authentication-provider>
     </authentication-manager>
 
