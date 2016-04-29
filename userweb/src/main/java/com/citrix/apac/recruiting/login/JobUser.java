@@ -24,7 +24,7 @@ public class JobUser implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> roles = new ArrayList<>();
-		roles.add(new SimpleGrantedAuthority("USER_ROLE"));
+		roles.add(new SimpleGrantedAuthority("ROLE_USER"));
 		return roles;
 	}
 

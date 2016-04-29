@@ -47,7 +47,9 @@ public class RegisterController {
 		String appRoot = request.getRequestURL().toString();
 		String code = Base64Utils.encodeToUrlSafeString(user.getPassword().getBytes());
 		Map<String, Object> contentParam = new HashMap<>();
-		contentParam.put("@url", appRoot + "verify/" + code);
+		String verifyUrl = appRoot + "/verify/" + code;
+		verifyUrl = verifyUrl.replaceAll("//", "/");
+		contentParam.put("@url", verifyUrl);		
 		mailService.composeMailFromTemplate(user.getEmail(), ConstString.register_verify, null,contentParam);		
 		return String.format("redirect:/message?success=true&type=%1s", ConstString.register);
 	}

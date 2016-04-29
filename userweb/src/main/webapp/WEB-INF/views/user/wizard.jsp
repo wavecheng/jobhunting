@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<jsp:include page="header.jsp" /> 
+<jsp:include page="../header.jsp" /> 
 
          <section class="margin-bottom margin-top">
              <div class="container">
@@ -28,14 +28,14 @@
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 					    <div class="col-sm-10">
 					      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name='password' required="required">
 					      <div class="help-block with-errors"></div>	
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 control-label">密码确认</label>
+					    <label for="inputPassword3" class="col-sm-2 control-label">Confirm</label>
 					    <div class="col-sm-10">
 					      <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" 
 					         data-match-error="these don't match" placeholder="Confirm password">
@@ -63,7 +63,7 @@
              </div>
          </section>
 
-		<%@ include file="footer.jsp" %>
+		<%@ include file="../footer.jsp" %>
         </div>
     </div> 
 </body>

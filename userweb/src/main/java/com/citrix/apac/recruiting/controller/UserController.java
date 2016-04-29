@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
@@ -32,47 +33,29 @@ public class UserController {
 	@Autowired
 	private JobService jobService;
 	
-	@RequestMapping(value="/mine")
+	@RequestMapping(value="/apply")
 	public String index(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); // get logged in username
+		String name = auth.getName(); 
 		model.addAttribute("username", name);
 
-		List<Job> jobs = jobService.getAllOpenJobs();
-		System.out.println(jobs.size());
-		model.addAttribute("jobs", jobs);
+		return "user/apply";
+	}
+	
 
-		return "index";
+	@RequestMapping(value="/resume",method=RequestMethod.GET)
+	public String resume(){
+		return "user/resume";
+	}
+
+	@RequestMapping(value="/resume",method=RequestMethod.POST)
+	public String saveResume(){
+		return "user/resume";
 	}
 	
-	@RequestMapping(value="/login" , method=RequestMethod.GET)
-	public String login(){
-		return "login";
+
+	@RequestMapping(value="/logout")
+	public String logout(){
+		return "redirect:/login";
 	}
-	
-	@RequestMapping(value="/admin")
-	public String admin(){
-		return "admin";
-	}
-	
-	@RequestMapping(value="/aboutus")
-	public String aboutUs(){
-		return "aboutus";
-	}
-	
-	@RequestMapping(value="/work")
-	public String work(){
-		return "work";
-	}
-	
-	@RequestMapping(value="/voice")
-	public String voice(){
-		return "voice";
-	}
-	
-	@RequestMapping(value="/video")
-	public String video(){
-		return "video";
-	}
-	
 }

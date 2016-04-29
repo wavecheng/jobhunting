@@ -12,17 +12,17 @@
                  <div class="panel panel-default">
 
 			  	  <div class="panel-body">
-					 <form class="form-horizontal" action="<c:url value='/j_spring_security_check'/>" method="post">
+					 <form class="form-horizontal" action="<c:url value='/j_spring_security_check'/>" method="post" data-toggle="validator" role="form">
 					  <div class="form-group">
 					    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 					    <div class="col-sm-10">
-					      <input type="email" class="form-control"  placeholder="Email" name='j_username' required="required">
+					      <input type="email" class="form-control"  placeholder="Email" name='j_username' required="required" value="a@b.com1">
 					    </div>
 					  </div>
 					  <div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control"  placeholder="Password" name='j_password' required="required">
+					      <input type="password" class="form-control"  placeholder="Password" name='j_password' required="required" value="a">
 					    </div>
 					  </div>
 <!-- 					  <div class="form-group"> -->
@@ -42,8 +42,7 @@
 					  </div>
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="submit" class="btn btn-success">Log in</button>  
-					      <a href="<c:url value="/register" />" class="btn btn-default">Sign up</a>								      
+					      <button type="submit" class="btn btn-success">Log in</button>  						      
 					    </div>
 					  </div>
 					</form>

@@ -1,5 +1,6 @@
 package com.citrix.apac.recruiting.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
@@ -31,9 +32,11 @@ import com.citrix.apac.recruiting.entity.Enums.UserType;
  */
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable{
 	
-    @Id
+	private static final long serialVersionUID = 3875702036647794540L;
+
+	@Id
     @GeneratedValue
     private Long id;
 

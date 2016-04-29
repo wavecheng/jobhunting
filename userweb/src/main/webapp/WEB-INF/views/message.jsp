@@ -15,7 +15,7 @@
 	                 				注册成功，请检查您的邮箱进行账号激活！
 	                 			</c:when>
 	                 			<c:when test="${type=='verify' }">
-	                 				Email验证成功，请 <a href="login" class="alert-link">登录</a>
+	                 				Email验证成功，请 <a href="user/mine" class="alert-link">登录</a>
 	                 			</c:when>
 							 </c:choose>
 						</div>

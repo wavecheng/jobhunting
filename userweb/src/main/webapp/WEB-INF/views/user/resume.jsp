@@ -1,90 +1,14 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>思杰招聘 | Citrix Jobs</title>
-    <link rel="shortcut icon" href="img/icon-favicon.png">
-    <meta name="description" content="思杰招聘 Citrix China recruiting job">
-    
-    <!-- CSS -->
-    <link href="css/preload.css" rel="stylesheet">
-    <link href="css/vendors.css" rel="stylesheet">
-    <link href="css/style-blue.css" rel="stylesheet" title="default">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="assets/js/html5shiv.min.js"></script>
-        <script src="assets/js/respond.min.js"></script>
-    <![endif]-->
-</head>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<!-- Preloader -->
-<body style="overflow: visible;">
-    <div style="position:fixed;top:0px;left:0px;width:0;height:0;" id="scrollzipPoint"></div><div id="preloader" style="display: none;">
-        <div id="status" style="display: none;">&nbsp;</div>
-    </div>
-    <div id="sb-site" >
-        <div class="boxed">
-            <header id="header-full-top" class="hidden-xs header-full">
-                <div class="container">
-                    <div class="header-full-title">
-                        <h1></h1>
-                    </div>
-                    <nav class="top-nav">
-                        <ul class="top-nav-social hidden-sm">
-                            <li><a href="http://www.citrix.com/news/RSS.html" taret="_blank" class="animated fadeIn animation-delay-2 rss" title="Citrix新闻"><i class="fa fa-rss"></i></a></li>                           
-                            <li><a href="http://www.linkedin.com/company/citrix?trk=tabs_biz_home" taret="_blank" class="animated fadeIn animation-delay-4 linkedin" title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="http://weibo.com/citrixcn" taret="_blank" class="animated fadeIn animation-delay-6 weibo"><i class="fa fa-weibo" title="思杰微博"></i></a></li>  
-                            <li><a href="http://www.citrix.com.cn/" taret="_blank" class="animated fadeIn animation-delay-6 citrix" title="思杰中国"><img class="fa" src="img/icon-favicon.png" /></a></li>
-                        </ul>
-                    </nav>
-                </div> <!-- container -->
-            </header> <!-- header-full -->
-
-            <nav class="navbar navbar-default navbar-header-full navbar-dark yamm navbar-static-top" role="navigation" id="header">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <a id="ar-brand" class="navbar-brand hidden-lg hidden-md hidden-sm" href="/">思杰 | Citrix  <span>Jobs</span></a>
-                    </div> <!-- navbar-header -->
-
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="index.html">首页</a>
-                            </li>
-                            <li>
-                                <a href="aboutus.html">认识思杰</a>
-                            </li>
-                            <li>
-                                <a href="work.html">人在思杰</a>
-                            </li>
-                            <li>
-                                <a href="voice.html">员工之声</a>
-                            </li>
-                            <li>
-                                <a href="video.html">思杰视频</a>
-                            </li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="mine.html" class="dropdown-toggle" ><i class="fa fa-user"></i> 我的申请</a>
-                            </li>
-                        </ul>
-                    </div><!-- navbar-collapse -->
-                </div><!-- container -->
-            </nav>
+<jsp:include page="../header.jsp" /> 
 
             <section class="margin-bottom margin-top">
             <div class="container ">
                 <div class="cont_title">
-                    <div class="cont_title_icon"><img src="img/cont_title_icon.jpg"></div>
+                    <div class="cont_title_icon"><img src="${pageContext.request.contextPath}/resources/img/cont_title_icon.jpg"></div>
                     <div class="cont_title_txt_c">我的简历</div>
                     <div class="cont_title_txt_e ">MY RESUME</div>
                 </div>
@@ -469,22 +393,9 @@ $(document).ready(function() {
             </div>
             </section>
 
-            <aside id="footer-widgets">
-                <div class="container">
-                    <div class="row" style="text-align:center;">
-                            <ul class="list-unstyled list-inline margin-top">
-                                <li><i class="fa fa-location-arrow"></i> 南京市江宁经济技术开发区 苏源大道19号江宁九龙湖国际企业总部园 C3号楼</li>
-                                <li><i class="fa fa-phone"></i> +86 (25) 6605 1330</li>
-                            </ul>
-                            <p>© 2016 Citrix inc. All rights reserved.</p>
-                    </div> <!-- row -->
-
-                </div> <!-- container -->
-            </aside> <!-- footer-widgets -->
-
+		
+		<%@ include file="../footer.jsp" %>
         </div>
-    </div> <!-- sb-site -->
- 
-    <script src="js/vendors.js"></script>
+    </div> 
 </body>
 </html>

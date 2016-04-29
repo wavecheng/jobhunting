@@ -10,7 +10,7 @@
                  <div class="row">                	          		
 	                 	<div class="alert alert-danger text-center">    	                 				
 							<h4>Whooops: something is wrong,please try again! </h4>
-							<div class="hide">${ex.message}:${ex.stackTrace}</div>							
+							<div class="show"><pre>${ex.message}:${ex.stackTrace}</pre></div>							
 						</div>
 				</div>
              </div>

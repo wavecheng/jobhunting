@@ -72,8 +72,8 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                           	<security:authorize access="isAuthenticated()">
-                            <li><a href="<c:url value="/user/mine" />" class="dropdown-toggle" ><i class="fa fa-user"></i> ${username}</a></li>
-                            <li><a href="<c:url value="/user/my_apply" />" class="dropdown-toggle" ><i class="fa fa-user"></i> 我的申请</a></li>
+                            <li><a href="<c:url value="/user/resume" />" class="dropdown-toggle" ><security:authentication property="principal.username" />，<i class="fa fa-user"></i> 个人信息</a></li>
+                            <li><a href="<c:url value="/user/apply" />" class="dropdown-toggle" ><i class="fa fa-user"></i> 我的申请</a></li>
                             <li><a href="<c:url value="/user/logout" />" class="dropdown-toggle" ><i class="fa fa-circle-o-notch"></i> 退出</a></li>
                             </security:authorize>
         					<security:authorize access="!isAuthenticated()">

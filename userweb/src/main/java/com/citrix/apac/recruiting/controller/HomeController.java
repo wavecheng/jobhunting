@@ -40,7 +40,6 @@ public class HomeController {
 		model.addAttribute("username", name);
 
 		List<Job> jobs = jobService.getAllOpenJobs();
-		System.out.println(jobs.size());
 		model.addAttribute("jobs", jobs);
 
 		return "index";
