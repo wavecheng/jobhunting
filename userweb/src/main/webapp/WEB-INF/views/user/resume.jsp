@@ -9,10 +9,10 @@
             <div class="container ">
                 <div class="cont_title">
                     <div class="cont_title_icon"><img src="${pageContext.request.contextPath}/resources/img/cont_title_icon.jpg"></div>
-                    <div class="cont_title_txt_c">我的简历</div>
+                    <div class="cont_title_txt_c">我的个人信息</div>
                     <div class="cont_title_txt_e ">MY RESUME</div>
                 </div>
-                <div class="row" style="clear:both;">
+                <div class="row" style="margin:0 auto; clear:both;">
                     <form id="movieForm" method="post">
                         <div class="form-group">
                             <div class="row">

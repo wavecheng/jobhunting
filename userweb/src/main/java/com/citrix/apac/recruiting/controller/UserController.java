@@ -1,6 +1,8 @@
 package com.citrix.apac.recruiting.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,14 @@ public class UserController {
 		return "user/resume";
 	}
 	
+    @RequestMapping(value="/test")  
+    @ResponseBody  
+    public Map<String,Object> validataUser(){
+        Map<String,Object> map = new HashMap<String,Object>();  
+        map.put("code", true);  
+        return map;  
+    }  
+    
 
 	@RequestMapping(value="/logout")
 	public String logout(){
