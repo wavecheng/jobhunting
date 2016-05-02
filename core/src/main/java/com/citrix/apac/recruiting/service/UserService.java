@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.reporsitory.UserApplyRepository;
+import com.citrix.apac.recruiting.reporsitory.UserEducationRepository;
 import com.citrix.apac.recruiting.reporsitory.UserRepository;
 
 @Service
@@ -17,6 +18,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired 
+	private UserEducationRepository userEducationRepository;
 	
 	@Autowired
 	private UserApplyRepository userApplyRepository;
@@ -50,4 +54,10 @@ public class UserService {
 			throw new NullPointerException("User does't exist");		
 	}
 	
+	
+	public User getUserAllInfo(Long id){
+		User u = userRepository.findOne(id);		
+		u.setUserEducation(userEducationRepository.findByUserId(u.getId()));
+		return u;
+	}
 }

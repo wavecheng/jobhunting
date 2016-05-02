@@ -18,7 +18,8 @@
                             <div class="row">
                                 <div class="col-xs-8">
                                     <label class="control-label">Movie title</label>
-                                    <input type="text" class="form-control" name="title" />
+                                    <input type="text" class="span3 form-control" name="title" value="${user.name}" />
+                                    <input type="text" class="span3 form-control" name="title" value="${user.nameEng}" />
                                 </div>
 
                                 <div class="col-xs-4 selectContainer">
@@ -40,7 +41,9 @@
                                     <label class="control-label">Director</label>
                                     <input type="text" class="form-control" name="director" />
                                 </div>
-
+								<c:forEach var="item" items="${user.userEducation}">
+									${item.fromDate } ${item.toDate } ${item.university }
+								</c:forEach>
                                 <div class="col-xs-4">
                                     <label class="control-label">Writer</label>
                                     <input type="text" class="form-control" name="writer" />

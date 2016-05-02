@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.entity.Worker;
+import com.citrix.apac.recruiting.login.JobUser;
 import com.citrix.apac.recruiting.reporsitory.UserRepository;
 import com.citrix.apac.recruiting.reporsitory.WorkerRepository;
 import com.citrix.apac.recruiting.service.JobService;
+import com.citrix.apac.recruiting.service.UserService;
 import com.citrix.apac.recruiting.service.WorkerService;
 
 @Controller
@@ -27,7 +29,7 @@ import com.citrix.apac.recruiting.service.WorkerService;
 public class UserController {
 
 	@Autowired
-	private UserRepository userRepository;
+	private UserService userService;
 
 	@Autowired
 	private WorkerService wokerService;
@@ -39,6 +41,7 @@ public class UserController {
 	public String index(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName(); 
+		
 		model.addAttribute("username", name);
 
 		return "user/apply";
@@ -46,7 +49,10 @@ public class UserController {
 	
 
 	@RequestMapping(value="/resume",method=RequestMethod.GET)
-	public String resume(){
+	public String resume(ModelMap model ){
+		JobUser u = (JobUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = userService.getUserAllInfo(u.getUser().getId());
+		model.addAttribute("user", user);
 		return "user/resume";
 	}
 
