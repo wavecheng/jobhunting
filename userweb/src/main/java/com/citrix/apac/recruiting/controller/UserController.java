@@ -1,35 +1,24 @@
 package com.citrix.apac.recruiting.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
-import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
-import com.citrix.apac.recruiting.entity.Worker;
-import com.citrix.apac.recruiting.login.JobUser;
-import com.citrix.apac.recruiting.reporsitory.UserRepository;
-import com.citrix.apac.recruiting.reporsitory.WorkerRepository;
 import com.citrix.apac.recruiting.service.JobService;
-import com.citrix.apac.recruiting.service.UserService;
 import com.citrix.apac.recruiting.service.WorkerService;
 
 @Controller
 @RequestMapping(value="/user")
-public class UserController {
-
-	@Autowired
-	private UserService userService;
+public class UserController extends BaseController{
 
 	@Autowired
 	private WorkerService wokerService;
@@ -39,19 +28,16 @@ public class UserController {
 	
 	@RequestMapping(value="/apply")
 	public String index(ModelMap model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); 
-		
-		model.addAttribute("username", name);
-
+		User u = getCurrentUser();
+		if(u != null){
+			model.addAttribute("username", u.getName());
+		}
 		return "user/apply";
 	}
 	
-
 	@RequestMapping(value="/resume",method=RequestMethod.GET)
-	public String resume(ModelMap model ){
-		JobUser u = (JobUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user = userService.getUserAllInfo(u.getUser().getId());
+	public String resume(ModelMap model ){	
+		User user = userService.getUserAllInfo(getCurrentUser().getId());
 		model.addAttribute("user", user);
 		return "user/resume";
 	}
@@ -71,7 +57,8 @@ public class UserController {
     
 
 	@RequestMapping(value="/logout")
-	public String logout(){
+	public String logout(SessionStatus  status){
+		status.setComplete();
 		return "redirect:/login";
 	}
 }

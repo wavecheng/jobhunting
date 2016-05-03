@@ -12,17 +12,18 @@
                     <div class="cont_title_txt_c">我的个人信息</div>
                     <div class="cont_title_txt_e ">MY RESUME</div>
                 </div>
-                <div class="row" style="margin:0 auto; clear:both;">
-                    <form id="movieForm" method="post">
+                <div class="row clearfix">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-xs-8">
-                                    <label class="control-label">Movie title</label>
+                                <div class="col-xs-6">
+                                    <label class="control-label">Name</label>
                                     <input type="text" class="span3 form-control" name="title" value="${user.name}" />
-                                    <input type="text" class="span3 form-control" name="title" value="${user.nameEng}" />
                                 </div>
-
-                                <div class="col-xs-4 selectContainer">
+                                <div class="col-xs-6">
+                                    <label class="control-label">English Name</label>
+                                    <input type="text" class="span3 form-control" name="title" value="${user.name}" />
+                                </div>
+                                <div class="col-xs-6 selectContainer">
                                     <label class="control-label">Genre</label>
                                     <select class="form-control" name="genre">
                                         <option value="">Choose a genre</option>
