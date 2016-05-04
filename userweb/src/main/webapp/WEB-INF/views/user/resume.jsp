@@ -26,12 +26,28 @@
                 		<div class="panel panel-default">
 							  <div class="panel-heading">个人信息</div>
 							  <div class="panel-body">
-							     <table class="table text-left noborder">
-								    <tr><td class="col-xs-2">中午姓名：</td><td>${user.name}</td></tr>
-								    <tr><td>中午姓名：</td><td>${user.name}</td></tr>
-								    <tr><td>中午姓名：</td><td>${user.name}</td></tr>
-								    <tr><td>中午姓名：</td><td>${user.name}</td></tr>
-								    <tr><td>中午姓名：</td><td>${user.name}</td></tr>
+							     <table class="table table-hover"  >
+								    <tr><td class="col-xs-3 text-right">Name in Chinese:</td><td class="text-left"><strong>${user.name}</strong></td></tr>
+								    <tr><td class="col-xs-3 text-right">Name in English:</td><td class="text-left">${user.nameEng}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Gender:</td><td class="text-left">${user.gender}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Mobile:</td><td class="text-left">${user.mobile}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Email:</td><td class="text-left">${user.email}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Personal ID:</td><td class="text-left">${user.idNo}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Date of Birth:</td><td class="text-left">${user.birthDate}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Married:</td><td class="text-left">${user.married}</td></tr>								    
+								    <tr><td class="col-xs-3 text-right">Place of Origin City:</td>
+								    	<td class="text-left">${user.birthProvince} ${user.birthCity}</td>
+								    </tr>
+								    <tr><td class="col-xs-3 text-right">Place of Current City:</td>
+								    	<td class="text-left">${user.currentProvince} ${user.currentCity}</td>
+								    </tr>
+								    <tr><td class="col-xs-3 text-right">City to Take Exam:</td>
+								    	<td class="text-left">${user.citytoExam}</td>
+								    </tr>
+								    <tr><td class="col-xs-3 text-right">University:</td><td class="text-left">${user.universityName}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Highest Degree:</td><td class="text-left">${user.degree}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Department:</td><td class="text-left">${user.depart}</td></tr>
+								    <tr><td class="col-xs-3 text-right">Major:</td><td class="text-left">${user.major}</td></tr>
 								 </table>
 							  </div>
 							</div>
@@ -41,7 +57,18 @@
 							    <h3 class="panel-title">教育经历</h3>
 							  </div>
 							  <div class="panel-body">
-							    Panel content
+							    <table class="table table-bordered table-hover"  >
+							    	<tr>
+							    		<td>From</td>
+							    		<td>To</td>
+							    		<td>University</td>
+							    		<td>Department</td>
+							    		<td>Major</td>
+							    		<td>Degree</td>
+							    		<td>Rank</td>
+							    	</tr>
+							    	
+							    </table>
 							  </div>
 							</div>      
                 	</div>                                          

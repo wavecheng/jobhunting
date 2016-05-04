@@ -70,6 +70,9 @@ public class User implements Serializable{
     @Column(name="id_no")
     private String idNo;
 
+    @Column(name="birth_date")
+    private Date birthDate;
+    
     @Column(name="university_name")
     private String universityName;
     
@@ -206,6 +209,14 @@ public class User implements Serializable{
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
+	}
+	
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public String getNameEng() {
