@@ -16,7 +16,7 @@
                 	<div class="col-md-4">
 						<div class="list-group">
 						  <a href="#basic" class="list-group-item">个人信息</a>
-						  <a href="#" class="list-group-item">教育经历</a>
+						  <a href="#education" class="list-group-item">教育经历</a>
 						  <a href="#" class="list-group-item">语言能力</a>
 						  <a href="#" class="list-group-item">项目经验</a>
 						  <a href="#" class="list-group-item">其他信息</a>
@@ -24,7 +24,7 @@
                 	</div>
                 	<div class="col-md-8">
                 		<div class="panel panel-default">
-							  <div class="panel-heading">个人信息</div>
+							  <div class="panel-heading">个人信息<a id="basic"></a></div>
 							  <div class="panel-body">
 							     <table class="table table-hover"  >
 								    <tr><td class="col-xs-3 text-right">Name in Chinese:</td><td class="text-left"><strong>${user.name}</strong></td></tr>
@@ -54,23 +54,118 @@
 							
 							<div class="panel panel-default">
 							  <div class="panel-heading">
-							    <h3 class="panel-title">教育经历</h3>
+							    <h3 class="panel-title" id="education">教育经历</h3>
 							  </div>
 							  <div class="panel-body">
 							    <table class="table table-bordered table-hover"  >
 							    	<tr>
-							    		<td>From</td>
-							    		<td>To</td>
-							    		<td>University</td>
-							    		<td>Department</td>
-							    		<td>Major</td>
-							    		<td>Degree</td>
-							    		<td>Rank</td>
+							    		<th>From</td>
+							    		<th>To</th>
+							    		<th>University</th>
+							    		<th>Department</th>
+							    		<th>Major</th>
+							    		<th>Degree</th>
+							    		<th>Rank</th>
 							    	</tr>
-							    	
+							    	<c:forEach items="${user.userEducation}" var="item">
+							    		<td>${item.fromDate}</td>
+							    		<td>${item.toDate}</td>
+							    		<td>${item.university}</td>
+							    		<td>${item.depart}</td>
+							    		<td>${item.major}</td>
+							    		<td>${item.degree}</td>
+							    		<td>>${item.totalRank}%</td>
+							    	</c:forEach>
 							    </table>
 							  </div>
-							</div>      
+						  </div>  
+						  
+						  <div class="panel panel-default">
+							  <div class="panel-heading">
+							    <h3 class="panel-title" id="education">教育经历</h3>
+							  </div>
+							  <div class="panel-body">
+							    <table class="table table-bordered table-hover"  >
+							    	<tr>
+							    		<th>From</td>
+							    		<th>To</th>
+							    		<th>University</th>
+							    		<th>Department</th>
+							    		<th>Major</th>
+							    		<th>Degree</th>
+							    		<th>Rank</th>
+							    	</tr>
+							    	<c:forEach items="${user.userEducation}" var="item">
+							    		<td>${item.fromDate}</td>
+							    		<td>${item.toDate}</td>
+							    		<td>${item.university}</td>
+							    		<td>${item.depart}</td>
+							    		<td>${item.major}</td>
+							    		<td>${item.degree}</td>
+							    		<td>>${item.totalRank}%</td>
+							    	</c:forEach>
+							    </table>
+							  </div>
+						  </div>   
+						  
+						  
+						  <div class="panel panel-default">
+							  <div class="panel-heading">
+							    <h3 class="panel-title" id="education">教育经历</h3>
+							  </div>
+							  <div class="panel-body">
+							    <table class="table table-bordered table-hover"  >
+							    	<tr>
+							    		<th>From</td>
+							    		<th>To</th>
+							    		<th>University</th>
+							    		<th>Department</th>
+							    		<th>Major</th>
+							    		<th>Degree</th>
+							    		<th>Rank</th>
+							    	</tr>
+							    	<c:forEach items="${user.userEducation}" var="item">
+							    		<td>${item.fromDate}</td>
+							    		<td>${item.toDate}</td>
+							    		<td>${item.university}</td>
+							    		<td>${item.depart}</td>
+							    		<td>${item.major}</td>
+							    		<td>${item.degree}</td>
+							    		<td>>${item.totalRank}%</td>
+							    	</c:forEach>
+							    </table>
+							  </div>
+						  </div>   
+						  
+						  
+						  <div class="panel panel-default">
+							  <div class="panel-heading">
+							    <h3 class="panel-title" id="education">教育经历</h3>
+							  </div>
+							  <div class="panel-body">
+							    <table class="table table-bordered table-hover"  >
+							    	<tr>
+							    		<th>From</td>
+							    		<th>To</th>
+							    		<th>University</th>
+							    		<th>Department</th>
+							    		<th>Major</th>
+							    		<th>Degree</th>
+							    		<th>Rank</th>
+							    	</tr>
+							    	<c:forEach items="${user.userEducation}" var="item">
+							    		<td>${item.fromDate}</td>
+							    		<td>${item.toDate}</td>
+							    		<td>${item.university}</td>
+							    		<td>${item.depart}</td>
+							    		<td>${item.major}</td>
+							    		<td>${item.degree}</td>
+							    		<td>>${item.totalRank}%</td>
+							    	</c:forEach>
+							    </table>
+							  </div>
+						  </div>   
+						      
                 	</div>                                          
                 </div>
 			</div>

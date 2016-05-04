@@ -10,7 +10,12 @@ import org.springframework.stereotype.Service;
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.reporsitory.UserApplyRepository;
 import com.citrix.apac.recruiting.reporsitory.UserEducationRepository;
+import com.citrix.apac.recruiting.reporsitory.UserExamRepository;
+import com.citrix.apac.recruiting.reporsitory.UserInterviewRepository;
+import com.citrix.apac.recruiting.reporsitory.UserProjectRepository;
 import com.citrix.apac.recruiting.reporsitory.UserRepository;
+import com.citrix.apac.recruiting.reporsitory.UserSkillRepository;
+import com.citrix.apac.recruiting.reporsitory.UserWorkRepository;
 
 @Service
 @Transactional
@@ -21,6 +26,21 @@ public class UserService {
 	
 	@Autowired 
 	private UserEducationRepository userEducationRepository;
+
+	@Autowired 
+	private UserProjectRepository userProjectRepository;
+
+	@Autowired 
+	private UserSkillRepository userSkillRepository;
+
+	@Autowired 
+	private UserInterviewRepository userInterviewRepository;
+
+	@Autowired 
+	private UserExamRepository userExamRepository;
+
+	@Autowired 
+	private UserWorkRepository userWorkRepository;
 	
 	@Autowired
 	private UserApplyRepository userApplyRepository;
@@ -58,6 +78,7 @@ public class UserService {
 	public User getUserAllInfo(Long id){
 		User u = userRepository.findOne(id);		
 		u.setUserEducation(userEducationRepository.findByUserId(u.getId()));
+		
 		return u;
 	}
 }
