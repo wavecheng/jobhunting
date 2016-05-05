@@ -36,8 +36,7 @@ public class JobService {
 		
 		return jobRepository.findAll().stream().filter(
 			j -> { return j.getToDate().after(now);}
-		).collect(Collectors.toList());	
-		
+		).collect(Collectors.toList());			
 	}
 
 }

@@ -7,7 +7,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.citrix.apac.recruiting.entity.Enums.ApplyStatus;
+import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
+import com.citrix.apac.recruiting.entity.UserApply;
+import com.citrix.apac.recruiting.entity.UserInterview;
+import com.citrix.apac.recruiting.reporsitory.JobRepository;
 import com.citrix.apac.recruiting.reporsitory.UserApplyRepository;
 import com.citrix.apac.recruiting.reporsitory.UserEducationRepository;
 import com.citrix.apac.recruiting.reporsitory.UserExamRepository;
@@ -44,6 +49,9 @@ public class UserService {
 	
 	@Autowired
 	private UserApplyRepository userApplyRepository;
+	
+	@Autowired
+	private JobRepository jobRepository;
 	
 	public void saveUser(User user) {
 		userRepository.save(user);
@@ -82,7 +90,26 @@ public class UserService {
 		u.setUserExam(userExamRepository.findByUserId(u.getId()));
 		u.setUserProject(userProjectRepository.findByUserId(u.getId()));
 		u.setUserSkill(userSkillRepository.findByUserId(u.getId()));
-		u.setUserWork(userWorkRepository.findByUserId(u.getId()));
+		u.setUserWork(userWorkRepository.findByUserId(u.getId()));		
 		return u;
+	}
+	
+	public List<UserApply> applyJob(Long userId, Long jobId){
+		User u = userRepository.findOne(userId);	
+		Job job = jobRepository.findOne(jobId);
+		List<UserApply> applys = userApplyRepository.findByUserId(userId);
+		boolean applied = applys.stream().anyMatch(t -> t.getJob().getId() == job.getId());		
+		if(u.isEnabled() && u.isVerified() && !applied){
+			UserApply item = new UserApply();
+			item.setJob(job);
+			item.setStatus(ApplyStatus.Applying);
+			item.setUser(u);
+			item = userApplyRepository.save(item);
+		}
+		return getUserApplies(userId);
+	}
+	
+	public List<UserApply> getUserApplies(Long userId){
+		return userApplyRepository.findByUserId(userId);
 	}
 }

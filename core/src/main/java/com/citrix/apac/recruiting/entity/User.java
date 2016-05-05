@@ -25,6 +25,7 @@ import com.citrix.apac.recruiting.entity.Enums.EngLevel;
 import com.citrix.apac.recruiting.entity.Enums.Gender;
 import com.citrix.apac.recruiting.entity.Enums.IdType;
 import com.citrix.apac.recruiting.entity.Enums.UserType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*
  * @Author boch
@@ -49,6 +50,7 @@ public class User implements Serializable{
     private String email;
 
     //@Size(min = 5, message = "Password must be at least 5 characters!")
+    @JsonIgnore
     private String password;
 
     @Column(name="mobile")

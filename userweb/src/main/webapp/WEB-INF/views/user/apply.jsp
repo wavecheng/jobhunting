@@ -5,11 +5,6 @@
 
             <section class="margin-bottom margin-top">
                 <div class="container">
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4><strong>感谢您参与我们的宣讲会! 请提供宝贵的意见和反馈: <a href="survey.html">提交我的反馈</a></strong></h4>
-                    </div>
-
                     <div class="cont_title">
                         <div class="cont_title_icon"><img src="${pageContext.request.contextPath}/resources/img/cont_title_icon.jpg"></div>
                         <div class="cont_title_txt_c">我的申请</div>
@@ -26,13 +21,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                        	<c:forEach  var="item" items="${applies}"> 
                             <tr>
-                                <td>Software Development Engineer</td>
-                                <td>Nanjing</td>
-                                <td>2016-01-16 17:20:00</td>
-                                <td><span class="badge label-default">未接收</span></td>
-                                <td><button class="btn btn-primary">取消</button></td>
+                                <td>${item.job.title}</td>
+                                <td>${item.job.workLocation}</td>
+                                <td>${item.applyTime}</td>
+                                <td><span class="badge label-default">${item.status}</span></td>
+                                <td><button class="btn btn-primary">${item.remark}</button></td>
                             </tr>
+                            </c:forEach> 
                             <tr>
                                 <td>Senior Software Development Engineer</td>
                                 <td>Nanjing</td>
@@ -65,17 +62,7 @@
                     </table>
                 </div>
             </section>
-            <section class="margin-bottom margin-top">
-                <div class="container">
-                    <div class="cont_title">
-                        <div class="cont_title_icon"><img src="${pageContext.request.contextPath}/resources/img/cont_title_icon.jpg"></div>
-                        <div class="cont_title_txt_c">我的简历</div>
-                        <div class="cont_title_txt_e">MY RESUME</div>
-                        
-                    </div>
-                    <a href="my_resume.html" class="btn btn-success">修改我的简历信息</a>
-               </div>
-            </section>
+
 			<%@ include file="../footer.jsp" %>
         </div>
     </div> <!-- sb-site -->
