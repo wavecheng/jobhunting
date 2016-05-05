@@ -45,14 +45,14 @@ public class Enums {
 	}
 	
 	public enum CompanyType{
-		PERSONAL,
-		STATE,
-		FOREIGN,
-		COMBINED,
-		GOVERNMENT,
-		INSTITUTION,
+		Personal,
+		State,
+		Foreign,
+		Combined,
+		Government,
+		Institution,
 		NGO,
-		OTHER
+		Other
 	}
 	
 	public enum TimeType{

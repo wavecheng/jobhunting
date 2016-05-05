@@ -78,7 +78,11 @@ public class UserService {
 	public User getUserAllInfo(Long id){
 		User u = userRepository.findOne(id);		
 		u.setUserEducation(userEducationRepository.findByUserId(u.getId()));
-		
+		u.setUserApply(userApplyRepository.findByUserId(u.getId()));
+		u.setUserExam(userExamRepository.findByUserId(u.getId()));
+		u.setUserProject(userProjectRepository.findByUserId(u.getId()));
+		u.setUserSkill(userSkillRepository.findByUserId(u.getId()));
+		u.setUserWork(userWorkRepository.findByUserId(u.getId()));
 		return u;
 	}
 }

@@ -112,6 +112,7 @@ public class User implements Serializable{
     private Date graduateDate;
 
     @Column(name="eng_highest_level")
+    @Enumerated(EnumType.STRING)
     private EngLevel engLevel;
     
     @Column(name="eng_highest_score")
