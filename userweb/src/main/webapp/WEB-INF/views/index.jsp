@@ -1,6 +1,9 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("newLineChar", "\n"); %>
+
 <jsp:include page="header.jsp" /> 
            
             <div style="height:300px; background-image:url('${pageContext.request.contextPath}/resources/img/hiring1.jpg'); background-size:cover;">
@@ -31,7 +34,7 @@
                                     </div>                                       
                                     <div id="job-${job.id}" class="panel-collapse collapse" >
                                         <div class="panel-body">
-                                        		${job.description }
+                                        		${fn:replace(job.description, newLineChar, "<br/>")}
                                             <p>
                                                 <a href="user/apply/${job.id}" class="btn btn-primary">Apply</a>
                                             </p>

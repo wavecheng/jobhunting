@@ -42,7 +42,8 @@
 					  </div>
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="submit" class="btn btn-success">Log in</button>  						      
+					      <button type="submit" class="btn btn-success">Log in</button>  	
+					        <a href="reset_password" class="alert">Forget Password</a>  						      
 					    </div>
 					  </div>
 					</form>

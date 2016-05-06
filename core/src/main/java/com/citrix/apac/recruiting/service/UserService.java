@@ -98,15 +98,29 @@ public class UserService {
 		User u = userRepository.findOne(userId);	
 		Job job = jobRepository.findOne(jobId);
 		List<UserApply> applys = userApplyRepository.findByUserId(userId);
-		boolean applied = applys.stream().anyMatch(t -> t.getJob().getId() == job.getId());		
-		if(u.isEnabled() && u.isVerified() && !applied){
+		boolean applied = applys.stream().anyMatch(t -> t.getJob().getId() == job.getId());	
+		if(applied)
+			throw new RuntimeException("You have already applied this job");
+		
+		if(u.isEnabled() && u.isVerified()){
 			UserApply item = new UserApply();
 			item.setJob(job);
 			item.setStatus(ApplyStatus.Applying);
 			item.setUser(u);
 			item = userApplyRepository.save(item);
+		}else{
+			throw new RuntimeException("Your account is not valid!");
 		}
 		return getUserApplies(userId);
+	}
+
+	public boolean cancelJob(Long userId, Long userApplyId){
+		UserApply apply = userApplyRepository.findOne(userApplyId);
+		if(apply.getUser().getId() == userId){
+			userApplyRepository.delete(apply);
+			return true;
+		}
+		return false;
 	}
 	
 	public List<UserApply> getUserApplies(Long userId){

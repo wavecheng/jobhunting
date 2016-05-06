@@ -8,10 +8,13 @@
          <section class="margin-bottom margin-top">
              <div class="container">
                  <div class="row">                	          		
-	                 	<div class="alert alert-danger text-center">    	                 				
-							<h4>Whooops: something is wrong,please try again! </h4>
-							<div class="show"><pre>${ex.message}:${ex.stackTrace}</pre></div>							
-						</div>
+	                 	<div class="text-center">    	                 				
+							<h4>Whoops: something is wrong,please try again! </h4>												
+						<div class="alert alert-danger" role="alert">
+								${ex.message}								
+					    </div>	
+					    <div class="show"><pre>:${ex.stackTrace}</pre></div>	
+					   </div>
 				</div>
              </div>
          </section>

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.citrix.apac.recruiting.entity.Enums.ApplyStatus;
 
@@ -17,7 +18,7 @@ import com.citrix.apac.recruiting.entity.Enums.ApplyStatus;
  * @author boch
  */
 @Entity
-@Table(name = "user_apply")
+@Table(name = "user_apply", uniqueConstraints=@UniqueConstraint(columnNames={"id","apply_status"}))
 public class UserApply {
 	
     @Id
@@ -27,7 +28,7 @@ public class UserApply {
     @Column(name="worker_name")
     private String wokerName;
     
-    @Column(name="apply_status",nullable=false,unique=true)
+    @Column(name="apply_status",nullable=false)
     @Enumerated(EnumType.STRING)
     private ApplyStatus status = ApplyStatus.Applying;
     

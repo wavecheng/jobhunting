@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -31,21 +32,28 @@ public class UserController extends BaseController{
 	private JobService jobService;
 
 	@RequestMapping(value="/apply")
-	public String index(ModelMap model) {
+	public String index(@RequestParam(name="success",required=false) String success, ModelMap model) {
 		User u = getCurrentUser();
 		if(u != null){
 			model.addAttribute("username", u.getName());
 			model.addAttribute("applies", userService.getUserApplies(u.getId()));
 		}
+		model.addAttribute("success", success);
 		return "user/apply";
 	}
 	
 	@RequestMapping(value="/apply/{id}")
 	public String applyJob(@PathVariable Long id,ModelMap model) {
 		User u = getCurrentUser();
-		List<UserApply> applies = userService.applyJob(u.getId(), id);
-		model.addAttribute("applies", applies);
-		return "user/apply";
+		userService.applyJob(u.getId(), id);
+		return "redirect:/user/apply?success=true";
+	}
+
+	@RequestMapping(value="/cancel/{id}")
+	public String cancelJob(@PathVariable Long id,ModelMap model) {
+		User u = getCurrentUser();
+		boolean success = userService.cancelJob(u.getId(), id);
+		return "redirect:/user/apply?success="+success;
 	}
 	
 	@RequestMapping(value="/resume",method=RequestMethod.GET)
