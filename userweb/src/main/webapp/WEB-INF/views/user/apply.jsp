@@ -42,6 +42,9 @@
                                 <c:if test="${item.status=='Applying'}">
                                 	<button class="btn btn-primary" data-toggle="modal" data-target="#myApplyModal" data-id="${item.id}"> Cancel</button>
                                 </c:if>
+                                <c:if test="${item.status!='Applying'}">
+                                	${item.remark}
+                                </c:if>
                                 </td>
                             </tr>
                             </c:forEach> 

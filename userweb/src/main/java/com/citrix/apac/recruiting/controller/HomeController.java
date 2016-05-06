@@ -85,5 +85,16 @@ public class HomeController extends BaseController {
 	public String video(){
 		return "video";
 	}
+
+	@RequestMapping(value="/reset_password",method=RequestMethod.GET)
+	public String resetPassword(){
+		return "reset_password";
+	}
+
+	@RequestMapping(value="/reset_password",method=RequestMethod.POST)
+	public String updatePassword(@RequestParam(name="email",required=true) String email){
+		//TODO
+		return "redirect:/index";
+	}
 	
 }
