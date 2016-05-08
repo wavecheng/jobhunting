@@ -13,12 +13,14 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 import com.citrix.apac.recruiting.entity.Enums.ApplyStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author boch
  */
 @Entity
 @Table(name = "user_apply", uniqueConstraints=@UniqueConstraint(columnNames={"id","apply_status"}))
+@JsonIgnoreProperties(value={"user","job"})
 public class UserApply {
 	
     @Id

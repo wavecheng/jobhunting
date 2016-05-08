@@ -71,8 +71,9 @@ public class UserController extends BaseController{
 	}
 
     @RequestMapping(value="/update_resume",method=RequestMethod.GET)
-    public String updateResueme(){
+    public String updateResueme(ModelMap model){
     	User user = userService.getUserAllInfo(getCurrentUser().getId()); 
+    	model.addAttribute("user", user);
         return "update_resume";  
     }  
     

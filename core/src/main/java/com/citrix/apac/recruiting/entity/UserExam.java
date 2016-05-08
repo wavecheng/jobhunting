@@ -7,11 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author boch
  */
 @Entity
 @Table(name = "user_exam")
+@JsonIgnoreProperties(value={"user","job"})
 public class UserExam {
 	
     @Id

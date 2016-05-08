@@ -39,12 +39,27 @@
                                 <td>${item.applyTime}</td>
                                 <td><span class="badge label-success">${item.status}</span></td>
                                 <td>
-                                <c:if test="${item.status=='Applying'}">
-                                	<button class="btn btn-primary" data-toggle="modal" data-target="#myApplyModal" data-id="${item.id}"> Cancel</button>
-                                </c:if>
-                                <c:if test="${item.status!='Applying'}">
-                                	${item.remark}
-                                </c:if>
+                                <c:choose>
+                                	<c:when test="${item.status=='Applying'}">
+                                		<button class="btn btn-primary" data-toggle="modal" data-target="#myApplyModal" data-id="${item.id}"> Cancel</button>
+                                	</c:when>
+                                	<c:when test="${item.status=='Exam'}">
+                                		<span class="badge label-success">笔试</span> <br/>
+                                		${item.remark}
+                                	</c:when>
+                                	<c:when test="${item.status=='Passed'}">
+                                		<span class="badge label-success">通过</span> <br/>
+                                		${item.remark}
+                                	</c:when>
+                                	<c:when test="${item.status=='FirstInterview'}">
+                                		<span class="badge label-success">面试</span> <br/>
+                                		${item.remark}
+                                	</c:when>
+                                	<c:when test="${item.status=='Reject'}">
+                                		<span class="badge label-danger">Rejected</span> <br/>
+                                		非常遗憾您未能通过本职位的要求，感谢参与
+                                	</c:when>
+                                </c:choose>
                                 </td>
                             </tr>
                             </c:forEach> 

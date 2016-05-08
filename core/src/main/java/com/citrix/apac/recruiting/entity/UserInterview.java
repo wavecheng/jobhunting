@@ -12,12 +12,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.citrix.apac.recruiting.entity.Enums.InterviewResult;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author boch
  */
 @Entity
 @Table(name = "user_interview")
+@JsonIgnoreProperties(value={"user","job","worker"})
 public class UserInterview {
 	
     @Id

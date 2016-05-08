@@ -92,8 +92,17 @@ public class HomeController extends BaseController {
 	}
 
 	@RequestMapping(value="/reset_password",method=RequestMethod.POST)
-	public String updatePassword(@RequestParam(name="email",required=true) String email){
-		//TODO
+	public String updatePassword(@RequestParam(name="email",required=true) String email, ModelMap model){
+		User u = userService.findByEmail(email);
+		if(u == null){
+			model.addAttribute("msg", "User account is not valid!");
+			return "reset_password";
+		}
+		else if(!u.isEnabled() && !u.isVerified()){
+			model.addAttribute("msg", "User status is not valid");
+		}else{
+			//TODO: password reset and email organize
+		}
 		return "redirect:/index";
 	}
 	

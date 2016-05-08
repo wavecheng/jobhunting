@@ -126,4 +126,9 @@ public class UserService {
 	public List<UserApply> getUserApplies(Long userId){
 		return userApplyRepository.findByUserId(userId);
 	}
+	
+	public User findByEmail(String email){
+		User u = userRepository.findByEmail(email);
+		return u;
+	}
 }

@@ -1,13 +1,20 @@
 package com.citrix.apac.recruiting.entity;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "university")
-public class University {
+@JsonIgnoreProperties(value={"users"})
+public class University implements Serializable {
 
-    @Id
+	private static final long serialVersionUID = 8394652154649525964L;
+
+	@Id
     @GeneratedValue
     private Long id;
 

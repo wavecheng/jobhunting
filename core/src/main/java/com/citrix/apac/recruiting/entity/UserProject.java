@@ -10,11 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * @author boch
  */
 @Entity
 @Table(name = "user_project")
+@JsonIgnoreProperties(value={"user"})
 public class UserProject {
 	
     @Id

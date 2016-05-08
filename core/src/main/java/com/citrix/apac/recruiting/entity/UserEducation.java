@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.citrix.apac.recruiting.entity.Enums.EduLevel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author boch
@@ -23,6 +24,7 @@ import com.citrix.apac.recruiting.entity.Enums.EduLevel;
  */
 @Entity
 @Table(name = "user_edu")
+@JsonIgnoreProperties(value={"user"})
 public class UserEducation {
 	
     @Id

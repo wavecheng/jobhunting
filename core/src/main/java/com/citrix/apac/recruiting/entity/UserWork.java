@@ -17,12 +17,14 @@ import javax.persistence.Table;
 
 import com.citrix.apac.recruiting.entity.Enums.CompanyType;
 import com.citrix.apac.recruiting.entity.Enums.TimeType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author boch
  */
 @Entity
 @Table(name = "user_work")
+@JsonIgnoreProperties(value={"user"})
 public class UserWork {
 	
     @Id
