@@ -16,10 +16,10 @@
                     <div class="cont_title_txt_e ">MY RESUME</div>
                     <a href="update_resume" class="btn btn-success pull-right">修改我的简历信息</a>
                 </div>
-
+		
                 <div class="row">
                 	<div class="col-md-4">
-						<div class="list-group text-right ">
+						<div class="list-group text-right ">${user_json}
 						  <a href="#basic" class="list-group-item  ">Personal Information</a>
 						  <a href="#language" class="list-group-item ">Language Skill</a>
 						  <a href="#education" class="list-group-item ">Education</a>						  

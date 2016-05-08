@@ -20,6 +20,10 @@ import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.entity.UserApply;
 import com.citrix.apac.recruiting.service.JobService;
 import com.citrix.apac.recruiting.service.WorkerService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping(value="/user")
@@ -63,6 +67,11 @@ public class UserController extends BaseController{
 		return "user/resume";
 	}
 
+	@RequestMapping(value="/resume",method=RequestMethod.POST)
+	public String saveResume(@RequestBody User user){
+		return "user/resume";
+	}
+	
 	@RequestMapping(value="/load_resume",method=RequestMethod.GET)
 	@ResponseBody
 	public User getResume(){
@@ -73,14 +82,21 @@ public class UserController extends BaseController{
     @RequestMapping(value="/update_resume",method=RequestMethod.GET)
     public String updateResueme(ModelMap model){
     	User user = userService.getUserAllInfo(getCurrentUser().getId()); 
-    	model.addAttribute("user", user);
-        return "update_resume";  
+    	if(user != null){
+	    	model.addAttribute("user", user);		
+			try{
+				ObjectMapper mapper = new ObjectMapper();
+				String userJson = mapper.writeValueAsString(user);
+				System.out.println(userJson);
+				model.addAttribute("user_json", userJson);
+			}catch(Exception ex){
+				System.out.println(ex);
+			}
+    	}
+        return "user/update_resume";  
     }  
     
-	@RequestMapping(value="/resume",method=RequestMethod.POST)
-	public String saveResume(@RequestBody User user){
-		return "user/resume";
-	}
+
 	
     @RequestMapping(value="/test")  
     @ResponseBody  
