@@ -119,7 +119,6 @@
   </div>
 </div>
 
-    <script src="${pageContext.request.contextPath}/resources/js/vendors.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
 </body>
 </html>
