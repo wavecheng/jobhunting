@@ -16,11 +16,8 @@
     <meta name="description" content="思杰招聘 Citrix China recruiting job" />
     <link href="${pageContext.request.contextPath}/resources/css/vendors.css" rel="stylesheet"  />
     <link href="${pageContext.request.contextPath}/resources/css/style-blue.css" rel="stylesheet" title="default"  />
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-        <script src="assets/js/html5shiv.min.js" th:href="@{/resources/img/icon-favicon.png}"></script>
-        <script src="assets/js/respond.min.js" th:href="@{/resources/img/icon-favicon.png}"></script>
-    <![endif]-->
+	<link href="${pageContext.request.contextPath}/resources/css/bootstrap-datetimepicker.min.css" rel="stylesheet" title="default"  />
+	
 </head>
 <body style="overflow: visible;">
     <div id="sb-site" >

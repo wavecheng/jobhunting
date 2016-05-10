@@ -46,10 +46,16 @@
 								    <td class="text-left"><input type="text" data-bind="value:idNo" class="" required="required" /></td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">Date of Birth:</td>
-								    <td class="text-left"><input type="text" data-bind="value:birthDate" class="" required="required" /></td>
+								    <td class="text-left">
+								    	<input type="text" data-bind="value:birthDate" class="" required="required" id="birthDate" />
+								    </td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">Married:</td>
-								    <td class="text-left">${user.married}</td>
+								    <td class="text-left">								    	
+								    <div class="btn-group" role="group" aria-label="Marriage status">
+										  <input type="radio"  data-bind="checked:married" value="true" />Yes  
+										  <input type="radio"  data-bind="checked:married" value="false" />No 
+										</div></td>
 								    </tr>								    
 								    <tr><td class="col-xs-3 text-right strong strong">Place of Origin City:</td>
 								    	<td class="text-left">${user.birthProvince} ${user.birthCity}</td>
@@ -194,11 +200,18 @@
 		<%@ include file="../footer.jsp" %>
 		<script src="${pageContext.request.contextPath}/resources/js/knockout-3.4.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/knockout.mapping-latest.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datetimepicker.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
 		<script>
 			var viewModel = ko.mapping.fromJS(${user_json});
 			
 			ko.applyBindings(viewModel);
+			
+			  $('#birthDate').datetimepicker({
+				  format: 'yyyy-mm-dd',
+				  minView: 2,
+				  autoclose: 1,
+			    });
 		</script>
         </div>
     </div> 
