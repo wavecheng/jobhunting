@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-04-23 17:19:39
+-- Generation Time: 2016-05-10 17:22:27
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -95,6 +95,54 @@ CREATE TABLE IF NOT EXISTS `logs` (
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `mail_queue`
+--
+
+CREATE TABLE IF NOT EXISTS `mail_queue` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `add_time` datetime DEFAULT NULL,
+  `content` longtext COLLATE utf8_bin,
+  `is_sent` bit(1) DEFAULT NULL,
+  `mail_to` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `subject` varchar(300) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
+
+--
+-- 转存表中的数据 `mail_queue`
+--
+
+INSERT INTO `mail_queue` (`id`, `add_time`, `content`, `is_sent`, `mail_to`, `subject`) VALUES
+(8, '2016-04-29 21:59:12', 'Please click the following link to verify your email address:\r\n<a href="http://localhost:8080/userweb/registerverify/JDJhJDEwJDBBaWVlVjZDQ21USHVra1pldHVrUnVacjRmdURPa3gyeFJxanV1ZHprQTVoeE1YMy9GWFZt">verify</a>', b'0', 'a@b.com1', 'Citrix Job:Verify your email');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `mail_template`
+--
+
+CREATE TABLE IF NOT EXISTS `mail_template` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `add_time` datetime DEFAULT NULL,
+  `content` longtext COLLATE utf8_bin,
+  `content_param` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `subject` varchar(300) COLLATE utf8_bin DEFAULT NULL,
+  `subject_param` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_i6dunxmcraubts1kejnorrecn` (`type`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `mail_template`
+--
+
+INSERT INTO `mail_template` (`id`, `add_time`, `content`, `content_param`, `subject`, `subject_param`, `type`) VALUES
+(1, NULL, 'Please click the following link to verify your email address:\r\n<a href="@url">verify</a>', '{email},{code}', 'Citrix Job:Verify your email', NULL, 'register_verify');
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `university`
 --
 
@@ -134,7 +182,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `enabled` bit(1) DEFAULT NULL,
   `eng_highest_score` int(11) DEFAULT NULL,
-  `eng_highest_level` int(11) DEFAULT NULL,
   `gender` int(11) DEFAULT NULL,
   `gmat` int(11) DEFAULT NULL,
   `graduate_date` date DEFAULT NULL,
@@ -157,17 +204,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_type` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `university_name` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `university_id` bigint(20) DEFAULT NULL,
+  `verified` bit(1) DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `eng_highest_level` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_6dotkott2kjsp8vw4d0m25fb7` (`email`),
   KEY `FK_rebo2xbcgxy60wi2e79gd4o86` (`university_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=27 ;
 
 --
 -- 转存表中的数据 `users`
 --
 
-INSERT INTO `users` (`id`, `awards`, `birth_city`, `birth_province`, `city_to_exam`, `current_city`, `current_province`, `degree`, `depart`, `email`, `enabled`, `eng_highest_score`, `eng_highest_level`, `gender`, `gmat`, `graduate_date`, `gre`, `id_no`, `id_type`, `major`, `married`, `mobile`, `name`, `name_eng`, `oral`, `password`, `register_time`, `salary_expect`, `second_lang`, `second_lang_level`, `toefl`, `toeic`, `user_type`, `university_name`, `university_id`) VALUES
-(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'a@b.com', b'1', 0, 0, 0, 0, NULL, 0, NULL, NULL, NULL, b'0', NULL, '测试', 'test', NULL, '123456', '2016-04-21 00:00:00', NULL, NULL, NULL, 0, 0, NULL, NULL, 1);
+INSERT INTO `users` (`id`, `awards`, `birth_city`, `birth_province`, `city_to_exam`, `current_city`, `current_province`, `degree`, `depart`, `email`, `enabled`, `eng_highest_score`, `gender`, `gmat`, `graduate_date`, `gre`, `id_no`, `id_type`, `major`, `married`, `mobile`, `name`, `name_eng`, `oral`, `password`, `register_time`, `salary_expect`, `second_lang`, `second_lang_level`, `toefl`, `toeic`, `user_type`, `university_name`, `university_id`, `verified`, `birth_date`, `eng_highest_level`) VALUES
+(22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'a@b.com', b'0', 0, NULL, 0, NULL, 0, NULL, NULL, NULL, b'0', NULL, 'æµ?è¯?', NULL, NULL, '$2a$10$/EUETabXYG/q4pLKVumq1OLIc5PwyI0yklNGFm7Ygsio1fjVwyzjS', '2016-04-28 21:20:28', NULL, NULL, NULL, 0, 0, NULL, NULL, NULL, b'0', NULL, NULL),
+(26, 'asdfadfs\r\nadsfa\r\ndfadf', '南京', '江苏', '南京', '南京', '江苏', 'Master', '计算机', 'a@b.com1', b'1', 0, 0, 0, '2016-05-04', 0, '123456789012345678', 'IdCard', '计算机', b'0', '13915955555', '匡事实', 'Shishi Kuang', 'Good', '$2a$10$0AieeV6CCmTHukkZetukRuZr4fuDOkx2xRqjuudzkA5hxMX3/FXVm', '2016-04-29 21:59:11', '5000', '日语', 'CET8', 345, 342, NULL, '南京大学', 1, b'1', '1990-09-02', 'CET6');
 
 -- --------------------------------------------------------
 
@@ -185,10 +236,17 @@ CREATE TABLE IF NOT EXISTS `user_apply` (
   `job_id` bigint(20) DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_pa4o15ntcwg8ix9ono9dcp72q` (`apply_status`),
+  UNIQUE KEY `UK_mf59slqlo6ww8nn27mmj80q6t` (`id`,`apply_status`),
   KEY `FK_49edapt37r2y66l3gt2r357sw` (`job_id`),
   KEY `FK_p4vt0wji51s6fx73ywhycm5cl` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=12 ;
+
+--
+-- 转存表中的数据 `user_apply`
+--
+
+INSERT INTO `user_apply` (`id`, `apply_time`, `remark`, `apply_status`, `update_time`, `worker_name`, `job_id`, `user_id`) VALUES
+(11, '2016-05-06 23:22:09', NULL, 'Applying', NULL, NULL, 1, 26);
 
 -- --------------------------------------------------------
 
@@ -213,7 +271,14 @@ CREATE TABLE IF NOT EXISTS `user_edu` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_5kr6a8l3jqajkiv7d8y12eap0` (`degree`),
   KEY `FK_7u0y8ekl4amspusps5r2uixxy` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `user_edu`
+--
+
+INSERT INTO `user_edu` (`id`, `courses`, `degree`, `depart`, `from_date`, `graduate_date`, `major`, `remark`, `to_date`, `total_rank`, `university`, `update_time`, `user_id`) VALUES
+(1, '测试阿斯顿发生后', 'Master', '计算机', '2015-10-01', '2016-05-01', '计算机', NULL, '2016-05-02', 10, '南京大学', '2016-05-02 00:00:00', 26);
 
 -- --------------------------------------------------------
 
@@ -275,7 +340,15 @@ CREATE TABLE IF NOT EXISTS `user_project` (
   `user_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_alj835ria5tqth22nq08iv97a` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=3 ;
+
+--
+-- 转存表中的数据 `user_project`
+--
+
+INSERT INTO `user_project` (`id`, `description`, `duty`, `from_date`, `name`, `to_date`, `update_time`, `user_id`) VALUES
+(1, '图书馆图书检索系统（OPAC)', '江苏汇文软件有限公司主要为国内高校图书馆提供信息管理系统，目前为行业领导者。\r\n本人在公司从事与读者信息交互、数据挖掘、信息检索相关软件的开发。\r\n主要成果有：图书馆图书检索系统（OPAC)，手机图书馆，区域统一检索平台，南京大学图书馆科技查新与检索平台\r\n典型用户：\r\n\r\n厦门大学图书馆OPAC: http://210.34.4.28/opac/search.php\r\n南京城东五校联合目录：\r\n\r\nhttp://202.195.243.104/uopac/s/search.action\r\n\r\n\r\n南京大', '2016-05-01', '图书馆图书检索系统（OPAC)', '2016-05-24', '2016-05-31 00:00:00', 26),
+(2, '文软件有限公司主要为国内高校图书馆提供信息管理系', '江苏汇文软件有限公司主要为国内高校图书馆提供信息管理系统，目前为行业领导者。\r\n本人在公司从事与读者信息交互、数据挖掘、信息检索相关软件的开发。\r\n主要成果有：图书馆图书检索系统（OPAC)，手机图书馆，区域统一检索平台，南京大学图书馆科技查新与检索平台\r\n典型用户：\r\n厦门大学图书馆OPAC: http://210.34.4.28/opac/search.php\r\n南京城东五校联合目录：http://202.195.243.104/uopac/s/search.action\r\n南京大学科技查新与文献检索', '2016-05-01', '图书馆图书检索系统 Mobile', NULL, '2016-05-31 00:00:00', 26);
 
 -- --------------------------------------------------------
 
@@ -318,7 +391,14 @@ CREATE TABLE IF NOT EXISTS `user_work` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UK_dplxgg83xkg0frt37hp93av1t` (`company`),
   KEY `FK_5g7aoj82lcg16fa2jbggdrtmi` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `user_work`
+--
+
+INSERT INTO `user_work` (`id`, `company`, `company_size`, `company_type`, `description`, `from_date`, `position`, `time_type`, `to_date`, `update_time`, `user_id`) VALUES
+(1, 'ProQuest北京代表处', 100, 'Foreign', '负责亚太地区（APAC）的公司SaaS产品(Summon,360 Link, Intota)的实施、技术支持及本地化开发。\r\nSummon 是一个集成图书馆所有电子资源、纸本图书、机构馆藏等所有信息的发现服务平台。360 Link负责通过元数据信息将用户重定向到对应的全文下载页面。 Intota为下一代的图书馆集成管理系统。我的工作是负责Summon/360 Link 在大中华地区的实施，并同时负责其本地化需求的开发及这些产品的亚太地区用户的技术支持。', '2016-05-01', '技术支持/维护工程师', 'FullTime', '2016-05-27', NULL, 26);
 
 -- --------------------------------------------------------
 
@@ -412,8 +492,8 @@ ALTER TABLE `users`
 -- 限制表 `user_apply`
 --
 ALTER TABLE `user_apply`
-  ADD CONSTRAINT `FK_p4vt0wji51s6fx73ywhycm5cl` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `FK_49edapt37r2y66l3gt2r357sw` FOREIGN KEY (`job_id`) REFERENCES `job` (`id`);
+  ADD CONSTRAINT `FK_49edapt37r2y66l3gt2r357sw` FOREIGN KEY (`job_id`) REFERENCES `job` (`id`),
+  ADD CONSTRAINT `FK_p4vt0wji51s6fx73ywhycm5cl` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- 限制表 `user_edu`
@@ -432,9 +512,9 @@ ALTER TABLE `user_exam`
 -- 限制表 `user_interview`
 --
 ALTER TABLE `user_interview`
-  ADD CONSTRAINT `FK_ode5nppkggglavccb0l6y6r6q` FOREIGN KEY (`worker_id`) REFERENCES `workers` (`id`),
   ADD CONSTRAINT `FK_4h4atfnxxcql9eer3y1y6iwbe` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `FK_nreppkxtparf88m43to3c9h9v` FOREIGN KEY (`job_id`) REFERENCES `job` (`id`);
+  ADD CONSTRAINT `FK_nreppkxtparf88m43to3c9h9v` FOREIGN KEY (`job_id`) REFERENCES `job` (`id`),
+  ADD CONSTRAINT `FK_ode5nppkggglavccb0l6y6r6q` FOREIGN KEY (`worker_id`) REFERENCES `workers` (`id`);
 
 --
 -- 限制表 `user_project`
@@ -458,8 +538,8 @@ ALTER TABLE `user_work`
 -- 限制表 `worker_x_role`
 --
 ALTER TABLE `worker_x_role`
-  ADD CONSTRAINT `FK_ckdo9ii3vlxk47uy8mdc8cqsy` FOREIGN KEY (`workers_id`) REFERENCES `workers` (`id`),
-  ADD CONSTRAINT `FK_cgqhdkktf08bv01wqd54nd6v1` FOREIGN KEY (`roles_id`) REFERENCES `worker_role` (`id`);
+  ADD CONSTRAINT `FK_cgqhdkktf08bv01wqd54nd6v1` FOREIGN KEY (`roles_id`) REFERENCES `worker_role` (`id`),
+  ADD CONSTRAINT `FK_ckdo9ii3vlxk47uy8mdc8cqsy` FOREIGN KEY (`workers_id`) REFERENCES `workers` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
