@@ -211,6 +211,7 @@
 				  format: 'yyyy-mm-dd',
 				  minView: 2,
 				  autoclose: 1,
+				  bootcssVer:3,
 			    });
 		</script>
         </div>
