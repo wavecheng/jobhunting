@@ -89,6 +89,7 @@ public class UserController extends BaseController{
 				String userJson = mapper.writeValueAsString(user);
 				System.out.println(userJson);
 				model.addAttribute("user_json", userJson);
+				model.addAttribute("examCityList", mapper.writeValueAsString(jobService.getExamCities()));
 			}catch(Exception ex){
 				System.out.println(ex);
 			}

@@ -12,8 +12,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.citrix.apac.recruiting.entity.ExamCity;
 import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
+import com.citrix.apac.recruiting.reporsitory.ExamCityRepository;
 import com.citrix.apac.recruiting.reporsitory.JobRepository;
 import com.citrix.apac.recruiting.reporsitory.UserApplyRepository;
 import com.citrix.apac.recruiting.reporsitory.UserRepository;
@@ -26,7 +28,7 @@ public class JobService {
 	private JobRepository jobRepository;
 	
 	@Autowired
-	private UserApplyRepository userApplyRepository;
+	private ExamCityRepository examCityRepository;
 	
 	public List<Job> getAllOpenJobs() {
 		//最后一天的日期减少一天（当天截止的job才会显示）
@@ -39,4 +41,8 @@ public class JobService {
 		).collect(Collectors.toList());			
 	}
 
+	public List<ExamCity> getExamCities(){
+		return examCityRepository.findAll();
+	}
+	
 }

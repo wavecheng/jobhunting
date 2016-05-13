@@ -58,13 +58,26 @@
 										</div></td>
 								    </tr>								    
 								    <tr><td class="col-xs-3 text-right strong strong">Place of Origin City:</td>
-								    	<td class="text-left">${user.birthProvince} ${user.birthCity}</td>
+								    
+								    	<td class="text-left"><select data-bind="options: provinceAndCities, optionsText: 'name',
+                                           optionsValue:'name', value:birthProvince"></select>
+                                           <span data-bind="with: currentBirthProvince">
+                                           <select data-bind="options: cities, optionsText: 'name',
+                                           optionsValue:'name', value:$parent.birthCity"></select></span>
+                                           </td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">Place of Current City:</td>
-								    	<td class="text-left">${user.currentProvince} ${user.currentCity}</td>
+								    	<td class="text-left"><select data-bind="options: provinceAndCities, optionsText: 'name',
+                                           optionsValue:'name', value:currentProvince"></select>
+                                           <span data-bind="with: currentLiveProvince">
+                                           <select data-bind="options: cities, optionsText: 'name',
+                                           optionsValue:'name', value:$parent.currentCity"></select></span>
+                                           </td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">City to Take Exam:</td>
-								    	<td class="text-left">${user.citytoExam}</td>
+								    	<td class="text-left"><select data-bind="options: examCityList, optionsText: 'name',
+                                           optionsValue:'name', value:citytoExam"></select>
+                                         </td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">University:</td><td class="text-left">${user.universityName}</td></tr>
 								    <tr><td class="col-xs-3 text-right strong strong">Highest Degree:</td><td class="text-left">${user.degree}</td></tr>
@@ -202,6 +215,7 @@
 		<script src="${pageContext.request.contextPath}/resources/js/knockout.mapping-latest.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datetimepicker.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/const_data.js"></script>
 		<script>
 			var mapping = {
 			    'married': {
@@ -210,13 +224,36 @@
 			        }
 			    }
 			}
+			var viewModel = ko.mapping.fromJS(${user_json}, mapping);
 			
-			var viewModel = ko.mapping.fromJS(${user_json},mapping);
-			//viewModel.married(viewModel.married() ? "true":"false");
+			var ProvinceAndCitiesViewModel =  function(data){
+				var viewModel = ko.mapping.fromJS(data);
+				return viewModel;
+			}			
+			
+			viewModel.provinceAndCities = new ProvinceAndCitiesViewModel(ProvinceAndCities);
+			viewModel.currentBirthProvince = function(){
+				for(var i=0;i<viewModel.provinceAndCities().length;i++){
+					if(viewModel.birthProvince() == viewModel.provinceAndCities()[i].name())
+						return viewModel.provinceAndCities()[i];
+				}
+				return viewModel.provinceAndCities()[0];
+			}
+
+			viewModel.currentLiveProvince = function(){
+				for(var i=0;i<viewModel.provinceAndCities().length;i++){
+					if(viewModel.currentProvince() == viewModel.provinceAndCities()[i].name())
+						return viewModel.provinceAndCities()[i];
+				}
+				return viewModel.provinceAndCities()[0];
+			}
+			
+			//exam city list
+			viewModel.examCityList = ko.observableArray(${examCityList});
 			
 			ko.applyBindings(viewModel);
 			
-			  $('#birthDate').datetimepicker({
+			$('#birthDate').datetimepicker({
 				  format: 'yyyy-mm-dd',
 				  minView: 2,
 				  autoclose: 1,
