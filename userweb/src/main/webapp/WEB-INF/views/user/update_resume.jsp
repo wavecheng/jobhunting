@@ -31,8 +31,8 @@
 								    <tr><td class="col-xs-3 text-right strong strong">Gender:</td>
 								    	<td class="text-left">
 								    	<div class="btn-group" role="group" aria-label="Choose your gender">
-										  <input type="radio"  data-bind="checked:gender" value="Male" />Male  
-										  <input type="radio"  data-bind="checked:gender" value="Female" />Female 
+										  <input type="radio"  name="genderGroup" data-bind="checked:gender" value="Male" />Male  
+										  <input type="radio"  name="genderGroup" data-bind="checked:gender" value="Female" />Female 
 										</div>
 										</td>
 								    </tr>
@@ -53,8 +53,8 @@
 								    <tr><td class="col-xs-3 text-right strong strong">Married:</td>
 								    <td class="text-left">								    	
 								    <div class="btn-group" role="group" aria-label="Marriage status">
-										  <input type="radio"  data-bind="checked:married" value="true" />Yes  
-										  <input type="radio"  data-bind="checked:married" value="false" />No 
+										  <input type="radio" name="marryGroup"  data-bind="checked:married" value="true" />Yes  
+										  <input type="radio" name="marryGroup"  data-bind="checked:married" value="false" />No 
 										</div></td>
 								    </tr>								    
 								    <tr><td class="col-xs-3 text-right strong strong">Place of Origin City:</td>
@@ -203,7 +203,16 @@
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datetimepicker.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
 		<script>
-			var viewModel = ko.mapping.fromJS(${user_json});
+			var mapping = {
+			    'married': {
+			        create: function(options) {
+			            return options.data == true ? "true" : "false";
+			        }
+			    }
+			}
+			
+			var viewModel = ko.mapping.fromJS(${user_json},mapping);
+			//viewModel.married(viewModel.married() ? "true":"false");
 			
 			ko.applyBindings(viewModel);
 			
