@@ -57,8 +57,7 @@
 										  <input type="radio" name="marryGroup"  data-bind="checked:married" value="false" />No 
 										</div></td>
 								    </tr>								    
-								    <tr><td class="col-xs-3 text-right strong strong">Place of Origin City:</td>
-								    
+								    <tr><td class="col-xs-3 text-right strong strong">Place of Origin City:</td>								    
 								    	<td class="text-left"><select data-bind="options: provinceAndCities, optionsText: 'name',
                                            optionsValue:'name', value:birthProvince"></select>
                                            <span data-bind="with: currentBirthProvince">
@@ -79,10 +78,20 @@
                                            optionsValue:'name', value:citytoExam"></select>
                                          </td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">University:</td><td class="text-left">${user.universityName}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Highest Degree:</td><td class="text-left">${user.degree}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Department:</td><td class="text-left">${user.depart}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong">Major:</td><td class="text-left">${user.major}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong strong">University:</td>
+								    	<td class="text-left">
+								    		<input type="text" id="university" data-provide="typeahead" autocomplete="off" data-bind="value:universityName">
+								    	</td>
+								    </tr>
+								    <tr><td class="col-xs-3 text-right strong strong">Highest Degree:</td>
+								    	<td class="text-left">${user.degree}</td>
+								    </tr>
+								    <tr><td class="col-xs-3 text-right strong strong">Department:</td>
+								    	<td class="text-left">${user.depart}</td>
+								    </tr>
+								    <tr><td class="col-xs-3 text-right strong">Major:</td>
+								    	<td class="text-left">${user.major}</td>
+								    </tr>
 								 </table>
 							  </div>
 							</div>
@@ -216,7 +225,10 @@
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datetimepicker.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/const_data.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap3-typeahead.min.js"></script>
 		<script>
+			$("#university").typeahead({items:10,source:universityList});
+		
 			var mapping = {
 			    'married': {
 			        create: function(options) {
