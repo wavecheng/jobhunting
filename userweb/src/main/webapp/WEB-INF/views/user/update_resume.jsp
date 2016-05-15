@@ -84,13 +84,15 @@
 								    	</td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">Highest Degree:</td>
-								    	<td class="text-left">${user.degree}</td>
+								    	<td class="text-left"><select data-bind="options: degreeList, value:degree"></select>${user.degree}</td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">Department:</td>
 								    	<td class="text-left">${user.depart}</td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">Major:</td>
-								    	<td class="text-left">${user.major}</td>
+								    	<td class="text-left">${user.major}
+								    		<input type="text" id="major" data-provide="typeahead" autocomplete="off" data-bind="value:major">
+								    	</td>
 								    </tr>
 								 </table>
 							  </div>
@@ -228,7 +230,8 @@
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap3-typeahead.min.js"></script>
 		<script>
 			$("#university").typeahead({items:10,source:universityList});
-		
+			$("#major").typeahead({items:10,source:majorList});
+			
 			var mapping = {
 			    'married': {
 			        create: function(options) {
@@ -262,6 +265,7 @@
 			
 			//exam city list
 			viewModel.examCityList = ko.observableArray(${examCityList});
+			viewModel.degreeList = ko.observableArray(['College','Undergraduate','Master','MBA','Doctor','Other']);
 			
 			ko.applyBindings(viewModel);
 			

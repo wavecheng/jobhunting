@@ -11,10 +11,8 @@ public class Enums {
 		Doctor,
 		MBA,
 		Master,
-		DoubleMajor,
-		UnderGraduate,
+		Undergraduate,
 		College,
-		HighSchool,
 		Others
 	}
 	
