@@ -84,13 +84,14 @@
 								    	</td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">Highest Degree:</td>
-								    	<td class="text-left"><select data-bind="options: degreeList, value:degree"></select>${user.degree}</td>
+								    	<td class="text-left">
+								    	<select data-bind="options: degreeList, value:degree"></select></td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong strong">Department:</td>
 								    	<td class="text-left">${user.depart}</td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">Major:</td>
-								    	<td class="text-left">${user.major}
+								    	<td class="text-left">
 								    		<input type="text" id="major" data-provide="typeahead" autocomplete="off" data-bind="value:major">
 								    	</td>
 								    </tr>
@@ -103,26 +104,26 @@
 							  <div class="panel-body">
 							     <table class="table table-hover"  >								    
 								    <tr>
-								    	<td class="col-xs-3 text-right strong strong">English Level:</td>
-								    	<td class="text-left">${user.engLevel} (Score:${user.engHighestScore})</td>
+								    	<td class="col-xs-3 text-right strong strong">English Level&Score:</td>
+								    	<td class="text-left"><select data-bind="options: englishLevelList, value:engLevel"></select><input type="number" data-bind="value:engHighestScore" class="" required="required" /></td>
 								    	<td class="col-xs-3 text-right strong">Oral English Level:</td>
-								    	<td class="text-left">${user.oral}</td>								    	
+								    	<td class="text-left"><select data-bind="options: skillLevelList, value:oral"></select></td>								    	
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">TOEFL:</td>
-								    	<td class="text-left">${user.toefl}</td>
+								    	<td class="text-left"><input type="number" data-bind="value:toefl" class=""  /></td>
 								        <td class="col-xs-3 text-right strong strong">TOEIC:</td>
-								    	<td class="text-left">${user.toeic}</td>
+								    	<td class="text-left"><input type="number" data-bind="value:toeic" class=""  /></td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">GRE:</td>
-								    	<td class="text-left">${user.gre}</td>
+								    	<td class="text-left"><input type="number" data-bind="value:gre" class=""  /></td>
 								        <td class="col-xs-3 text-right strong">GMAT:</td>
-								    	<td class="text-left">${user.gmat}</td>
+								    	<td class="text-left"><input type="number" data-bind="value:gmat" class=""  /></td>
 								    </tr>
 								    <tr>
 								    	<td class="col-xs-3 text-right strong">Second Language:</td>
-								    	<td class="text-left">${user.secLanguage}</td>
+								    	<td class="text-left"><select data-bind="options: secondLangList, value:secLanguage"></select></td>
 								    	<td class="col-xs-3 text-right strong">Language Level:</td>
-								    	<td class="text-left">${user.secondLangLevel}</td>								    	
+								    	<td class="text-left"><input type="text" data-bind="value:secondLangLevel" class=""  /></td>								    	
 								    </tr>
 								 </table>
 							  </div>
@@ -266,6 +267,9 @@
 			//exam city list
 			viewModel.examCityList = ko.observableArray(${examCityList});
 			viewModel.degreeList = ko.observableArray(['College','Undergraduate','Master','MBA','Doctor','Other']);
+			viewModel.englishLevelList = ko.observableArray(['CET4','CET6','TEM4','TEM8','N/A']);
+			viewModel.skillLevelList = ko.observableArray(['Average','Good','Very Good','Excellent']);
+			viewModel.secondLangList = ko.observableArray(['无','日语','法语','德语','韩语','俄语','阿拉伯语','意大利语','西班牙语','葡萄牙语','其他']);
 			
 			ko.applyBindings(viewModel);
 			
@@ -275,6 +279,8 @@
 				  autoclose: 1,
 				  bootcssVer:3,
 			    });
+			
+			
 		</script>
         </div>
     </div> 
