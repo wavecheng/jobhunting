@@ -67,6 +67,13 @@ public class UserController extends BaseController{
 		return "user/resume";
 	}
 
+	@RequestMapping(value="/change_password",method=RequestMethod.GET)
+	public String changePassword(ModelMap model ){	
+		User user = userService.getUserAllInfo(getCurrentUser().getId());
+		model.addAttribute("user", user);
+		return "user/change_password";
+	}
+	
 	@RequestMapping(value="/resume",method=RequestMethod.POST)
 	public String saveResume(@RequestBody User user){
 		return "user/resume";

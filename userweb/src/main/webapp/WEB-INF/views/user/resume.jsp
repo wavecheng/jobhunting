@@ -13,45 +13,36 @@
                 <div class="cont_title">
                     <div class="cont_title_icon"><img src="${pageContext.request.contextPath}/resources/img/cont_title_icon.jpg"></div>
                     <div class="cont_title_txt_c">我的个人信息</div>
-                    <div class="cont_title_txt_e ">MY RESUME</div>
-                    <a href="update_resume" class="btn btn-success pull-right">修改我的简历信息</a>
+                    <div class="cont_title_txt_e ">MY RESUME</div>                                  
                 </div>
 
                 <div class="row">
-                	<div class="col-md-4">
-						<div class="list-group text-right ">
-						  <a href="#basic" class="list-group-item  ">Personal Information</a>
-						  <a href="#language" class="list-group-item ">Language Skill</a>
-						  <a href="#education" class="list-group-item ">Education</a>						  
-						  <a href="#project" class="list-group-item ">Projects</a>
-						  <a href="#work" class="list-group-item ">Work History</a>
-						</div>
-                	</div>
-                	<div class="col-md-8">
+                	<div class="col-md-12">
                 		<div class="panel panel-default">
-							  <div class="panel-heading">Personal Information<a id="basic"></a></div>
+							  <div class="panel-heading">Personal Information<a id="basic"></a>
+							  	<div class="pull-right"><a href="update_resume" class="btn btn-success ">修改简历</a></div>
+							  </div>
 							  <div class="panel-body">
 							     <table class="table table-hover"  >
-								    <tr><td class="col-xs-3 text-right strong strong">Name in Chinese:</td><td class="text-left">${user.name}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Name in English:</td><td class="text-left">${user.nameEng}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Gender:</td><td class="text-left">${user.gender}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Mobile:</td><td class="text-left">${user.mobile}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Email:</td><td class="text-left">${user.email}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Personal ID:</td><td class="text-left">${user.idNo}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Date of Birth:</td><td class="text-left">${user.birthDate}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Married:</td><td class="text-left">${user.married}</td></tr>								    
-								    <tr><td class="col-xs-3 text-right strong strong">Place of Origin City:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Name in Chinese:</td><td class="text-left">${user.name}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">Name in English:</td><td class="text-left">${user.nameEng}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">Gender:</td><td class="text-left">${user.gender}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">Mobile:</td><td class="text-left">${user.mobile}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">Email:</td><td class="text-left">${user.email}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">Personal ID:</td><td class="text-left">${user.idNo}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">Date of Birth:</td><td class="text-left">${user.birthDate}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">Married:</td><td class="text-left">${user.married}</td></tr>								    
+								    <tr><td class="col-xs-3 text-right strong ">Place of Origin City:</td>
 								    	<td class="text-left">${user.birthProvince} ${user.birthCity}</td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Place of Current City:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Place of Current City:</td>
 								    	<td class="text-left">${user.currentProvince} ${user.currentCity}</td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">City to Take Exam:</td>
+								    <tr><td class="col-xs-3 text-right strong ">City to Take Exam:</td>
 								    	<td class="text-left">${user.citytoExam}</td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">University:</td><td class="text-left">${user.universityName}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Highest Degree:</td><td class="text-left">${user.degree}</td></tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Department:</td><td class="text-left">${user.depart}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">University:</td><td class="text-left">${user.universityName}</td></tr>
+								    <tr><td class="col-xs-3 text-right strong ">Highest Degree:</td><td class="text-left">${user.degree}</td></tr>
 								    <tr><td class="col-xs-3 text-right strong">Major:</td><td class="text-left">${user.major}</td></tr>
 								 </table>
 							  </div>
@@ -62,14 +53,14 @@
 							  <div class="panel-body">
 							     <table class="table table-hover"  >								    
 								    <tr>
-								    	<td class="col-xs-3 text-right strong strong">English Level:</td>
+								    	<td class="col-xs-3 text-right strong ">English Level:</td>
 								    	<td class="text-left">${user.engLevel} (Score:${user.engHighestScore})</td>
 								    	<td class="col-xs-3 text-right strong">Oral English Level:</td>
 								    	<td class="text-left">${user.oral}</td>								    	
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">TOEFL:</td>
 								    	<td class="text-left">${user.toefl}</td>
-								        <td class="col-xs-3 text-right strong strong">TOEIC:</td>
+								        <td class="col-xs-3 text-right strong ">TOEIC:</td>
 								    	<td class="text-left">${user.toeic}</td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">GRE:</td>

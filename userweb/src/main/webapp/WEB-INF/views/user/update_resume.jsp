@@ -17,9 +17,11 @@
                 </div>
 		
                 <div class="row">
-                	<div class="col-md-11">
+                	<div class="col-md-12">
                 		<div class="panel panel-default">
-							  <div class="panel-heading">Personal Information<a id="basic"></a></div>
+							  <div class="panel-heading">Personal Information
+							  	<div class="pull-right"><a href="resume" class="btn btn-success ">查看简历</a></div>
+							  </div>
 							  <div class="panel-body">
 							     <table class="table table-hover"  >
 								    <tr><td class="col-xs-3 text-right strong ">Name in Chinese:</td>
@@ -93,6 +95,9 @@
 								    	</td>
 								    </tr>
 								 </table>
+							  </div>
+							  <div class="panel-heading">Language Skill<a id="language"></a></div>
+							  <div class="panel-body">								 
 							     <table class="table table-hover"  >								    
 								    <tr>
 								    	<td class="col-xs-3 text-right strong ">English Level&Score:</td>

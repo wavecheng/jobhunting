@@ -68,10 +68,17 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                          	<security:authorize access="isAuthenticated()">
-                            <li><a href="<c:url value="/user/resume" />" class="dropdown-toggle" ><security:authentication property="principal.username" />，<i class="fa fa-user"></i> 个人信息</a></li>
-                            <li><a href="<c:url value="/user/apply" />" class="dropdown-toggle" ><i class="fa fa-user"></i> 我的申请</a></li>
-                            <li><a href="<c:url value="/user/logout" />" class="dropdown-toggle" ><i class="fa fa-circle-o-notch"></i> 退出</a></li>
+                          	<security:authorize access="isAuthenticated()">         	
+                          	
+                           <li class="dropdown">
+					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><security:authentication property="principal.username" /></a>
+					          <ul class="dropdown-menu">
+		                            <li><a href="<c:url value="/user/resume" />" class="dropdown-toggle" ><i class="fa fa-user"></i> 个人简历</a></li>
+		                            <li><a href="<c:url value="/user/apply" />" class="dropdown-toggle" ><i class="fa fa-user"></i> 我的申请</a></li>
+					          		<li><a href="<c:url value="/user/change_password" />" class="dropdown-toggle" > <i class="fa fa-user"></i>修改密码</a></li>
+					          </ul>
+					        </li>  
+					        <li><a href="<c:url value="/user/logout" />" class="dropdown-toggle" ><i class="fa fa-circle-o-notch"></i> 退出</a></li>
                             </security:authorize>
         					<security:authorize access="!isAuthenticated()">
         					<li><a href="<c:url value="/register" />" class="dropdown-toggle" ><i class="fa fa-user"></i> 注册</a></li>
