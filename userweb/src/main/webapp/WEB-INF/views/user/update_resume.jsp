@@ -22,13 +22,13 @@
 							  <div class="panel-heading">Personal Information<a id="basic"></a></div>
 							  <div class="panel-body">
 							     <table class="table table-hover"  >
-								    <tr><td class="col-xs-3 text-right strong strong">Name in Chinese:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Name in Chinese:</td>
 								    	<td class="text-left required"><input type="text" data-bind="value:name" class="" required="required" /></td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Name in English:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Name in English:</td>
 								    	<td class="text-left"><input type="text" data-bind="value:nameEng" class="" required="required" /></td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Gender:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Gender:</td>
 								    	<td class="text-left">
 								    	<div class="btn-group" role="group" aria-label="Choose your gender">
 										  <input type="radio"  name="genderGroup" data-bind="checked:gender" value="Male" />Male  
@@ -36,28 +36,28 @@
 										</div>
 										</td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Mobile:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Mobile:</td>
 								    <td class="text-left"><input type="text" data-bind="value:mobile" class="" required="required" /></td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Email:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Email:</td>
 								    <td class="text-left"><input type="email" data-bind="value:email" class="" required="required" /></td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Personal ID:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Personal ID:</td>
 								    <td class="text-left"><input type="text" data-bind="value:idNo" class="" required="required" /></td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Date of Birth:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Date of Birth:</td>
 								    <td class="text-left">
 								    	<input type="text" data-bind="value:birthDate" class="" required="required" id="birthDate" />
 								    </td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Married:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Married:</td>
 								    <td class="text-left">								    	
 								    <div class="btn-group" role="group" aria-label="Marriage status">
 										  <input type="radio" name="marryGroup"  data-bind="checked:married" value="true" />Yes  
 										  <input type="radio" name="marryGroup"  data-bind="checked:married" value="false" />No 
 										</div></td>
 								    </tr>								    
-								    <tr><td class="col-xs-3 text-right strong strong">Place of Origin City:</td>								    
+								    <tr><td class="col-xs-3 text-right strong ">Place of Origin City:</td>								    
 								    	<td class="text-left"><select data-bind="options: provinceAndCities, optionsText: 'name',
                                            optionsValue:'name', value:birthProvince"></select>
                                            <span data-bind="with: currentBirthProvince">
@@ -65,7 +65,7 @@
                                            optionsValue:'name', value:$parent.birthCity"></select></span>
                                            </td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Place of Current City:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Place of Current City:</td>
 								    	<td class="text-left"><select data-bind="options: provinceAndCities, optionsText: 'name',
                                            optionsValue:'name', value:currentProvince"></select>
                                            <span data-bind="with: currentLiveProvince">
@@ -73,21 +73,21 @@
                                            optionsValue:'name', value:$parent.currentCity"></select></span>
                                            </td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">City to Take Exam:</td>
+								    <tr><td class="col-xs-3 text-right strong ">City to Take Exam:</td>
 								    	<td class="text-left"><select data-bind="options: examCityList, optionsText: 'name',
                                            optionsValue:'name', value:citytoExam"></select>
                                          </td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">University:</td>
+								    <tr><td class="col-xs-3 text-right strong ">University:</td>
 								    	<td class="text-left">
 								    		<input type="text" id="university" data-provide="typeahead" autocomplete="off" data-bind="value:universityName">
 								    	</td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Highest Degree:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Highest Degree:</td>
 								    	<td class="text-left">
 								    	<select data-bind="options: degreeList, value:degree"></select></td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong strong">Department:</td>
+								    <tr><td class="col-xs-3 text-right strong ">Department:</td>
 								    	<td class="text-left">${user.depart}</td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">Major:</td>
@@ -96,22 +96,16 @@
 								    	</td>
 								    </tr>
 								 </table>
-							  </div>
-							</div>
-
-                		<div class="panel panel-default">
-							  <div class="panel-heading">Language Skill<a id="language"></a></div>
-							  <div class="panel-body">
 							     <table class="table table-hover"  >								    
 								    <tr>
-								    	<td class="col-xs-3 text-right strong strong">English Level&Score:</td>
+								    	<td class="col-xs-3 text-right strong ">English Level&Score:</td>
 								    	<td class="text-left"><select data-bind="options: englishLevelList, value:engLevel"></select><input type="number" data-bind="value:engHighestScore" class="" required="required" /></td>
 								    	<td class="col-xs-3 text-right strong">Oral English Level:</td>
 								    	<td class="text-left"><select data-bind="options: skillLevelList, value:oral"></select></td>								    	
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">TOEFL:</td>
 								    	<td class="text-left"><input type="number" data-bind="value:toefl" class=""  /></td>
-								        <td class="col-xs-3 text-right strong strong">TOEIC:</td>
+								        <td class="col-xs-3 text-right strong ">TOEIC:</td>
 								    	<td class="text-left"><input type="number" data-bind="value:toeic" class=""  /></td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">GRE:</td>
@@ -126,6 +120,10 @@
 								    	<td class="text-left"><input type="text" data-bind="value:secondLangLevel" class=""  /></td>								    	
 								    </tr>
 								 </table>
+								 <div class="alert  alert-success text-center hide" role="alert" data-bind="css:{ hide:msg() == '' } ">
+									  <span data-bind="text:msg"></span>
+								  </div>
+								 <button class="btn btn-primary pull-right" data-bind="click:saveBasicInfo" >更新基本信息</button>								 
 							  </div>
 							</div>
 														
@@ -270,6 +268,29 @@
 			viewModel.englishLevelList = ko.observableArray(['CET4','CET6','TEM4','TEM8','N/A']);
 			viewModel.skillLevelList = ko.observableArray(['Average','Good','Very Good','Excellent']);
 			viewModel.secondLangList = ko.observableArray(['无','日语','法语','德语','韩语','俄语','阿拉伯语','意大利语','西班牙语','葡萄牙语','其他']);
+			
+			viewModel.msg = ko.observable("");
+			
+			viewModel.saveBasicInfo = function(){
+				
+				viewModel.msg("");
+				
+				var data = {
+					name: viewModel.name(),
+					nameEng: viewModel.nameEng(),
+				}
+				
+				$.ajax({url:"save_basic",
+					type:"POST",
+					data:JSON.stringify(data), 
+					dataType: "json",
+					contentType: "application/json; charset=utf-8",
+					complete: function(result){
+						viewModel.msg("Update completed!")
+				        //$("#div_basic").removeClass("hide");
+				    }
+				});
+			}
 			
 			ko.applyBindings(viewModel);
 			

@@ -71,6 +71,13 @@ public class UserController extends BaseController{
 	public String saveResume(@RequestBody User user){
 		return "user/resume";
 	}
+
+	@RequestMapping(value="/save_basic",method=RequestMethod.POST)
+	@ResponseBody 
+	public String saveBasic(@RequestBody User user){
+		System.out.println(user.getName());
+		return "success";
+	}
 	
 	@RequestMapping(value="/load_resume",method=RequestMethod.GET)
 	@ResponseBody
