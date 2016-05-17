@@ -78,10 +78,31 @@ public class UserController extends BaseController{
 		User cu = userService.getUserAllInfo(getCurrentUser().getId());
 		cu.setBirthCity(u.getBirthCity());
 		cu.setBirthDate(u.getBirthDate());
+		cu.setBirthProvince(u.getBirthProvince());
+		cu.setCitytoExam(u.getCitytoExam());
+		cu.setCurrentCity(u.getCurrentCity());
+		cu.setCurrentProvince(u.getCurrentProvince());
+		cu.setDegree(u.getDegree());
+		cu.setEmail(u.getEmail());
+		cu.setEngHighestScore(u.getEngHighestScore());
+		cu.setEngLevel(u.getEngLevel());
+		cu.setGender(u.getGender());
+		cu.setGmat(u.getGmat());
+		cu.setGre(u.getGre());
+		cu.setIdNo(u.getIdNo());
+		cu.setMajor(u.getMajor());
+		cu.setMarried(u.isMarried());
+		cu.setMobile(u.getMobile());
+		cu.setOral(u.getOral());
 		cu.setName(u.getName());
 		cu.setNameEng(u.getNameEng());
+		cu.setSecLanguage(u.getSecLanguage());
+		cu.setSecondLangLevel(u.getSecondLangLevel());
+		cu.setToefl(u.getToefl());
+		cu.setToeic(u.getToeic());
+		cu.setUniversityName(u.getUniversityName());
 		userService.saveUser(cu);
-		System.out.println(cu.getName());
+
 		return "success";
 	}
 	

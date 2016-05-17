@@ -87,9 +87,6 @@
 								    	<td class="text-left">
 								    	<select data-bind="options: degreeList, value:degree"></select></td>
 								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Department:</td>
-								    	<td class="text-left">${user.depart}</td>
-								    </tr>
 								    <tr><td class="col-xs-3 text-right strong">Major:</td>
 								    	<td class="text-left">
 								    		<input type="text" id="major" data-provide="typeahead" autocomplete="off" data-bind="value:major">
@@ -271,15 +268,34 @@
 			
 			viewModel.msg = ko.observable("");
 			
-			viewModel.saveBasicInfo = function(){
-				
-				viewModel.msg("");
-				
+			viewModel.saveBasicInfo = function(){			
+				viewModel.msg("");				
 				var data = {
 					name: viewModel.name(),
 					nameEng: viewModel.nameEng(),
+					birthProvince:viewModel.birthProvince(),
 					birthCity:viewModel.birthCity(),
 					birthDate:viewModel.birthDate(),
+					gender: viewModel.gender(),
+					mobile:viewModel.mobile(),
+					email:viewModel.email(),
+					idNo:viewModel.idNo(),
+					married:viewModel.married,
+					currentProvince:viewModel.currentProvince(),
+					currentCity:viewModel.currentCity(),
+					citytoExam:viewModel.citytoExam(),
+					universityName:viewModel.universityName(),
+					degree:viewModel.degree(),
+					major:viewModel.major(),
+					engLevel:viewModel.engLevel(),
+					engHighestScore:viewModel.engHighestScore(),
+					oral:viewModel.oral(),
+					toefl:viewModel.toefl(),
+					toeic:viewModel.toeic(),
+					gre:viewModel.gre(),
+					gmat:viewModel.gmat(),
+					secLanguage:viewModel.secLanguage(),
+					secondLangLevel:viewModel.secondLangLevel(),
 				}
 				
 				$.ajax({url:"save_basic",
