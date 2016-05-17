@@ -278,6 +278,8 @@
 				var data = {
 					name: viewModel.name(),
 					nameEng: viewModel.nameEng(),
+					birthCity:viewModel.birthCity(),
+					birthDate:viewModel.birthDate(),
 				}
 				
 				$.ajax({url:"save_basic",
@@ -287,7 +289,6 @@
 					contentType: "application/json; charset=utf-8",
 					complete: function(result){
 						viewModel.msg("Update completed!")
-				        //$("#div_basic").removeClass("hide");
 				    }
 				});
 			}

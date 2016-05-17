@@ -74,8 +74,14 @@ public class UserController extends BaseController{
 
 	@RequestMapping(value="/save_basic",method=RequestMethod.POST)
 	@ResponseBody 
-	public String saveBasic(@RequestBody User user){
-		System.out.println(user.getName());
+	public String saveBasic(@RequestBody User u){
+		User cu = userService.getUserAllInfo(getCurrentUser().getId());
+		cu.setBirthCity(u.getBirthCity());
+		cu.setBirthDate(u.getBirthDate());
+		cu.setName(u.getName());
+		cu.setNameEng(u.getNameEng());
+		userService.saveUser(cu);
+		System.out.println(cu.getName());
 		return "success";
 	}
 	
@@ -104,17 +110,6 @@ public class UserController extends BaseController{
         return "user/update_resume";  
     }  
     
-
-	
-    @RequestMapping(value="/test")  
-    @ResponseBody  
-    public Map<String,Object> validataUser(){
-        Map<String,Object> map = new HashMap<String,Object>();  
-        map.put("code", true);  
-        return map;  
-    }  
-    
-
 	@RequestMapping(value="/logout")
 	public String logout(SessionStatus  status){
 		status.setComplete();
