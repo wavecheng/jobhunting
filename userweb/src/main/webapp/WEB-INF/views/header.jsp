@@ -16,6 +16,7 @@
     <meta name="description" content="思杰招聘 Citrix China recruiting job" />
     <link href="${pageContext.request.contextPath}/resources/css/vendors.css" rel="stylesheet"  />
     <link href="${pageContext.request.contextPath}/resources/css/style-blue.css" rel="stylesheet" title="default"  />
+    <link href="${pageContext.request.contextPath}/resources/css/toastr.min.css" rel="stylesheet" title="default"  />
 	<link href="${pageContext.request.contextPath}/resources/css/bootstrap-datetimepicker.min.css" rel="stylesheet" title="default"  />
 	
 </head>

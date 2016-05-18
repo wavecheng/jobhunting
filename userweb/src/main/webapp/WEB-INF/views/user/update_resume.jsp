@@ -122,9 +122,6 @@
 								    	<td class="text-left"><input type="text" data-bind="value:secondLangLevel" class=""  /></td>								    	
 								    </tr>
 								 </table>
-								 <div class="alert  alert-success text-center hide" role="alert" data-bind="css:{ hide:msg() == '' } ">
-									  <span data-bind="text:msg"></span>
-								  </div>
 								 <button class="btn btn-primary pull-right" data-bind="click:saveBasicInfo" >更新基本信息</button>								 
 							  </div>
 							</div>
@@ -271,10 +268,7 @@
 			viewModel.skillLevelList = ko.observableArray(['Average','Good','Very Good','Excellent']);
 			viewModel.secondLangList = ko.observableArray(['无','日语','法语','德语','韩语','俄语','阿拉伯语','意大利语','西班牙语','葡萄牙语','其他']);
 			
-			viewModel.msg = ko.observable("");
-			
-			viewModel.saveBasicInfo = function(){			
-				viewModel.msg("");				
+			viewModel.saveBasicInfo = function(){					
 				var data = {
 					name: viewModel.name(),
 					nameEng: viewModel.nameEng(),
@@ -309,7 +303,7 @@
 					dataType: "json",
 					contentType: "application/json; charset=utf-8",
 					complete: function(result){
-						viewModel.msg("Update completed!")
+						toastr.success("update success!","",{positionClass: "toast-top-center"});
 				    }
 				});
 			}
