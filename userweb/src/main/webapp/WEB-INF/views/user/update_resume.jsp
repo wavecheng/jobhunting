@@ -139,6 +139,7 @@
 							    		<th>Major</th>
 							    		<th>Degree</th>
 							    		<th>Rank</th>
+							    		<th class="text-right"><a data-bind="click:addUserEducation" class="btn btn-primary"><i class="fa fa-plus"></i>Add</a></th>
 							    	</tr>
 							    	<!-- ko foreach:userEducation -->
 							    	<tr>
@@ -148,18 +149,13 @@
 							    		<td><span data-bind="text:major"></span></td>
 							    		<td><span data-bind="text:degree"></span></td>
 							    		<td>><span data-bind="text:totalRank"></span>%</td>
+							    		<td width="100px">
+							    			<a data-bind="click:$parent.editUserEducation" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+							    			<a data-bind="click:$parent.deleteUserEducation" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							    		</td>
 							    	</tr>
 							    	<!-- /ko  -->	
-							    	<c:forEach items="${user.userEducation}" var="item">
-							    	  <tr>
-							    		<td>${item.fromDate}</td>
-							    		<td>${item.toDate}</td>
-							    		<td>${item.university}</td>
-							    		<td>${item.major}</td>
-							    		<td>${item.degree}</td>
-							    		<td>>${item.totalRank}%</td>
-							    		</tr>
-							    	</c:forEach>
+
 							    </table>
 							  </div>
 						  </div>  
@@ -315,10 +311,24 @@
 				    }
 				});
 			}
+
+			viewModel.addUserEducation = function(){
+				$('#add-education-template').modal('show');
+			}
 			
-			
-			
-			
+			viewModel.editUserEducation = function(item){
+				console.log(item);
+			}
+
+			viewModel.deleteUserEducation = function(item){
+				if(confirm("delete current education?")){
+					viewModel.userEducation.remove(item);
+				}
+			}
+
+			viewModel.saveUserEducation = function(){
+				
+			}
 			
 			ko.applyBindings(viewModel);
 			
@@ -327,11 +337,54 @@
 				  minView: 2,
 				  autoclose: 1,
 				  bootcssVer:3,
-			    });
+		      });
 			
 			
 		</script>
         </div>
     </div> 
+    
+<!-- <script type="text/html" id="add-education-template"> -->
+<div class="modal fade" id="add-education-template" tabindex="-1" role="dialog" aria-labelledby="add-education-template">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add education item</h4>
+      </div>
+      <div class="modal-body">
+		 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">姓名</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control"  placeholder="Username in Chinese" name='name' required="required">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+		    <div class="col-sm-10">
+		      <input type="email" class="form-control"  placeholder="Email will be your login name" name='email' required="required" 
+		      placeholder="Email" data-error="email address is invalid" >
+		      <div class="help-block with-errors"></div>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+		    <div class="col-sm-10">
+		      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name='password' required="required">
+		      <div class="help-block with-errors"></div>	
+		    </div>
+		  </div>
+		  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bind="click:saveUserEducation">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </script> -->
+
 </body>
 </html>
