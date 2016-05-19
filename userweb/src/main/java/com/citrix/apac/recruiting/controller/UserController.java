@@ -18,6 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.entity.UserApply;
+import com.citrix.apac.recruiting.helper.XssSanitizeObjectMapper;
 import com.citrix.apac.recruiting.service.JobService;
 import com.citrix.apac.recruiting.service.WorkerService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -126,7 +127,7 @@ public class UserController extends BaseController{
     	if(user != null){
 	    	model.addAttribute("user", user);		
 			try{
-				ObjectMapper mapper = new ObjectMapper();
+				ObjectMapper mapper = new XssSanitizeObjectMapper();// ObjectMapper();
 				String userJson = mapper.writeValueAsString(user);
 				System.out.println(userJson);
 				model.addAttribute("user_json", userJson);

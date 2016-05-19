@@ -1,4 +1,4 @@
-package com.citrix.apac.recruiting.login;
+package com.citrix.apac.recruiting.helper;
 
 import org.jsoup.Jsoup;
 import org.jsoup.safety.Whitelist;
@@ -16,16 +16,13 @@ public class CleanStringAdvice {
 				setValue(null);
 			} else {
 				String safe = Jsoup.clean(text, Whitelist.simpleText());
-				System.out.println(safe);
 				setValue(safe);
 			}
 		}
-
 	}
 
 	@InitBinder
 	public void bindStringCleaner(WebDataBinder webDataBinder) {
-		System.out.println("init controller...");
 		StringCleaner stringCleaner = new StringCleaner();
 		webDataBinder.registerCustomEditor(String.class, stringCleaner);
 	}

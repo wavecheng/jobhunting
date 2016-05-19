@@ -136,17 +136,25 @@
 							    		<th>From</th>
 							    		<th>To</th>
 							    		<th>University</th>
-							    		<th>Department</th>
 							    		<th>Major</th>
 							    		<th>Degree</th>
 							    		<th>Rank</th>
 							    	</tr>
+							    	<!-- ko foreach:userEducation -->
+							    	<tr>
+							    		<td><span data-bind="text:fromDate"></span></td>
+							    		<td><span data-bind="text:toDate"></span></td>
+							    		<td><span data-bind="text:university"></span></td>
+							    		<td><span data-bind="text:major"></span></td>
+							    		<td><span data-bind="text:degree"></span></td>
+							    		<td>><span data-bind="text:totalRank"></span>%</td>
+							    	</tr>
+							    	<!-- /ko  -->	
 							    	<c:forEach items="${user.userEducation}" var="item">
 							    	  <tr>
 							    		<td>${item.fromDate}</td>
 							    		<td>${item.toDate}</td>
 							    		<td>${item.university}</td>
-							    		<td>${item.depart}</td>
 							    		<td>${item.major}</td>
 							    		<td>${item.degree}</td>
 							    		<td>>${item.totalRank}%</td>
@@ -307,6 +315,10 @@
 				    }
 				});
 			}
+			
+			
+			
+			
 			
 			ko.applyBindings(viewModel);
 			
