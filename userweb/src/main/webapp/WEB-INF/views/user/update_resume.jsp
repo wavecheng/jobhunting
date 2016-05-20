@@ -394,8 +394,8 @@
 					$(this).datetimepicker({ format: 'yyyy-mm-dd', minView: 2, autoclose: 1, bootcssVer:3, });
 				});	
 				
-				$(".university").typeahead({items:10,source:universityList});
-				$(".major").typeahead({items:10,source:majorList});
+				$(".university").typeahead({items:6,source:universityList,showHintOnFocus:true});
+				$(".major").typeahead({items:6,source:majorList,showHintOnFocus:true});
 				
 			}
 			
