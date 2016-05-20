@@ -234,24 +234,33 @@
       <div class="modal-body">
 		 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
 		  <div class="form-group">
-		    <label for="inputPassword3" class="col-sm-4 control-label">From Date</label>
-		    <div class="col-sm-8">
-		      <input type="text" class="form-control"  placeholder="begin date" name='name' data-bind="value:fromDate" >
+		    <label for="" class="col-sm-4 control-label">From Date</label>
+		    <div class="col-sm-7">
+		      <input type="text" class="form-control date"  placeholder="begin date"  data-bind="value:fromDate" required="required" >
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
-		    <div class="col-sm-8">
-		      <input type="email" class="form-control"  placeholder="Email will be your login name" name='email' required="required" 
-		      placeholder="Email" data-error="email address is invalid" >
-		      <div class="help-block with-errors"></div>
+		    <label for="" class="col-sm-4 control-label">To Date</label>
+		    <div class="col-sm-7">
+		      <input type="text" class="form-control date"  placeholder="end date"  data-bind="value:toDate" >
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="inputPassword3" class="col-sm-4 control-label">密码</label>
-		    <div class="col-sm-8">
-		      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name='password' required="required">
-		      <div class="help-block with-errors"></div>	
+		    <label for="" class="col-sm-4 control-label">University</label>
+		    <div class="col-sm-7">
+		      <input type="text" class="form-control university"  placeholder="university"  data-bind="value:university" required="required" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-4 control-label">Major</label>
+		    <div class="col-sm-7">
+		      <input type="text" class="form-control major"  placeholder="major"  data-bind="value:major" required="required" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-4 control-label">Total Rank</label>
+		    <div class="col-sm-7">
+				<select class="form-control"  data-bind="options: rankList, optionsText: 'name',optionsValue:'value', value:totalRank"></select>
 		    </div>
 		  </div>
 		  </form>
@@ -360,7 +369,13 @@
 			    var viewModel = this;
 			    viewModel.fromDate = ko.observable("2016-09-01");
 			    viewModel.toDate = ko.observable("2017-09-01");
-			    viewModel.university = ko.observable("");				
+			    viewModel.university = ko.observable("");	
+			    viewModel.major = ko.observable("");	
+			    viewModel.rankList = [{"name":">5%","value":5},{"name":">10%","value":10},{"name":">20%","value":20},
+			                          {"name":">30%","value":30},{"name":">50%","value":50}];
+			    viewModel.totalRank = ko.observable(10);
+			    
+			    
 			}
 			UserEducationModalVM.prototype.ok = function(){
 			    var self = this;
@@ -373,9 +388,15 @@
 		        showModal({
 		            viewModel: modalViewModel,
 		            context: viewModel,
-		        }).then(function(){
-		        	alert("ddd");
 		        });
+		        		    
+				$('.date').each(function(){
+					$(this).datetimepicker({ format: 'yyyy-mm-dd', minView: 2, autoclose: 1, bootcssVer:3, });
+				});	
+				
+				$(".university").typeahead({items:10,source:universityList});
+				$(".major").typeahead({items:10,source:majorList});
+				
 			}
 			
 			viewModel.editUserEducation = function(item){
@@ -400,8 +421,7 @@
 				  autoclose: 1,
 				  bootcssVer:3,
 		      });
-			
-			
+	
 		</script>
         </div>
     </div> 
