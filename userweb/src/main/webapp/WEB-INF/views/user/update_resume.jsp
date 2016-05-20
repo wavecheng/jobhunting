@@ -223,13 +223,55 @@
 
             </section>
 
-		<%@ include file="../footer.jsp" %>
+<script type="text/html" id="add-education-template">
+<div class="modal fade" id="add-education-template" tabindex="-1" role="dialog" aria-labelledby="add-education-template">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add education item</h4>
+      </div>
+      <div class="modal-body">
+		 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-4 control-label">From Date</label>
+		    <div class="col-sm-8">
+		      <input type="text" class="form-control"  placeholder="begin date" name='name' data-bind="value:fromDate" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+		    <div class="col-sm-8">
+		      <input type="email" class="form-control"  placeholder="Email will be your login name" name='email' required="required" 
+		      placeholder="Email" data-error="email address is invalid" >
+		      <div class="help-block with-errors"></div>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputPassword3" class="col-sm-4 control-label">密码</label>
+		    <div class="col-sm-8">
+		      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name='password' required="required">
+		      <div class="help-block with-errors"></div>	
+		    </div>
+		  </div>
+		  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bind="click:ok">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+        <%@ include file="../footer.jsp" %>
 		<script src="${pageContext.request.contextPath}/resources/js/knockout-3.4.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/knockout.mapping-latest.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-datetimepicker.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/const_data.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap3-typeahead.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-knockout-modal.js"></script>
 		<script>
 			$("#university").typeahead({items:10,source:universityList});
 			$("#major").typeahead({items:10,source:majorList});
@@ -243,6 +285,7 @@
 			}
 			var viewModel = ko.mapping.fromJS(${user_json}, mapping);
 			
+			//省份和城市
 			var ProvinceAndCitiesViewModel =  function(data){
 				var viewModel = ko.mapping.fromJS(data);
 				return viewModel;
@@ -312,8 +355,27 @@
 				});
 			}
 
+			//education related operations
+			var UserEducationModalVM = function (pageViewModel) {
+			    var viewModel = this;
+			    viewModel.fromDate = ko.observable("2016-09-01");
+			    viewModel.toDate = ko.observable("2017-09-01");
+			    viewModel.university = ko.observable("");				
+			}
+			UserEducationModalVM.prototype.ok = function(){
+			    var self = this;
+			    self.modal.close();
+			}
+    
 			viewModel.addUserEducation = function(){
-				$('#add-education-template').modal('show');
+				var modalViewModel = new UserEducationModalVM(viewModel);
+		        modalViewModel.template = 'add-education-template';
+		        showModal({
+		            viewModel: modalViewModel,
+		            context: viewModel,
+		        }).then(function(){
+		        	alert("ddd");
+		        });
 			}
 			
 			viewModel.editUserEducation = function(item){
@@ -344,47 +406,5 @@
         </div>
     </div> 
     
-<!-- <script type="text/html" id="add-education-template"> -->
-<div class="modal fade" id="add-education-template" tabindex="-1" role="dialog" aria-labelledby="add-education-template">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add education item</h4>
-      </div>
-      <div class="modal-body">
-		 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
-		  <div class="form-group">
-		    <label for="inputPassword3" class="col-sm-2 control-label">姓名</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control"  placeholder="Username in Chinese" name='name' required="required">
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-		    <div class="col-sm-10">
-		      <input type="email" class="form-control"  placeholder="Email will be your login name" name='email' required="required" 
-		      placeholder="Email" data-error="email address is invalid" >
-		      <div class="help-block with-errors"></div>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
-		    <div class="col-sm-10">
-		      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name='password' required="required">
-		      <div class="help-block with-errors"></div>	
-		    </div>
-		  </div>
-		  </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-bind="click:saveUserEducation">OK</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- </script> -->
-
 </body>
 </html>
