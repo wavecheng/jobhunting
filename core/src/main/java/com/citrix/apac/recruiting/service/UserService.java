@@ -11,6 +11,7 @@ import com.citrix.apac.recruiting.entity.Enums.ApplyStatus;
 import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.entity.UserApply;
+import com.citrix.apac.recruiting.entity.UserEducation;
 import com.citrix.apac.recruiting.entity.UserInterview;
 import com.citrix.apac.recruiting.reporsitory.JobRepository;
 import com.citrix.apac.recruiting.reporsitory.UserApplyRepository;
@@ -121,6 +122,23 @@ public class UserService {
 			return true;
 		}
 		return false;
+	}
+
+	public List<UserEducation> getUserEducations(Long userId){
+		return userEducationRepository.findByUserId(userId);
+	}
+	
+	public void saveUserEducation(User user, UserEducation item){
+		item.setUser(user);
+		userEducationRepository.saveAndFlush(item);
+	}
+	
+	public void updateUserEducation(UserEducation item){
+		userEducationRepository.saveAndFlush(item);
+	}
+	
+	public void deleteUserEducation(Long item){
+		userEducationRepository.delete(item);
 	}
 	
 	public List<UserApply> getUserApplies(Long userId){

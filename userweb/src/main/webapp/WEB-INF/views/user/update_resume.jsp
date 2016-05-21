@@ -267,7 +267,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" data-bind="click:ok">OK</button>
+        <button type="button" class="btn btn-primary" data-bind="click:save,enable:enableSave">OK</button>
       </div>
     </div>
   </div>
@@ -282,8 +282,8 @@
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap3-typeahead.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-knockout-modal.js"></script>
 		<script>
-			$("#university").typeahead({items:10,source:universityList});
-			$("#major").typeahead({items:10,source:majorList});
+			$("#university").typeahead({items:6,source:universityList,showHintOnFocus:true});
+			$("#major").typeahead({items:6,source:majorList,showHintOnFocus:true});
 			
 			var mapping = {
 			    'married': {
@@ -365,54 +365,83 @@
 			}
 
 			//education related operations
-			var UserEducationModalVM = function (pageViewModel) {
+			var UserEducationModalVM = function (pageViewModel,item) {
 			    var viewModel = this;
-			    viewModel.fromDate = ko.observable("2016-09-01");
-			    viewModel.toDate = ko.observable("2017-09-01");
+			    viewModel.id = ko.observable(0);
+			    viewModel.fromDate = ko.observable("");
+			    viewModel.toDate = ko.observable("");
 			    viewModel.university = ko.observable("");	
 			    viewModel.major = ko.observable("");	
 			    viewModel.rankList = [{"name":">5%","value":5},{"name":">10%","value":10},{"name":">20%","value":20},
 			                          {"name":">30%","value":30},{"name":">50%","value":50}];
 			    viewModel.totalRank = ko.observable(10);
 			    
+			    if(item){
+			    	viewModel.id(item.id());
+			    	viewModel.fromDate(item.fromDate());
+				    viewModel.toDate(item.toDate());
+				    viewModel.university(item.university());
+				    viewModel.major(item.major());
+				    viewModel.totalRank(item.totalRank());
+			    }
 			    
+			    viewModel.enableSave = ko.pureComputed(function(){
+			    	return viewModel.fromDate().length > 0 && viewModel.university().length>0 && viewModel.major().length>0;
+			    });
+			    
+			    viewModel.save = function(){
+			    	var jsonData = ko.toJSON(viewModel);
+			    	console.log(jsonData);
+					$.ajax({url:"save_education",
+						type:"POST",
+						data:jsonData,
+						dataType: "json",
+						contentType: "application/json; charset=utf-8",
+						complete: function(userData){
+							toastr.success("save success!","",{positionClass: "toast-top-center"});
+							pageViewModel.userEducation = ko.mapping.fromJS(userData.userEducation);
+							viewModel.modal.close();
+					    }
+					});		    	
+			    }			    
 			}
-			UserEducationModalVM.prototype.ok = function(){
-			    var self = this;
-			    self.modal.close();
-			}
-    
-			viewModel.addUserEducation = function(){
-				var modalViewModel = new UserEducationModalVM(viewModel);
+
+			viewModel.upsertUserEducation = function(item){
+				var modalViewModel = new UserEducationModalVM(viewModel,item);
 		        modalViewModel.template = 'add-education-template';
 		        showModal({
 		            viewModel: modalViewModel,
 		            context: viewModel,
-		        });
-		        		    
+		        });		        		    
 				$('.date').each(function(){
 					$(this).datetimepicker({ format: 'yyyy-mm-dd', minView: 2, autoclose: 1, bootcssVer:3, });
-				});	
-				
+				});					
 				$(".university").typeahead({items:6,source:universityList,showHintOnFocus:true});
-				$(".major").typeahead({items:6,source:majorList,showHintOnFocus:true});
-				
+				$(".major").typeahead({items:6,source:majorList,showHintOnFocus:true});				
 			}
 			
+			viewModel.addUserEducation = function(){
+				viewModel.upsertUserEducation();
+			}
 			viewModel.editUserEducation = function(item){
-				console.log(item);
+				viewModel.upsertUserEducation(item);
 			}
 
 			viewModel.deleteUserEducation = function(item){
 				if(confirm("delete current education?")){
-					viewModel.userEducation.remove(item);
+					$.ajax({url:"delete_education",
+						type:"POST",
+						data:ko.toJSON(item),
+						dataType: "json",
+						contentType: "application/json; charset=utf-8",
+						complete: function(userData){
+							toastr.success("save success!", "",{positionClass: "toast-top-center"});
+							viewModel.userEducation(userData.userEducation);
+					    }
+					});	
 				}
 			}
 
-			viewModel.saveUserEducation = function(){
-				
-			}
-			
 			ko.applyBindings(viewModel);
 			
 			$('#birthDate').datetimepicker({

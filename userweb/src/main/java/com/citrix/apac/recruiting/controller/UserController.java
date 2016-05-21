@@ -3,6 +3,7 @@ package com.citrix.apac.recruiting.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.entity.UserApply;
+import com.citrix.apac.recruiting.entity.UserEducation;
 import com.citrix.apac.recruiting.helper.XssSanitizeObjectMapper;
 import com.citrix.apac.recruiting.service.JobService;
 import com.citrix.apac.recruiting.service.WorkerService;
@@ -112,6 +114,26 @@ public class UserController extends BaseController{
 		userService.saveUser(cu);
 
 		return "success";
+	}
+
+	@RequestMapping(value="/save_education",method=RequestMethod.POST)
+	@ResponseBody 
+	public List<UserEducation> saveEducation(@RequestBody UserEducation edu){
+		User cu = getCurrentUser();		
+		if(edu.getId() == 0){			
+			userService.saveUserEducation(cu, edu);
+		}else{
+			userService.updateUserEducation(edu);
+		}
+		return userService.getUserEducations(cu.getId());
+	}
+
+	@RequestMapping(value="/delete_education",method=RequestMethod.POST)
+	@ResponseBody 
+	public List<UserEducation> deleteEducation(@RequestBody UserEducation edu){
+		User cu = getCurrentUser();		
+		userService.deleteUserEducation(edu.getId());
+		return userService.getUserEducations(cu.getId());
 	}
 	
 	@RequestMapping(value="/load_resume",method=RequestMethod.GET)
