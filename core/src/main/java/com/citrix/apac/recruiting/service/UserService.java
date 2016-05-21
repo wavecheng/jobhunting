@@ -130,13 +130,9 @@ public class UserService {
 	
 	public void saveUserEducation(User user, UserEducation item){
 		item.setUser(user);
-		userEducationRepository.saveAndFlush(item);
+		userEducationRepository.save(item);
 	}
-	
-	public void updateUserEducation(UserEducation item){
-		userEducationRepository.saveAndFlush(item);
-	}
-	
+
 	public void deleteUserEducation(Long item){
 		userEducationRepository.delete(item);
 	}

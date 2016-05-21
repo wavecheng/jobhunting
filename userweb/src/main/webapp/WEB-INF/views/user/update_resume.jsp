@@ -353,15 +353,17 @@
 					secondLangLevel:viewModel.secondLangLevel(),
 				}
 				
+				
 				$.ajax({url:"save_basic",
 					type:"POST",
 					data:JSON.stringify(data), 
 					dataType: "json",
 					contentType: "application/json; charset=utf-8",
-					complete: function(result){
+					success: function(result){
 						toastr.success("update success!","",{positionClass: "toast-top-center"});
 				    }
 				});
+				
 			}
 
 			//education related operations
@@ -391,15 +393,14 @@
 			    
 			    viewModel.save = function(){
 			    	var jsonData = ko.toJSON(viewModel);
-			    	console.log(jsonData);
 					$.ajax({url:"save_education",
 						type:"POST",
 						data:jsonData,
 						dataType: "json",
 						contentType: "application/json; charset=utf-8",
-						complete: function(userData){
+						success: function(data){
 							toastr.success("save success!","",{positionClass: "toast-top-center"});
-							pageViewModel.userEducation = ko.mapping.fromJS(userData.userEducation);
+							pageViewModel.OnUserEducationUpdate(data);
 							viewModel.modal.close();
 					    }
 					});		    	
@@ -434,12 +435,15 @@
 						data:ko.toJSON(item),
 						dataType: "json",
 						contentType: "application/json; charset=utf-8",
-						complete: function(userData){
+						success: function(data){
 							toastr.success("save success!", "",{positionClass: "toast-top-center"});
-							viewModel.userEducation(userData.userEducation);
+							viewModel.OnUserEducationUpdate(data);
 					    }
 					});	
 				}
+			}
+			viewModel.OnUserEducationUpdate = function(data){
+				ko.mapping.fromJS(data, {}, viewModel.userEducation);
 			}
 
 			ko.applyBindings(viewModel);

@@ -120,16 +120,12 @@ public class UserController extends BaseController{
 	@ResponseBody 
 	public List<UserEducation> saveEducation(@RequestBody UserEducation edu){
 		User cu = getCurrentUser();		
-		if(edu.getId() == 0){			
-			userService.saveUserEducation(cu, edu);
-		}else{
-			userService.updateUserEducation(edu);
-		}
+		userService.saveUserEducation(cu, edu);
 		return userService.getUserEducations(cu.getId());
 	}
 
 	@RequestMapping(value="/delete_education",method=RequestMethod.POST)
-	@ResponseBody 
+	@ResponseBody
 	public List<UserEducation> deleteEducation(@RequestBody UserEducation edu){
 		User cu = getCurrentUser();		
 		userService.deleteUserEducation(edu.getId());
