@@ -258,6 +258,12 @@
 		    </div>
 		  </div>
 		  <div class="form-group">
+		    <label for="" class="col-sm-4 control-label">Degree</label>
+		    <div class="col-sm-7">
+		      	<select class="form-control"  data-bind="options: degreeList, value:degree"></select>
+		    </div>
+		  </div>
+		  <div class="form-group">
 		    <label for="" class="col-sm-4 control-label">Total Rank</label>
 		    <div class="col-sm-7">
 				<select class="form-control"  data-bind="options: rankList, optionsText: 'name',optionsValue:'value', value:totalRank"></select>
@@ -282,6 +288,16 @@
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap3-typeahead.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-knockout-modal.js"></script>
 		<script>
+		
+			toastr.options = {
+				  "closeButton": true,
+				  "newestOnTop": true,
+				  "positionClass": "toast-top-center",
+				  "preventDuplicates": true,
+				  "timeOut": "3000",
+				  "showDuration": "300",
+				  "hideDuration": "500",
+			}
 			$("#university").typeahead({items:6,source:universityList,showHintOnFocus:true});
 			$("#major").typeahead({items:6,source:majorList,showHintOnFocus:true});
 			
@@ -360,7 +376,7 @@
 					dataType: "json",
 					contentType: "application/json; charset=utf-8",
 					success: function(result){
-						toastr.success("update success!","",{positionClass: "toast-top-center"});
+						toastr.success("update success!");
 				    }
 				});
 				
@@ -374,6 +390,8 @@
 			    viewModel.toDate = ko.observable("");
 			    viewModel.university = ko.observable("");	
 			    viewModel.major = ko.observable("");	
+			    viewModel.degree = ko.observable("");
+			    viewModel.degreeList = pageViewModel.degreeList;
 			    viewModel.rankList = [{"name":">5%","value":5},{"name":">10%","value":10},{"name":">20%","value":20},
 			                          {"name":">30%","value":30},{"name":">50%","value":50}];
 			    viewModel.totalRank = ko.observable(10);
@@ -384,6 +402,7 @@
 				    viewModel.toDate(item.toDate());
 				    viewModel.university(item.university());
 				    viewModel.major(item.major());
+				    viewModel.degree(item.degree());
 				    viewModel.totalRank(item.totalRank());
 			    }
 			    
@@ -393,13 +412,10 @@
 			    
 			    viewModel.save = function(){
 			    	var jsonData = ko.toJSON(viewModel);
-					$.ajax({url:"save_education",
-						type:"POST",
-						data:jsonData,
-						dataType: "json",
+					$.ajax({url:"save_education", type:"POST", data:jsonData, dataType: "json",
 						contentType: "application/json; charset=utf-8",
 						success: function(data){
-							toastr.success("save success!","",{positionClass: "toast-top-center"});
+							toastr.success("save success!");
 							pageViewModel.OnUserEducationUpdate(data);
 							viewModel.modal.close();
 					    }
@@ -430,11 +446,7 @@
 
 			viewModel.deleteUserEducation = function(item){
 				if(confirm("delete current education?")){
-					$.ajax({url:"delete_education",
-						type:"POST",
-						data:ko.toJSON(item),
-						dataType: "json",
-						contentType: "application/json; charset=utf-8",
+					$.ajax({url:"delete_education", type:"POST", data:ko.toJSON(item), dataType: "json", contentType: "application/json; charset=utf-8",
 						success: function(data){
 							toastr.success("save success!", "",{positionClass: "toast-top-center"});
 							viewModel.OnUserEducationUpdate(data);
