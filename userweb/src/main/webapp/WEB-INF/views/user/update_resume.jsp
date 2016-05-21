@@ -24,8 +24,8 @@
 							  </div>
 							  <div class="panel-body">
 							     <table class="table table-hover"  >
-								    <tr><td class="col-xs-3 text-right strong ">Name in Chinese:</td>
-								    	<td class="text-left required"><input type="text" data-bind="value:name" class="" required="required" /></td>
+								    <tr><td class="col-xs-3 text-right strong ">Name in Chinese:<span class="required"></span></td>
+								    	<td class="text-left"><input type="text" data-bind="value:name" class="" required="required" /></td>
 								    </tr>
 								    <tr><td class="col-xs-3 text-right strong ">Name in English:</td>
 								    	<td class="text-left"><input type="text" data-bind="value:nameEng" class="" required="required" /></td>
@@ -293,11 +293,8 @@
 				  "closeButton": true,
 				  "newestOnTop": true,
 				  "positionClass": "toast-top-center",
-				  "preventDuplicates": true,
-				  "timeOut": "3000",
-				  "showDuration": "300",
-				  "hideDuration": "500",
-			}
+			};
+			
 			$("#university").typeahead({items:6,source:universityList,showHintOnFocus:true});
 			$("#major").typeahead({items:6,source:majorList,showHintOnFocus:true});
 			
@@ -369,13 +366,12 @@
 					secondLangLevel:viewModel.secondLangLevel(),
 				}
 				
-				
 				$.ajax({url:"save_basic",
 					type:"POST",
 					data:JSON.stringify(data), 
 					dataType: "json",
 					contentType: "application/json; charset=utf-8",
-					success: function(result){
+					complete: function(){
 						toastr.success("update success!");
 				    }
 				});

@@ -88,7 +88,6 @@
 							    		<th>From</th>
 							    		<th>To</th>
 							    		<th>University</th>
-							    		<th>Department</th>
 							    		<th>Major</th>
 							    		<th>Degree</th>
 							    		<th>Rank</th>
@@ -98,7 +97,6 @@
 							    		<td>${item.fromDate}</td>
 							    		<td>${item.toDate}</td>
 							    		<td>${item.university}</td>
-							    		<td>${item.depart}</td>
 							    		<td>${item.major}</td>
 							    		<td>${item.degree}</td>
 							    		<td>>${item.totalRank}%</td>

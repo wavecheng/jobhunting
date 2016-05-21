@@ -100,9 +100,6 @@ public class User implements Serializable{
     @Column(name="salary_expect")
     private String salaryExpect;
 
-    @Column(name="depart")
-    private String depart;
-    
     @Column(name="major")
     private String major;
     
@@ -168,9 +165,6 @@ public class User implements Serializable{
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<UserApply> userApply;
     
-    @ManyToOne
-    private University university;
-
     @OneToMany(mappedBy="user")
     private List<UserExam> userExam;
     
@@ -302,14 +296,6 @@ public class User implements Serializable{
 
 	public void setSalaryExpect(String salaryExpect) {
 		this.salaryExpect = salaryExpect;
-	}
-
-	public String getDepart() {
-		return depart;
-	}
-
-	public void setDepart(String depart) {
-		this.depart = depart;
 	}
 
 	public String getMajor() {
@@ -470,14 +456,6 @@ public class User implements Serializable{
 
 	public void setUserEducation(List<UserEducation> userEducation) {
 		this.userEducation = userEducation;
-	}
-
-	public University getUniversity() {
-		return university;
-	}
-
-	public void setUniversity(University university) {
-		this.university = university;
 	}
 
 	public List<UserSkill> getUserSkill() {

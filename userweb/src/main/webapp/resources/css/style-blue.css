@@ -16,6 +16,11 @@
     padding-bottom:10px;
 }
 
+.required:before{
+	content:"*";
+	color:red;
+}
+
 .cont_title{
 	float:left;
 	width:790px;

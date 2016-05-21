@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.citrix.apac.recruiting.entity.Enums.EduLevel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * 用户教育历史记录
  */
 @Entity
-@Table(name = "user_edu")
+@Table(name = "user_edu", uniqueConstraints=@UniqueConstraint(columnNames={"university","degree"}))
 @JsonIgnoreProperties(value={"user"})
 public class UserEducation {
 	
@@ -39,28 +40,17 @@ public class UserEducation {
     
     @Column(name="university")
     private String university;
-
-    @Column(name="depart")
-    private String depart;
-    
+  
     @Column(name="major")
     private String major;
     
-    @Column(name="degree",unique=true)
+    @Column(name="degree")
     @Enumerated(EnumType.STRING)
     private EduLevel degree;
-    
-    @Column(name="graduate_date")
-    private Date graduateDate;
-   
+
     @Column(name="total_rank")
     private int totalRank;
    
-    @Column(name="courses")
-    @Lob
-    @Basic(fetch=FetchType.LAZY)  
-    private String courses;
-
     @Column(name="remark")
     @Lob
     @Basic(fetch=FetchType.LAZY)  
@@ -104,14 +94,6 @@ public class UserEducation {
 		this.university = university;
 	}
 
-	public String getDepart() {
-		return depart;
-	}
-
-	public void setDepart(String depart) {
-		this.depart = depart;
-	}
-
 	public String getMajor() {
 		return major;
 	}
@@ -128,28 +110,12 @@ public class UserEducation {
 		this.degree = degree;
 	}
 
-	public Date getGraduateDate() {
-		return graduateDate;
-	}
-
-	public void setGraduateDate(Date graduateDate) {
-		this.graduateDate = graduateDate;
-	}
-
 	public int getTotalRank() {
 		return totalRank;
 	}
 
 	public void setTotalRank(int totalRank) {
 		this.totalRank = totalRank;
-	}
-
-	public String getCourses() {
-		return courses;
-	}
-
-	public void setCourses(String courses) {
-		this.courses = courses;
 	}
 
 	public String getRemark() {
