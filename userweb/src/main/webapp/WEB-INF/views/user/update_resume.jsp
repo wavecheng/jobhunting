@@ -23,6 +23,51 @@
 							  	<div class="pull-right"><a href="resume" class="btn btn-success ">查看简历</a></div>
 							  </div>
 							  <div class="panel-body">
+							  	<form class="form-horizontal" action="#" data-toggle="validator" role="form">
+								  <div class="form-group">
+								    <label for="" class="col-sm-2 control-label">Name in Chinese:<span class="required"></span></label>
+								    <div class="col-sm-4">
+								      <input type="text" class="form-control" data-bind="value:name" placeholder="name in Chinese" required="required" data-error="Chinese name is required" >
+								      <div class="help-block with-errors"></div>
+								    </div>
+								    <label for="" class="col-sm-2 control-label">Name in English:<span class="required"></span></label>
+								    <div class="col-sm-4">
+								      <input type="text" class="form-control" data-bind="value:nameEng" placeholder="name in English or Pinyin" required="required" data-error=" English name is required" >
+								      <div class="help-block with-errors"></div>
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="" class="col-sm-2 control-label">Gender:</label>
+								    <div class="col-sm-4">
+								    	<label class="radio-inline">
+										  <input type="radio" name="genderGroup" data-bind="checked:gender" value="Male" />Male 
+										</label>
+										<label class="radio-inline">
+										  <input type="radio" name="genderGroup" data-bind="checked:gender" value="Female" />Female 
+										</label>
+								      <div class="help-block with-errors"></div>
+								    </div>
+								    <label for="" class="col-sm-2 control-label">Name in English:<span class="required"></span></label>
+								    <div class="col-sm-4">
+								      <input type="text" class="form-control" data-bind="value:nameEng" placeholder="name in English or Pinyin" required="required" data-error=" English name is required" >
+								      <div class="help-block with-errors"></div>
+								    </div>
+								  </div>
+								
+								  <div class="form-group">
+								    <label for="inputPassword3" class="col-sm-2 control-label"></label>
+								    <div class="col-sm-10">
+								      <c:if test="${error != null}">
+								      	<div class="alert alert-warning" role="alert">${error}</div>
+									</c:if>
+								    </div>
+								  </div>
+								  <div class="form-group">
+								    <div class="col-sm-offset-2 col-sm-10">
+								      <button type="submit" class="btn btn-success">Submit</button>  						      
+								    </div>
+								  </div>
+								</form>
 							     <table class="table table-hover"  >
 								    <tr><td class="col-xs-3 text-right strong ">Name in Chinese:<span class="required"></span></td>
 								    	<td class="text-left"><input type="text" data-bind="value:name" class="" required="required" /></td>
