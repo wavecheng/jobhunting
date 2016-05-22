@@ -151,58 +151,77 @@
 											    </div>
 									  	  </div>
 							  	  </div>
-								</div>
-								</form>
-							     <table class="table table-hover"  >
-
-
-							
-
+								</div>							
+							  	  <div class="row">
+							  	  	<div class="col-sm-6">
+										  <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">English Level & Score:</label>
+										    <div class="col-sm-4">
+										      <select class="form-control" data-bind="options: englishLevelList, value:engLevel"></select>
+		                                    </div>
+		                                    <div class="col-sm-4">
+		                                    	<input type="number" class="form-control" pattern="^[\d]{1-3}$"  data-bind="value:engHighestScore"  required="required" data-error="score is invalid" >
+		                                    </div>
+		                                    <div class="help-block with-errors"></div>
+										   </div>
+										   <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">TOEFL:</label>
+										    <div class="col-sm-8">
+										      <input type="number" class="form-control" data-bind="value:toefl" placeholder="TOEFL score if you have"   data-error="TOEFL is invalid" >
+										      <div class="help-block with-errors"></div>
+										    </div>
+										  </div>
+										  <div class="form-group">
+										    <label for="email" class="col-sm-4 control-label">GRE:</label>
+										    <div class="col-sm-8">
+										      <input type="number" class="form-control" data-bind="value:gre" placeholder="GRE score if you have"   data-error="GRE is invalid" >
+										      <div class="help-block with-errors"></div>	
+										    </div>
+										  </div>
+										  <div class="form-group"> 
+										    <label for="" class="col-sm-4 control-label">Second Language:</label>
+										    <div class="col-sm-8">
+										       <select class="form-control" data-bind="options: secondLangList, value:secLanguage"></select>
+										       <div class="help-block with-errors"></div>
+										    </div>
+										  </div>									  	  								  	  	
+							  	  	</div>
+							  	  	<div class="col-sm-6">
+										  <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">Oral English Level:</label>
+										    <div class="col-sm-8">
+										      <select class="form-control" data-bind="options: skillLevelList, value:oral"></select>
+		                                    </div>
+		                                    <div class="help-block with-errors"></div>
+										   </div>
+										   <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">TOEIC:</label>
+										    <div class="col-sm-8">
+										      <input type="number" class="form-control" data-bind="value:toeic" placeholder="TOEIC score if you have"   data-error="TOEIC is invalid" >
+										      <div class="help-block with-errors"></div>
+										    </div>
+										  </div>
+										  <div class="form-group">
+										    <label for="email" class="col-sm-4 control-label">GMAT:</label>
+										    <div class="col-sm-8">
+										      <input type="number" class="form-control" data-bind="value:gmat" placeholder="GMAT score if you have"   data-error="GMAT is invalid" >
+										      <div class="help-block with-errors"></div>	
+										    </div>
+										  </div>
+										  <div class="form-group"> 
+										    <label for="" class="col-sm-4 control-label">Language Level:</label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control"  data-bind="value:secondLangLevel" placeholder="level description if applicable"   >
+										      <div class="help-block with-errors"></div>
+										    </div>
+										  </div>
+									</div>	  							
 								  <div class="form-group">
 								    <div class="col-sm-offset-2 col-sm-10">
-								      <button type="submit" class="btn btn-success">Submit</button>  						      
+								      <button class="btn btn-success" data-bind="click:saveBasicInfo" >更新基本信息</button>							      
 								    </div>
-								  </div>
-
-								    <tr><td class="col-xs-3 text-right strong ">:</td>
-								    	<td class="text-left">
-								    	<select data-bind="options: degreeList, value:degree"></select></td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong">Major:</td>
-								    	<td class="text-left">
-								    		<input type="text" id="major" data-provide="typeahead" autocomplete="off" data-bind="value:major">
-								    	</td>
-								    </tr>
-								 </table>
-							  </div>
-							  <div class="panel-heading">Language Skill<a id="language"></a></div>
-							  <div class="panel-body">								 
-							     <table class="table table-hover"  >								    
-								    <tr>
-								    	<td class="col-xs-3 text-right strong ">English Level&Score:</td>
-								    	<td class="text-left"><select data-bind="options: englishLevelList, value:engLevel"></select><input type="number" data-bind="value:engHighestScore" class="" required="required" /></td>
-								    	<td class="col-xs-3 text-right strong">Oral English Level:</td>
-								    	<td class="text-left"><select data-bind="options: skillLevelList, value:oral"></select></td>								    	
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong">TOEFL:</td>
-								    	<td class="text-left"><input type="number" data-bind="value:toefl" class=""  /></td>
-								        <td class="col-xs-3 text-right strong ">TOEIC:</td>
-								    	<td class="text-left"><input type="number" data-bind="value:toeic" class=""  /></td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong">GRE:</td>
-								    	<td class="text-left"><input type="number" data-bind="value:gre" class=""  /></td>
-								        <td class="col-xs-3 text-right strong">GMAT:</td>
-								    	<td class="text-left"><input type="number" data-bind="value:gmat" class=""  /></td>
-								    </tr>
-								    <tr>
-								    	<td class="col-xs-3 text-right strong">Second Language:</td>
-								    	<td class="text-left"><select data-bind="options: secondLangList, value:secLanguage"></select></td>
-								    	<td class="col-xs-3 text-right strong">Language Level:</td>
-								    	<td class="text-left"><input type="text" data-bind="value:secondLangLevel" class=""  /></td>								    	
-								    </tr>
-								 </table>
-								 <button class="btn btn-primary pull-right" data-bind="click:saveBasicInfo" >更新基本信息</button>								 
-							  </div>
+								  </div>								
+								</form>
 							</div>
 														
 							<div class="panel panel-default">
@@ -234,7 +253,6 @@
 							    		</td>
 							    	</tr>
 							    	<!-- /ko  -->	
-
 							    </table>
 							  </div>
 						  </div>  
