@@ -24,113 +24,147 @@
 							  </div>
 							  <div class="panel-body">
 							  	<form class="form-horizontal" action="#" data-toggle="validator" role="form">
-								  <div class="form-group">
-								    <label for="" class="col-sm-2 control-label">Name in Chinese:<span class="required"></span></label>
-								    <div class="col-sm-4">
-								      <input type="text" class="form-control" data-bind="value:name" placeholder="name in Chinese" required="required" data-error="Chinese name is required" >
-								      <div class="help-block with-errors"></div>
-								    </div>
-								    <label for="" class="col-sm-2 control-label">Name in English:<span class="required"></span></label>
-								    <div class="col-sm-4">
-								      <input type="text" class="form-control" data-bind="value:nameEng" placeholder="name in English or Pinyin" required="required" data-error=" English name is required" >
-								      <div class="help-block with-errors"></div>
-								    </div>
-								  </div>
-								  <div class="form-group">
-								    <label for="" class="col-sm-2 control-label">Gender:</label>
-								    <div class="col-sm-4">
-								    	<label class="radio-inline">
-										  <input type="radio" name="genderGroup" data-bind="checked:gender" value="Male" />Male 
-										</label>
-										<label class="radio-inline">
-										  <input type="radio" name="genderGroup" data-bind="checked:gender" value="Female" />Female 
-										</label>
-								      <div class="help-block with-errors"></div>
-								    </div>
-								    <label for="" class="col-sm-2 control-label">Name in English:<span class="required"></span></label>
-								    <div class="col-sm-4">
-								      <input type="text" class="form-control" data-bind="value:nameEng" placeholder="name in English or Pinyin" required="required" data-error=" English name is required" >
-								      <div class="help-block with-errors"></div>
-								    </div>
-								  </div>
-								
-								  <div class="form-group">
-								    <label for="inputPassword3" class="col-sm-2 control-label"></label>
-								    <div class="col-sm-10">
-								      <c:if test="${error != null}">
-								      	<div class="alert alert-warning" role="alert">${error}</div>
-									</c:if>
-								    </div>
-								  </div>
+							  	  <div class="row">
+							  	  	<div class="col-sm-6">
+										  <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">Name in Chinese:<span class="required"></span></label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control" data-bind="value:name" placeholder="name in Chinese" required="required" data-error="Chinese name is required" >
+										      <div class="help-block with-errors"></div>
+										    </div>
+										   </div>
+										   <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">Name in English:<span class="required"></span></label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control" data-bind="value:nameEng" placeholder="name in English or Pinyin" required="required" data-error=" English name is required" >
+										      <div class="help-block with-errors"></div>
+										    </div>
+										  </div>
+										  <div class="form-group">
+										    <label for="email" class="col-sm-4 control-label">Email:<span class="required"></span></label>
+										    <div class="col-sm-8">
+										      <input type="email" class="form-control" data-bind="value:email" placeholder="Email" required="required" data-error="Email is invalid" >
+										      <div class="help-block with-errors"></div>	
+										    </div>
+										  </div>
+										  <div class="form-group"> 
+										    <label for="" class="col-sm-4 control-label">ID card No:<span class="required"></span></label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control" pattern="^[xX\d]{18}$"  data-bind="value:idNo" placeholder="National ID card No" required="required" data-error="ID card No is invalid" >
+										      <div class="help-block with-errors"></div>
+										    </div>
+										  </div>
+										  <div class="form-group"> 
+										    <label for="" class="col-sm-4 control-label">Place of Origin City:</label>
+										    <div class="col-sm-4">
+										      <select class="form-control" data-bind="options: provinceAndCities, optionsText: 'name',
+		                                           optionsValue:'name', value:birthProvince"></select>
+		                                    </div>
+		                                    <div class="col-sm-4">
+		                                    	<span data-bind="with: currentBirthProvince">
+		                                           <select  class="form-control"  data-bind="options: cities, optionsText: 'name',
+		                                           optionsValue:'name', value:$parent.birthCity"></select></span>
+		                                    </div>		                                           
+										  </div>
+										  <div class="form-group"> 
+										    <label for="" class="col-sm-4 control-label">Place of Current City:</label>
+										    <div class="col-sm-4">
+										      <select class="form-control" data-bind="options: provinceAndCities, optionsText: 'name',
+		                                           optionsValue:'name', value:currentProvince"></select>
+		                                    </div>
+		                                    <div class="col-sm-4">
+		                                    	<span data-bind="with: currentLiveProvince">
+		                                           <select  class="form-control"  data-bind="options: cities, optionsText: 'name',
+		                                           optionsValue:'name', value:$parent.currentCity"></select></span>
+		                                    </div>
+		                                    <div class="help-block with-errors"></div>       
+										  </div>
+										  <div class="form-group">
+									  	  		<label for="" class="col-sm-4 control-label">Major:<span class="required"></span></label>
+											    <div class="col-sm-8">
+											      <input type="text" class="form-control"  id="major" data-provide="typeahead" autocomplete="off" data-bind="value:major"
+											        placeholder="input major name" required="required" data-error="major number is invalid" >
+											      <div class="help-block with-errors"></div>
+											    </div>
+									  	  </div>									  	  								  	  	
+							  	  	</div>
+							  	  	<div class="col-sm-6">
+										  <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">Gender:</label>
+										    <div class="col-sm-8">
+										    	<label class="radio-inline ">
+												  <input type="radio" name="genderGroup" data-bind="checked:gender" value="Male" />Male 
+												</label>
+												<label class="radio-inline">
+												  <input type="radio" name="genderGroup" data-bind="checked:gender" value="Female" />Female 
+												</label>
+												<div class="help-block with-errors"></div>
+										    </div>							  	  	
+									  	  </div>
+									  	  <div class="form-group">
+									  	  		<label for="" class="col-sm-4 control-label">Mobile:<span class="required"></span></label>
+											    <div class="col-sm-8">
+											      <input type="text" class="form-control" pattern="^[\d\s]{1,15}$"   data-bind="value:mobile"  placeholder="mobile phone number" required="required" data-error="phone number is invalid" >
+											      <div class="help-block with-errors"></div>
+											    </div>
+									  	  </div>
+									  	  <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">Date of Birth:<span class="required"></span></label>
+										    <div class="col-sm-8">
+										      <input type="text" class="form-control date" pattern="^\d{4}-\d{2}-\d{2}$"   data-bind="value:birthDate" placeholder="birth date" required="required" data-error="date is invalid" >
+										      <div class="help-block with-errors"></div>
+										    </div>
+										  </div>
+										  <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">Married:</label>
+										    <div class="col-sm-8">
+										    	<label class="radio-inline">
+												  <input type="radio"  name="marryGroup"  data-bind="checked:married" value="true" />Yes  
+												</label>
+												<label class="radio-inline">
+												  <input type="radio" name="marryGroup"  data-bind="checked:married" value="false" />No 
+												</label>
+												<div class="help-block with-errors"></div>
+										    </div>							  	  	
+									  	  </div>
+									  	  <div class="form-group">
+										    <label for="" class="col-sm-4 control-label">City to Take Exam:<span class="required"></span></label>
+										    <div class="col-sm-8"  >
+										      <select class=" form-control" data-bind="options: examCityList, optionsText: 'name',
+                                           				optionsValue:'name', value:citytoExam"></select>
+                                           		<div class="help-block with-errors"></div>
+										    </div>
+										  </div>
+										  <div class="form-group">
+									  	  		<label for="" class="col-sm-4 control-label">University:<span class="required"></span></label>
+											    <div class="col-sm-8">
+											      <input type="text" class="form-control" type="text" id="university" data-provide="typeahead" autocomplete="off" data-bind="value:universityName"
+											        placeholder="input university name" required="required" data-error="university number is invalid" >
+											      <div class="help-block with-errors"></div>
+											    </div>
+									  	  </div>
+										  <div class="form-group">
+									  	  		<label for="" class="col-sm-4 control-label">Highest Degree:<span class="required"></span></label>
+											    <div class="col-sm-8">
+											      <select class=" form-control"data-bind="options: degreeList, value:degree"></select>
+                                           		<div class="help-block with-errors"></div>
+											    </div>
+									  	  </div>
+							  	  </div>
+								</div>
+								</form>
+							     <table class="table table-hover"  >
+
+
+							
+
 								  <div class="form-group">
 								    <div class="col-sm-offset-2 col-sm-10">
 								      <button type="submit" class="btn btn-success">Submit</button>  						      
 								    </div>
 								  </div>
-								</form>
-							     <table class="table table-hover"  >
-								    <tr><td class="col-xs-3 text-right strong ">Name in Chinese:<span class="required"></span></td>
-								    	<td class="text-left"><input type="text" data-bind="value:name" class="" required="required" /></td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Name in English:</td>
-								    	<td class="text-left"><input type="text" data-bind="value:nameEng" class="" required="required" /></td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Gender:</td>
-								    	<td class="text-left">
-								    	<div class="btn-group" role="group" aria-label="Choose your gender">
-										  <input type="radio"  name="genderGroup" data-bind="checked:gender" value="Male" />Male  
-										  <input type="radio"  name="genderGroup" data-bind="checked:gender" value="Female" />Female 
-										</div>
-										</td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Mobile:</td>
-								    <td class="text-left"><input type="text" data-bind="value:mobile" class="" required="required" /></td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Email:</td>
-								    <td class="text-left"><input type="email" data-bind="value:email" class="" required="required" /></td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Personal ID:</td>
-								    <td class="text-left"><input type="text" data-bind="value:idNo" class="" required="required" /></td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Date of Birth:</td>
-								    <td class="text-left">
-								    	<input type="text" data-bind="value:birthDate" class="" required="required" id="birthDate" />
-								    </td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Married:</td>
-								    <td class="text-left">								    	
-								    <div class="btn-group" role="group" aria-label="Marriage status">
-										  <input type="radio" name="marryGroup"  data-bind="checked:married" value="true" />Yes  
-										  <input type="radio" name="marryGroup"  data-bind="checked:married" value="false" />No 
-										</div></td>
-								    </tr>								    
-								    <tr><td class="col-xs-3 text-right strong ">Place of Origin City:</td>								    
-								    	<td class="text-left"><select data-bind="options: provinceAndCities, optionsText: 'name',
-                                           optionsValue:'name', value:birthProvince"></select>
-                                           <span data-bind="with: currentBirthProvince">
-                                           <select data-bind="options: cities, optionsText: 'name',
-                                           optionsValue:'name', value:$parent.birthCity"></select></span>
-                                           </td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Place of Current City:</td>
-								    	<td class="text-left"><select data-bind="options: provinceAndCities, optionsText: 'name',
-                                           optionsValue:'name', value:currentProvince"></select>
-                                           <span data-bind="with: currentLiveProvince">
-                                           <select data-bind="options: cities, optionsText: 'name',
-                                           optionsValue:'name', value:$parent.currentCity"></select></span>
-                                           </td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">City to Take Exam:</td>
-								    	<td class="text-left"><select data-bind="options: examCityList, optionsText: 'name',
-                                           optionsValue:'name', value:citytoExam"></select>
-                                         </td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">University:</td>
-								    	<td class="text-left">
-								    		<input type="text" id="university" data-provide="typeahead" autocomplete="off" data-bind="value:universityName">
-								    	</td>
-								    </tr>
-								    <tr><td class="col-xs-3 text-right strong ">Highest Degree:</td>
+
+								    <tr><td class="col-xs-3 text-right strong ">:</td>
 								    	<td class="text-left">
 								    	<select data-bind="options: degreeList, value:degree"></select></td>
 								    </tr>
@@ -501,13 +535,10 @@
 
 			ko.applyBindings(viewModel);
 			
-			$('#birthDate').datetimepicker({
-				  format: 'yyyy-mm-dd',
-				  minView: 2,
-				  autoclose: 1,
-				  bootcssVer:3,
-		      });
-	
+			$('.date').each(function(){
+				$(this).datetimepicker({ format: 'yyyy-mm-dd', minView: 2, autoclose: 1, bootcssVer:3, });
+			});	
+			
 		</script>
         </div>
     </div> 
