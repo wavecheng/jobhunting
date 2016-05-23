@@ -218,7 +218,7 @@
 									</div>	  							
 								  <div class="form-group">
 								    <div class="col-sm-offset-2 col-sm-10">
-								      <button class="btn btn-success" data-bind="click:saveBasicInfo" >更新基本信息</button>							      
+								      <button type="submit" class="btn btn-success" data-bind="click:saveBasicInfo" >更新基本信息</button>							      
 								    </div>
 								  </div>								
 								</form>
@@ -248,8 +248,8 @@
 							    		<td><span data-bind="text:degree"></span></td>
 							    		<td>><span data-bind="text:totalRank"></span>%</td>
 							    		<td width="100px">
-							    			<a data-bind="click:$parent.editUserEducation" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-							    			<a data-bind="click:$parent.deleteUserEducation" class="btn btn-danger"><i class="fa fa-remove"></i></a>
+							    			<a data-bind="click:$parent.editUserEducation" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
+							    			<a data-bind="click:$parent.deleteUserEducation" class="btn btn-danger" title="Delete"><i class="fa fa-remove"></i></a>
 							    		</td>
 							    	</tr>
 							    	<!-- /ko  -->	
@@ -262,49 +262,36 @@
 							    <h3 class="panel-title" id="project">Projects History</h3>							    
 							  </div>
 							  <div class="panel-body">
-							  <a data-bind="click:addUserEducation" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>Add</a>
+							  <a data-bind="click:addUserProject" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>Add</a>
 							  <!-- ko foreach:userProject -->
 							  <table class="table displayUnit"  >
 							    	<tr>
-							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left">${item.fromDate} -- ${item.toDate}</td>
+							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left"><span data-bind="text:fromDate"></span> -- <span data-bind="text:toDate"></span></td>
 							    	</tr>
 							    	<tr> 
-							    	  <td class="col-xs-3 text-right strong">Name:</td><td class="text-left">${item.name}</td>
+							    	  <td class="col-xs-3 text-right strong">Name:</td><td class="text-left"><span data-bind="text:name"></span>${item.name}</td>
 							    	</tr>
 							    	<tr>
 							    		<td class="col-xs-3 text-right strong">Description:</td>
-							    		<td class="text-left">${fn:replace(item.description, newLineChar, "<br/>")}</td>
+							    		<td class="text-left"><span data-bind="text:description"></span></td>
 							    	</tr>
 							    	<tr>
 							    		<td class="col-xs-3 text-right strong">Duty and Role:</td>
-							    		<td class="text-left">${fn:replace(item.duty, newLineChar, "<br/>")}</td>
+							    		<td class="text-left"><span data-bind="text:duty" ></span></td>
+							    	</tr>
+							    	<tr>
+							    	    <td></td>
+							    		<td>
+							    			<a data-bind="click:$parent.editUserProject" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
+							    			<a data-bind="click:$parent.deleteUserProject" class="btn btn-danger" title="Delete"><i class="fa fa-remove"></i></a>
+							    		</td>
 							    	</tr>
 							    </table>
 							    <hr class="dotted" />
 							  <!-- /ko  -->	
-							  <c:forEach items="${user.userProject}" var="item">
-							    <table class="table displayUnit"  >
-							    	<tr>
-							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left">${item.fromDate} -- ${item.toDate}</td>
-							    	</tr>
-							    	<tr> 
-							    	  <td class="col-xs-3 text-right strong">Name:</td><td class="text-left">${item.name}</td>
-							    	</tr>
-							    	<tr>
-							    		<td class="col-xs-3 text-right strong">Description:</td>
-							    		<td class="text-left">${fn:replace(item.description, newLineChar, "<br/>")}</td>
-							    	</tr>
-							    	<tr>
-							    		<td class="col-xs-3 text-right strong">Duty and Role:</td>
-							    		<td class="text-left">${fn:replace(item.duty, newLineChar, "<br/>")}</td>
-							    	</tr>
-							    </table>
-							    <hr class="dotted" />
-							    </c:forEach>
 							  </div>
 						  </div>   
-
-						  
+					  
 						  <div class="panel panel-default">
 							  <div class="panel-heading">
 							    <h3 class="panel-title" id="work">Work History</h3>
@@ -351,7 +338,7 @@
       <div class="modal-body">
 		 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
 		  <div class="form-group">
-		    <label for="" class="col-sm-4 control-label">From Date</label>
+		    <label for="" class="col-sm-4 control-label">From Date<span class="required"></span></label>
 		    <div class="col-sm-7">
 		      <input type="text" class="form-control date"  placeholder="begin date"  data-bind="value:fromDate" required="required" >
 		    </div>
@@ -363,13 +350,13 @@
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="" class="col-sm-4 control-label">University</label>
+		    <label for="" class="col-sm-4 control-label">University<span class="required"></span></label>
 		    <div class="col-sm-7">
 		      <input type="text" class="form-control university"  placeholder="university"  data-bind="value:university" required="required" >
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="" class="col-sm-4 control-label">Major</label>
+		    <label for="" class="col-sm-4 control-label">Major<span class="required"></span></label>
 		    <div class="col-sm-7">
 		      <input type="text" class="form-control major"  placeholder="major"  data-bind="value:major" required="required" >
 		    </div>
@@ -396,6 +383,57 @@
   </div>
 </div>
 </script>
+
+<script type="text/html" id="add-project-template">
+<div class="modal fade" id="add-project-template" tabindex="-1" role="dialog" aria-labelledby="add-education-template">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Project item</h4>
+      </div>
+      <div class="modal-body">
+		 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
+		  <div class="form-group">
+		    <label for="" class="col-sm-4 control-label">From Date<span class="required"></span></label>
+		    <div class="col-sm-7">
+		      <input type="text" class="form-control date"  placeholder="begin date"  data-bind="value:fromDate" required="required" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-4 control-label">To Date</label>
+		    <div class="col-sm-7">
+		      <input type="text" class="form-control date"  placeholder="end date"  data-bind="value:toDate" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-4 control-label">Project Name<span class="required"></span></label>
+		    <div class="col-sm-7">
+		      <input type="text" class="form-control"  placeholder="project name"  data-bind="value:name" required="required" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-4 control-label">Description<span class="required"></span></label>
+		    <div class="col-sm-7">
+		      <textarea class="form-control" rows="3" placeholder="project description"  data-bind="value:description" required="required" />
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-4 control-label">Role & Duty</label>
+		    <div class="col-sm-7">
+		      <textarea class="form-control"  rows="5" placeholder="my role & duty"  data-bind="value:duty" required="required" />
+		    </div>
+		  </div>
+		  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bind="click:save,enable:enableSave">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
         <%@ include file="../footer.jsp" %>
 		<script src="${pageContext.request.contextPath}/resources/js/knockout-3.4.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/knockout.mapping-latest.js"></script>
@@ -406,6 +444,10 @@
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-knockout-modal.js"></script>
 		<script>
 		
+		  function nl2br(str){
+			    return str.replace(/(\r\n|\n\r|\r|\n)/g, "<br>");
+		  }
+		  
 			toastr.options = {
 				  "closeButton": true,
 				  "newestOnTop": true,
@@ -571,6 +613,74 @@
 				ko.mapping.fromJS(data, {}, viewModel.userEducation);
 			}
 
+			//project 
+			var UserProjectModalVM = function (pageViewModel,item) {
+			    var viewModel = this;
+			    viewModel.id = ko.observable(0);
+			    viewModel.fromDate = ko.observable("");
+			    viewModel.toDate = ko.observable("");
+			    viewModel.name = ko.observable("");	
+			    viewModel.description = ko.observable("");	
+			    viewModel.duty = ko.observable("");		    
+			    if(item){
+			    	viewModel.id(item.id());
+			    	viewModel.fromDate(item.fromDate());
+				    viewModel.toDate(item.toDate());
+				    viewModel.name(item.name());
+				    viewModel.description(item.description());
+				    viewModel.duty(item.duty());
+			    }
+			    
+			    viewModel.enableSave = ko.pureComputed(function(){
+			    	return viewModel.fromDate().length > 0 && viewModel.name().length>0 && viewModel.description().length>0;
+			    });
+			    
+			    viewModel.save = function(){
+			    	var jsonData = ko.toJSON(viewModel);
+					$.ajax({url:"save_project", type:"POST", data:jsonData, dataType: "json",
+						contentType: "application/json; charset=utf-8",
+						success: function(data){
+							toastr.success("save success!");
+							pageViewModel.OnUserProjectUpdate(data);
+							viewModel.modal.close();
+					    }
+					});		    	
+			    }			    
+			}
+			viewModel.upsertUserProject = function(item){
+				var modalViewModel = new UserProjectModalVM(viewModel,item);
+		        modalViewModel.template = 'add-project-template';
+		        showModal({
+		            viewModel: modalViewModel,
+		            context: viewModel,
+		        });		        		    
+				$('.date').each(function(){
+					$(this).datetimepicker({ format: 'yyyy-mm-dd', minView: 2, autoclose: 1, bootcssVer:3, });
+				});								
+			}
+			
+			viewModel.addUserProject = function(){
+				viewModel.upsertUserProject();
+			}
+			viewModel.editUserProject = function(item){
+				viewModel.upsertUserProject(item);
+			}
+
+			viewModel.deleteUserProject = function(item){
+				if(confirm("delete current item?")){
+					$.ajax({url:"delete_project", type:"POST", data:ko.toJSON(item), dataType: "json", contentType: "application/json; charset=utf-8",
+						success: function(data){
+							toastr.success("save success!", "",{positionClass: "toast-top-center"});
+							viewModel.OnUserProjectUpdate(data);
+					    }
+					});	
+				}
+			}
+			viewModel.OnUserProjectUpdate = function(data){
+				ko.mapping.fromJS(data, {}, viewModel.userProject);
+			}
+
+			
 			ko.applyBindings(viewModel);
 			
 			$('.date').each(function(){

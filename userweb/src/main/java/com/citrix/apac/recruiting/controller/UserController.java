@@ -20,6 +20,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.entity.UserApply;
 import com.citrix.apac.recruiting.entity.UserEducation;
+import com.citrix.apac.recruiting.entity.UserProject;
+import com.citrix.apac.recruiting.entity.UserWork;
 import com.citrix.apac.recruiting.helper.XssSanitizeObjectMapper;
 import com.citrix.apac.recruiting.service.JobService;
 import com.citrix.apac.recruiting.service.WorkerService;
@@ -131,6 +133,39 @@ public class UserController extends BaseController{
 		userService.deleteUserEducation(edu.getId());
 		return userService.getUserEducations(cu.getId());
 	}
+
+	@RequestMapping(value="/save_project",method=RequestMethod.POST)
+	@ResponseBody 
+	public List<UserProject> saveProject(@RequestBody UserProject item){
+		User cu = getCurrentUser();		
+		userService.saveUserProject(cu,item);
+		return userService.getUserProject(cu.getId());
+	}
+
+	@RequestMapping(value="/delete_project",method=RequestMethod.POST)
+	@ResponseBody
+	public List<UserProject> deleteProject(@RequestBody UserProject item){
+		User cu = getCurrentUser();		
+		userService.deleteUserProject(item.getId());
+		return userService.getUserProject(cu.getId());
+	}
+
+	@RequestMapping(value="/save_work",method=RequestMethod.POST)
+	@ResponseBody 
+	public List<UserProject> saveWork(@RequestBody UserProject item){
+		User cu = getCurrentUser();		
+		userService.saveUserProject(cu,item);
+		return userService.getUserProject(cu.getId());
+	}
+
+	@RequestMapping(value="/delete_work",method=RequestMethod.POST)
+	@ResponseBody
+	public List<UserProject> deleteWork(@RequestBody UserWork item){
+		User cu = getCurrentUser();		
+		userService.deleteUserProject(item.getId());
+		return userService.getUserProject(cu.getId());
+	}
+	
 	
 	@RequestMapping(value="/load_resume",method=RequestMethod.GET)
 	@ResponseBody

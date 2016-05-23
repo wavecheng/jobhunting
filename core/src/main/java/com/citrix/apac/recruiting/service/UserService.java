@@ -13,6 +13,8 @@ import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.entity.UserApply;
 import com.citrix.apac.recruiting.entity.UserEducation;
 import com.citrix.apac.recruiting.entity.UserInterview;
+import com.citrix.apac.recruiting.entity.UserProject;
+import com.citrix.apac.recruiting.entity.UserWork;
 import com.citrix.apac.recruiting.reporsitory.JobRepository;
 import com.citrix.apac.recruiting.reporsitory.UserApplyRepository;
 import com.citrix.apac.recruiting.reporsitory.UserEducationRepository;
@@ -135,6 +137,32 @@ public class UserService {
 
 	public void deleteUserEducation(Long item){
 		userEducationRepository.delete(item);
+	}
+
+	public List<UserProject> getUserProject(Long userId){
+		return userProjectRepository.findByUserId(userId);
+	}
+	
+	public void saveUserProject(User user, UserProject item){
+		item.setUser(user);
+		userProjectRepository.save(item);
+	}
+
+	public void deleteUserProject(Long item){
+		userProjectRepository.delete(item);
+	}
+
+	public List<UserWork> getUserWork(Long userId){
+		return userWorkRepository.findByUserId(userId);
+	}
+	
+	public void saveUserWork(User user, UserWork item){
+		item.setUser(user);
+		userWorkRepository.save(item);
+	}
+
+	public void deleteUserWork(Long item){
+		userWorkRepository.delete(item);
 	}
 	
 	public List<UserApply> getUserApplies(Long userId){

@@ -3,10 +3,13 @@ package com.citrix.apac.recruiting.entity;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -37,6 +40,8 @@ public class UserProject {
     private String description;
     
     @Column(name="duty")
+    @Lob
+    @Basic(fetch=FetchType.EAGER)  
     private String duty;
     
     @Column(name="update_time")
