@@ -20,7 +20,7 @@
                 	<div class="col-md-12">
                 		<div class="panel panel-default">
 							  <div class="panel-heading">Personal Information
-							  	<div class="pull-right"><a href="resume" class="btn btn-success ">查看简历</a></div>
+<!-- 							  	<div class="pull-right"><a href="resume" class="btn btn-success ">查看简历</a></div> -->
 							  </div>
 							  <div class="panel-body">
 							  	<form class="form-horizontal" action="#" data-toggle="validator" role="form">
@@ -259,9 +259,29 @@
 						  
 						  <div class="panel panel-default">
 							  <div class="panel-heading">
-							    <h3 class="panel-title" id="project">Projects</h3>
+							    <h3 class="panel-title" id="project">Projects History</h3>							    
 							  </div>
 							  <div class="panel-body">
+							  <a data-bind="click:addUserEducation" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>Add</a>
+							  <!-- ko foreach:userProject -->
+							  <table class="table displayUnit"  >
+							    	<tr>
+							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left">${item.fromDate} -- ${item.toDate}</td>
+							    	</tr>
+							    	<tr> 
+							    	  <td class="col-xs-3 text-right strong">Name:</td><td class="text-left">${item.name}</td>
+							    	</tr>
+							    	<tr>
+							    		<td class="col-xs-3 text-right strong">Description:</td>
+							    		<td class="text-left">${fn:replace(item.description, newLineChar, "<br/>")}</td>
+							    	</tr>
+							    	<tr>
+							    		<td class="col-xs-3 text-right strong">Duty and Role:</td>
+							    		<td class="text-left">${fn:replace(item.duty, newLineChar, "<br/>")}</td>
+							    	</tr>
+							    </table>
+							    <hr class="dotted" />
+							  <!-- /ko  -->	
 							  <c:forEach items="${user.userProject}" var="item">
 							    <table class="table displayUnit"  >
 							    	<tr>
