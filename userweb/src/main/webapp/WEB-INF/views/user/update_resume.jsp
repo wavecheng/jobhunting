@@ -265,10 +265,15 @@
 							  <!-- ko foreach:userProject -->
 							  <table class="table displayUnit"  >
 							    	<tr>
-							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left"><span data-bind="text:fromDate"></span> -- <span data-bind="text:toDate"></span></td>
+							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left"><span data-bind="text:fromDate"></span> -- <span data-bind="text:toDate"></span>
+							    	  	<span class="pull-right">
+							    			<a data-bind="click:$parent.editUserProject" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
+							    			<a data-bind="click:$parent.deleteUserProject" class="btn btn-danger" title="Delete"><i class="fa fa-remove"></i></a>
+							    		</span>
+							    		</td>
 							    	</tr>
 							    	<tr> 
-							    	  <td class="col-xs-3 text-right strong">Name:</td><td class="text-left"><span data-bind="text:name"></span></td>
+							    	  <td class="col-xs-3 text-right strong">Project Name:</td><td class="text-left"><span data-bind="text:name"></span></td>
 							    	</tr>
 							    	<tr>
 							    		<td class="col-xs-3 text-right strong">Description:</td>
@@ -278,15 +283,7 @@
 							    		<td class="col-xs-3 text-right strong">Duty and Role:</td>
 							    		<td class="text-left"><pre data-bind="text:duty" ></pre></td>
 							    	</tr>
-							    	<tr>
-							    	    <td></td>
-							    		<td>
-							    			<a data-bind="click:$parent.editUserProject" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
-							    			<a data-bind="click:$parent.deleteUserProject" class="btn btn-danger" title="Delete"><i class="fa fa-remove"></i></a>
-							    		</td>
-							    	</tr>
 							    </table>
-							    <hr class="dotted" />
 							  <!-- /ko  -->	
 							  </div>
 						  </div>   
@@ -300,7 +297,12 @@
 							  <!-- ko foreach:userWork -->
 							  <table class="table displayUnit"  >
 							    	<tr>
-							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left"><span data-bind="text:fromDate"></span> -- <span data-bind="text:toDate"></span></td>
+							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left"><span data-bind="text:fromDate"></span> -- <span data-bind="text:toDate"></span>
+							    	  	<span class="pull-right">
+							    			<a data-bind="click:$parent.editUserWork" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
+							    			<a data-bind="click:$parent.deleteUserWork" class="btn btn-danger" title="Delete"><i class="fa fa-remove"></i></a>
+							    		</span>
+							    	  </td>
 							    	</tr>
 							    	<tr> 
 							    	  <td class="col-xs-3 text-right strong">Company Name:</td><td class="text-left"><span data-bind="text:company"></span></td>
@@ -313,15 +315,7 @@
 							    		<td class="col-xs-3 text-right strong">Duty and Role:</td>
 							    		<td class="text-left"><pre data-bind="text:description" ></pre></td>
 							    	</tr>
-							    	<tr>
-							    	    <td></td>
-							    		<td>
-							    			<a data-bind="click:$parent.editUserWork" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
-							    			<a data-bind="click:$parent.deleteUserWork" class="btn btn-danger" title="Delete"><i class="fa fa-remove"></i></a>
-							    		</td>
-							    	</tr>
 							    </table>
-							    <hr class="dotted" />
 							  <!-- /ko  -->	
 							  </div>
 						  </div>  						  					 			  
