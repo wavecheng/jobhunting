@@ -237,7 +237,7 @@
 							    		<th>Major</th>
 							    		<th>Degree</th>
 							    		<th>Rank</th>
-							    		<th class="text-right"><a data-bind="click:addUserEducation" class="btn btn-primary"><i class="fa fa-plus"></i>Add</a></th>
+							    		<th class="text-right"><a data-bind="click:addUserEducation" class="btn btn-primary"><i class="fa fa-plus"></i> Add Education</a></th>
 							    	</tr>
 							    	<!-- ko foreach:userEducation -->
 							    	<tr>
@@ -262,14 +262,14 @@
 							    <h3 class="panel-title" id="project">Projects History</h3>							    
 							  </div>
 							  <div class="panel-body">
-							  <a data-bind="click:addUserProject" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>Add</a>
+							  <a data-bind="click:addUserProject" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Project Item</a>
 							  <!-- ko foreach:userProject -->
 							  <table class="table displayUnit"  >
 							    	<tr>
 							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left"><span data-bind="text:fromDate"></span> -- <span data-bind="text:toDate"></span></td>
 							    	</tr>
 							    	<tr> 
-							    	  <td class="col-xs-3 text-right strong">Name:</td><td class="text-left"><span data-bind="text:name"></span>${item.name}</td>
+							    	  <td class="col-xs-3 text-right strong">Name:</td><td class="text-left"><span data-bind="text:name"></span></td>
 							    	</tr>
 							    	<tr>
 							    		<td class="col-xs-3 text-right strong">Description:</td>
@@ -291,36 +291,41 @@
 							  <!-- /ko  -->	
 							  </div>
 						  </div>   
-					  
+
 						  <div class="panel panel-default">
 							  <div class="panel-heading">
-							    <h3 class="panel-title" id="work">Work History</h3>
+							    <h3 class="panel-title" id="project">Work History</h3>							    
 							  </div>
 							  <div class="panel-body">
-							  <c:forEach items="${user.userWork}" var="item">
-							    <table class="table displayUnit"  >
+							  <a data-bind="click:addUserWork" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Work Item</a>
+							  <!-- ko foreach:userWork -->
+							  <table class="table displayUnit"  >
 							    	<tr>
-							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left">${item.fromDate} -- ${item.toDate}
-							    	  </td>
-							    	</tr>
-							    	<tr>
-							    	  <td class="col-xs-3 text-right strong">Company:<td class="text-left">
-							    	  	<strong>${item.company}</strong>  [${item.companyType}]
-							    	  </td>
+							    	  <td class="col-xs-3 text-right strong">Date Span:<td class="text-left"><span data-bind="text:fromDate"></span> -- <span data-bind="text:toDate"></span></td>
 							    	</tr>
 							    	<tr> 
-							    	  <td class="col-xs-3 text-right strong">Position:</td><td class="text-left">${item.position}</td>
+							    	  <td class="col-xs-3 text-right strong">Company Name:</td><td class="text-left"><span data-bind="text:company"></span></td>
 							    	</tr>
 							    	<tr>
-							    		<td class="col-xs-3 text-right strong">Work Description:</td>
-							    		<td class="text-left">${fn:replace(item.description, newLineChar, "<br/>")}</td>
+							    		<td class="col-xs-3 text-right strong">Position Hold:</td>
+							    		<td class="text-left"><span data-bind="text:position"></span></td>
+							    	</tr>
+							    	<tr>
+							    		<td class="col-xs-3 text-right strong">Duty and Role:</td>
+							    		<td class="text-left"><span data-bind="text:description" ></span></td>
+							    	</tr>
+							    	<tr>
+							    	    <td></td>
+							    		<td>
+							    			<a data-bind="click:$parent.editUserWork" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
+							    			<a data-bind="click:$parent.deleteUserWork" class="btn btn-danger" title="Delete"><i class="fa fa-remove"></i></a>
+							    		</td>
 							    	</tr>
 							    </table>
 							    <hr class="dotted" />
-							    </c:forEach>
+							  <!-- /ko  -->	
 							  </div>
-						  </div>   
-						  						  
+						  </div>  						  					 			  
                 	</div>                                          
                 </div>
 			</div>
@@ -386,7 +391,7 @@
 
 <script type="text/html" id="add-project-template">
 <div class="modal fade" id="add-project-template" tabindex="-1" role="dialog" aria-labelledby="add-education-template">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog eighty" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -395,32 +400,32 @@
       <div class="modal-body">
 		 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
 		  <div class="form-group">
-		    <label for="" class="col-sm-4 control-label">From Date<span class="required"></span></label>
-		    <div class="col-sm-7">
+		    <label for="" class="col-sm-3 control-label">From Date<span class="required"></span></label>
+		    <div class="col-sm-8">
 		      <input type="text" class="form-control date"  placeholder="begin date"  data-bind="value:fromDate" required="required" >
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="" class="col-sm-4 control-label">To Date</label>
-		    <div class="col-sm-7">
+		    <label for="" class="col-sm-3 control-label">To Date</label>
+		    <div class="col-sm-8">
 		      <input type="text" class="form-control date"  placeholder="end date"  data-bind="value:toDate" >
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="" class="col-sm-4 control-label">Project Name<span class="required"></span></label>
-		    <div class="col-sm-7">
+		    <label for="" class="col-sm-3 control-label">Project Name<span class="required"></span></label>
+		    <div class="col-sm-8">
 		      <input type="text" class="form-control"  placeholder="project name"  data-bind="value:name" required="required" >
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="" class="col-sm-4 control-label">Description<span class="required"></span></label>
-		    <div class="col-sm-7">
+		    <label for="" class="col-sm-3 control-label">Description<span class="required"></span></label>
+		    <div class="col-sm-8">
 		      <textarea class="form-control" rows="3" placeholder="project description"  data-bind="value:description" required="required" />
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="" class="col-sm-4 control-label">Role & Duty</label>
-		    <div class="col-sm-7">
+		    <label for="" class="col-sm-3 control-label">Role & Duty</label>
+		    <div class="col-sm-8">
 		      <textarea class="form-control"  rows="5" placeholder="my role & duty"  data-bind="value:duty" required="required" />
 		    </div>
 		  </div>
@@ -434,6 +439,58 @@
   </div>
 </div>
 </script>
+
+<script type="text/html" id="add-work-template">
+<div class="modal fade" id="add-work-template" tabindex="-1" role="dialog" aria-labelledby="add-work-template">
+  <div class="modal-dialog eighty" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Edit Work item</h4>
+      </div>
+      <div class="modal-body">
+		 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
+		  <div class="form-group">
+		    <label for="" class="col-sm-3 control-label">From Date<span class="required"></span></label>
+		    <div class="col-sm-8">
+		      <input type="text" class="form-control date"  placeholder="begin date"  data-bind="value:fromDate" required="required" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-3 control-label">To Date</label>
+		    <div class="col-sm-8">
+		      <input type="text" class="form-control date"  placeholder="end date"  data-bind="value:toDate" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-3 control-label">Company Name<span class="required"></span></label>
+		    <div class="col-sm-8">
+		      <input type="text" class="form-control"  placeholder="Company name"  data-bind="value:company" required="required" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-3 control-label">Position Hold<span class="required"></span></label>
+		    <div class="col-sm-8">
+		      <input type="text" class="form-control" placeholder="Position Hold"  data-bind="value:position" required="required" />
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="" class="col-sm-3 control-label">Role & Duty</label>
+		    <div class="col-sm-8">
+		      <textarea class="form-control"  rows="5" placeholder="my role & duty"  data-bind="value:description" />
+		    </div>
+		  </div>
+		  </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" data-bind="click:save,enable:enableSave">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+
         <%@ include file="../footer.jsp" %>
 		<script src="${pageContext.request.contextPath}/resources/js/knockout-3.4.0.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/knockout.mapping-latest.js"></script>
@@ -680,6 +737,72 @@
 				ko.mapping.fromJS(data, {}, viewModel.userProject);
 			}
 
+			//work 
+			var UserWorkModalVM = function (pageViewModel,item) {
+			    var viewModel = this;
+			    viewModel.id = ko.observable(0);
+			    viewModel.fromDate = ko.observable("");
+			    viewModel.toDate = ko.observable("");
+			    viewModel.company = ko.observable("");	
+			    viewModel.description = ko.observable("");	
+			    viewModel.position = ko.observable("");		    
+			    if(item){
+			    	viewModel.id(item.id());
+			    	viewModel.fromDate(item.fromDate());
+				    viewModel.toDate(item.toDate());
+				    viewModel.company(item.company());
+				    viewModel.description(item.description());
+				    viewModel.position(item.position());
+			    }
+			    
+			    viewModel.enableSave = ko.pureComputed(function(){
+			    	return viewModel.fromDate().length > 0 && viewModel.company().length>0 && viewModel.description().length>0;
+			    });
+			    
+			    viewModel.save = function(){
+			    	var jsonData = ko.toJSON(viewModel);
+					$.ajax({url:"save_work", type:"POST", data:jsonData, dataType: "json",
+						contentType: "application/json; charset=utf-8",
+						success: function(data){
+							toastr.success("save success!");
+							pageViewModel.OnUserWorkUpdate(data);
+							viewModel.modal.close();
+					    }
+					});		    	
+			    }			    
+			}
+			viewModel.upsertUserWork = function(item){
+				var modalViewModel = new UserWorkModalVM(viewModel,item);
+		        modalViewModel.template = 'add-work-template';
+		        showModal({
+		            viewModel: modalViewModel,
+		            context: viewModel,
+		        });		        		    
+				$('.date').each(function(){
+					$(this).datetimepicker({ format: 'yyyy-mm-dd', minView: 2, autoclose: 1, bootcssVer:3, });
+				});								
+			}
+			
+			viewModel.addUserWork = function(){
+				viewModel.upsertUserWork();
+			}
+			viewModel.editUserWork = function(item){
+				viewModel.upsertUserWork(item);
+			}
+
+			viewModel.deleteUserWork = function(item){
+				if(confirm("delete current item?")){
+					$.ajax({url:"delete_work", type:"POST", data:ko.toJSON(item), dataType: "json", contentType: "application/json; charset=utf-8",
+						success: function(data){
+							toastr.success("save success!", "",{positionClass: "toast-top-center"});
+							viewModel.OnUserWorkUpdate(data);
+					    }
+					});	
+				}
+			}
+			viewModel.OnUserWorkUpdate = function(data){
+				ko.mapping.fromJS(data, {}, viewModel.userWork);
+			}
 			
 			ko.applyBindings(viewModel);
 			

@@ -152,18 +152,18 @@ public class UserController extends BaseController{
 
 	@RequestMapping(value="/save_work",method=RequestMethod.POST)
 	@ResponseBody 
-	public List<UserProject> saveWork(@RequestBody UserProject item){
+	public List<UserWork> saveWork(@RequestBody UserWork item){
 		User cu = getCurrentUser();		
-		userService.saveUserProject(cu,item);
-		return userService.getUserProject(cu.getId());
+		userService.saveUserWork(cu,item);
+		return userService.getUserWork(cu.getId());
 	}
 
 	@RequestMapping(value="/delete_work",method=RequestMethod.POST)
 	@ResponseBody
-	public List<UserProject> deleteWork(@RequestBody UserWork item){
+	public List<UserWork> deleteWork(@RequestBody UserWork item){
 		User cu = getCurrentUser();		
-		userService.deleteUserProject(item.getId());
-		return userService.getUserProject(cu.getId());
+		userService.deleteUserWork(item.getId());
+		return userService.getUserWork(cu.getId());
 	}
 	
 	

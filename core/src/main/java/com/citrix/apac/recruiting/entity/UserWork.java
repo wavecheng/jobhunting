@@ -56,7 +56,7 @@ public class UserWork {
     
     @Column(name="description")
     @Lob
-    @Basic(fetch=FetchType.LAZY)  
+    @Basic(fetch=FetchType.EAGER)  
     private String description;
     
     @Column(name="update_time")
