@@ -11,7 +11,7 @@
             <div class="container ">
                 <div class="cont_title">
                     <div class="cont_title_icon"><img src="${pageContext.request.contextPath}/resources/img/cont_title_icon.jpg"></div>
-                    <div class="cont_title_txt_c">修改我的个人简历</div>
+                    <div class="cont_title_txt_c">我的个人简历</div>
                     <div class="cont_title_txt_e ">MY RESUME</div>
                 </div>
 		
@@ -217,7 +217,7 @@
 									</div>	  							
 								  <div class="form-group">
 								    <div class="col-sm-offset-2 col-sm-10">
-								      <button type="submit" class="btn btn-success" data-bind="click:saveBasicInfo" >更新基本信息</button>							      
+								      <button type="submit" id="submitBasic" class="btn btn-success" data-bind="click:saveBasicInfo,enable:enableSave" >更新基本信息</button>							      
 								    </div>
 								  </div>								
 								</form>
@@ -258,10 +258,10 @@
 						  
 						  <div class="panel panel-default">
 							  <div class="panel-heading">
+							  	<a data-bind="click:addUserProject" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Project Item</a>			
 							    <h3 class="panel-title" id="project">Projects History</h3>							    
 							  </div>
 							  <div class="panel-body">
-							  <a data-bind="click:addUserProject" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Project Item</a>
 							  <!-- ko foreach:userProject -->
 							  <table class="table displayUnit"  >
 							    	<tr>
@@ -293,10 +293,10 @@
 
 						  <div class="panel panel-default">
 							  <div class="panel-heading">
+							  <a data-bind="click:addUserWork" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Work Item</a>
 							    <h3 class="panel-title" id="project">Work History</h3>							    
 							  </div>
-							  <div class="panel-body">
-							  <a data-bind="click:addUserWork" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add Work Item</a>
+							  <div class="panel-body">							  
 							  <!-- ko foreach:userWork -->
 							  <table class="table displayUnit"  >
 							    	<tr>
@@ -476,7 +476,7 @@
 		  <div class="form-group">
 		    <label for="" class="col-sm-3 control-label">Role & Duty<span class="required"></span></label>
 		    <div class="col-sm-8">
-		      <textarea class="form-control"  rows="5" placeholder="my role & duty"  data-bind="value:description,valueUpdate: 'afterkeydown'" />
+		      <textarea class="form-control"  rows="7" placeholder="my role & duty"  data-bind="value:description,valueUpdate: 'afterkeydown'" />
 		    </div>
 		  </div>
 		  </form>
@@ -544,6 +544,10 @@
 				}
 				return viewModel.provinceAndCities()[0];
 			}
+			
+			viewModel.enableSave = ko.computed(function(){
+				return !$("#submitBasic").hasClass("disabled");
+			});
 			
 			//exam city list
 			viewModel.examCityList = ko.observableArray(${examCityList});
