@@ -5,7 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <% pageContext.setAttribute("newLineChar", "\n"); %>
 
-
 <jsp:include page="../header.jsp" /> 
 
             <section class="margin-bottom margin-top">
@@ -277,7 +276,7 @@
 							    	</tr>
 							    	<tr>
 							    		<td class="col-xs-3 text-right strong">Duty and Role:</td>
-							    		<td class="text-left"><span data-bind="text:duty" ></span></td>
+							    		<td class="text-left"><pre data-bind="text:duty" ></pre></td>
 							    	</tr>
 							    	<tr>
 							    	    <td></td>
@@ -312,7 +311,7 @@
 							    	</tr>
 							    	<tr>
 							    		<td class="col-xs-3 text-right strong">Duty and Role:</td>
-							    		<td class="text-left"><span data-bind="text:description" ></span></td>
+							    		<td class="text-left"><pre data-bind="text:description" ></pre></td>
 							    	</tr>
 							    	<tr>
 							    	    <td></td>
@@ -357,13 +356,13 @@
 		  <div class="form-group">
 		    <label for="" class="col-sm-4 control-label">University<span class="required"></span></label>
 		    <div class="col-sm-7">
-		      <input type="text" class="form-control university"  placeholder="university"  data-bind="value:university" required="required" >
+		      <input type="text" class="form-control university"  placeholder="university"  data-bind="value:university,valueUpdate: 'afterkeydown'" required="required" >
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="" class="col-sm-4 control-label">Major<span class="required"></span></label>
 		    <div class="col-sm-7">
-		      <input type="text" class="form-control major"  placeholder="major"  data-bind="value:major" required="required" >
+		      <input type="text" class="form-control major"  placeholder="major"  data-bind="value:major,valueUpdate: 'afterkeydown'" required="required" >
 		    </div>
 		  </div>
 		  <div class="form-group">
@@ -420,13 +419,13 @@
 		  <div class="form-group">
 		    <label for="" class="col-sm-3 control-label">Description<span class="required"></span></label>
 		    <div class="col-sm-8">
-		      <textarea class="form-control" rows="3" placeholder="project description"  data-bind="value:description" required="required" />
+		      <textarea class="form-control" rows="3" placeholder="project description"  data-bind="value:description,valueUpdate: 'afterkeydown'" required="required" />
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="" class="col-sm-3 control-label">Role & Duty</label>
 		    <div class="col-sm-8">
-		      <textarea class="form-control"  rows="5" placeholder="my role & duty"  data-bind="value:duty" required="required" />
+		      <textarea class="form-control"  rows="5" placeholder="my role & duty"  data-bind="value:duty,valueUpdate: 'afterkeydown'" required="required" />
 		    </div>
 		  </div>
 		  </form>
@@ -465,19 +464,19 @@
 		  <div class="form-group">
 		    <label for="" class="col-sm-3 control-label">Company Name<span class="required"></span></label>
 		    <div class="col-sm-8">
-		      <input type="text" class="form-control"  placeholder="Company name"  data-bind="value:company" required="required" >
+		      <input type="text" class="form-control"  placeholder="Company name"  data-bind="value:company,valueUpdate: 'afterkeydown'" required="required" >
 		    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="" class="col-sm-3 control-label">Position Hold<span class="required"></span></label>
 		    <div class="col-sm-8">
-		      <input type="text" class="form-control" placeholder="Position Hold"  data-bind="value:position" required="required" />
+		      <input type="text" class="form-control" placeholder="Position Hold"  data-bind="value:position,valueUpdate: 'afterkeydown' " required="required" />
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="" class="col-sm-3 control-label">Role & Duty</label>
+		    <label for="" class="col-sm-3 control-label">Role & Duty<span class="required"></span></label>
 		    <div class="col-sm-8">
-		      <textarea class="form-control"  rows="5" placeholder="my role & duty"  data-bind="value:description" />
+		      <textarea class="form-control"  rows="5" placeholder="my role & duty"  data-bind="value:description,valueUpdate: 'afterkeydown'" />
 		    </div>
 		  </div>
 		  </form>

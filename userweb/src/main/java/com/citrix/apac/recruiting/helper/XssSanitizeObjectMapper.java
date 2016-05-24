@@ -37,8 +37,14 @@ public class XssSanitizeObjectMapper extends ObjectMapper {
                 SerializerProvider serializerProvider) throws IOException,
                 JsonProcessingException {
             if (value != null) {
-                String encodedValue = Jsoup.clean(value.toString(), Whitelist.simpleText());
-                jsonGenerator.writeString(encodedValue);
+        		value = value.replaceAll("eval\\((.*)\\)", "");
+        		value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");
+        		value = value.replaceAll("(?i)<script.*?>.*?<script.*?>", "");
+        		value = value.replaceAll("(?i)<script.*?>.*?</script.*?>", "");
+        		value = value.replaceAll("(?i)<.*?javascript:.*?>.*?</.*?>", "");
+        		value = value.replaceAll("(?i)<.*?\\s+on.*?>.*?</.*?>", "");
+                //String encodedValue = Jsoup.clean(value.toString(), Whitelist.basic());
+                jsonGenerator.writeString(value);
             }
         }
     }
