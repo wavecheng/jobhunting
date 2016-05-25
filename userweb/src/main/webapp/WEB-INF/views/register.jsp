@@ -38,7 +38,7 @@
 					    <label for="inputPassword3" class="col-sm-2 control-label">密码确认</label>
 					    <div class="col-sm-10">
 					      <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" 
-					         data-match-error="these don't match" placeholder="Confirm password">
+					         data-match-error="Password don't match" placeholder="Confirm password">
 					      <div class="help-block with-errors"></div>	
 					    </div>
 					  </div>

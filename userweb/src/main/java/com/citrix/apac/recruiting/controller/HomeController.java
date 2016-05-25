@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -101,9 +102,15 @@ public class HomeController extends BaseController {
 		else if(!u.isEnabled() && !u.isVerified()){
 			model.addAttribute("msg", "User status is not valid");
 		}else{
-			//TODO: password reset and email organize
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			String random = u.getPassword().substring(12, 17);
+			String pwd = encoder.encode(random);
+			System.out.println(u.getEmail() + ":" + random);
+			u.setPassword(pwd);
+			userService.saveUser(u);
+			return "redirect:/message?success=true&type=reset_password";			
 		}
-		return "redirect:/index";
+		return "redirect:/message?success=false&type=reset_password";
 	}
 	
 }

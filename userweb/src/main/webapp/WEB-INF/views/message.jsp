@@ -20,6 +20,9 @@
 	                 			<c:when test="${type=='change_password' }">
 	                 				密码修改成功!
 	                 			</c:when>
+	                 			<c:when test="${type=='reset_password' }">
+	                 				重置成功，请登录您的邮箱获取新密码后重新登录！
+	                 			</c:when>
 							 </c:choose>
 						</div>
                  	</c:if>
