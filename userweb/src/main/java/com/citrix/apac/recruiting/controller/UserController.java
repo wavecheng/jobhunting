@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -73,10 +74,18 @@ public class UserController extends BaseController{
 	}
 
 	@RequestMapping(value="/change_password",method=RequestMethod.GET)
-	public String changePassword(ModelMap model ){	
-		User user = userService.getUserAllInfo(getCurrentUser().getId());
-		model.addAttribute("user", user);
+	public String changePassword(ModelMap model ){
 		return "user/change_password";
+	}
+
+	@RequestMapping(value="/change_password",method=RequestMethod.POST)
+	public String updatePassword(@RequestParam HashMap<String, String> param){	
+		User user = userService.findByEmail(getCurrentUser().getEmail());
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String pwd = encoder.encode(param.get("password"));
+		user.setPassword(pwd);
+		userService.saveUser(user);
+		return "redirect:/message?type=change_password&success=true";
 	}
 	
 	@RequestMapping(value="/resume",method=RequestMethod.POST)
@@ -182,7 +191,6 @@ public class UserController extends BaseController{
 			try{
 				ObjectMapper mapper = new XssSanitizeObjectMapper();// ObjectMapper();
 				String userJson = mapper.writeValueAsString(user);
-				System.out.println(userJson);
 				model.addAttribute("user_json", userJson);
 				model.addAttribute("examCityList", mapper.writeValueAsString(jobService.getExamCities()));
 			}catch(Exception ex){

@@ -6,28 +6,38 @@
 <jsp:include page="../header.jsp" /> 
 
          <section class="margin-bottom margin-top">
-             <div class="container">
-                 <div class="row">
 
-					 <form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
+             <div class="container">
+                 <div class="cont_title">
+                    <div class="cont_title_icon"><img src="${pageContext.request.contextPath}/resources/img/cont_title_icon.jpg"></div>
+                    <div class="cont_title_txt_c">修改密码</div>
+                    <div class="cont_title_txt_e ">Change Password</div>
+                </div>
+           
+                 <div class="row">
+                 	<div class="col-md-12">
+					<form class="form-horizontal" action="" method="post" data-toggle="validator" role="form">
 					  <div class="form-group">
 					    <label for="inputEmail3" class="col-sm-3 control-label">New Password:</label>
 					    <div class="col-sm-5">
-					      <input type="password" class="form-control"  placeholder="New password" required="required" value="">
+					      <input type="password" class="form-control" id="inputPassword" name="password"  placeholder="New password" required="required" value="">
+					    	<div class="help-block with-errors"></div>
 					    </div>
 					  </div>
 					  <div class="form-group">
 					    <label for="inputEmail3" class="col-sm-3 control-label">Retype Password:</label>
 					    <div class="col-sm-5">
-					      <input type="password" class="form-control"  placeholder="Retype new password" required="required" value="">
+					      <input type="password" class="form-control"  placeholder="Retype new password" required="required" 
+					         data-match="#inputPassword"   data-match-error="password don't match" value="">
+					    	<div class="help-block with-errors"></div>
 					    </div>
 					  </div>
 					  
 					  <div class="form-group">
 					    <label for="inputPassword3" class="col-sm-2 control-label"></label>
 					    <div class="col-sm-10">
-					      <c:if test="${error && SPRING_SECURITY_LAST_EXCEPTION != null}">
-					      	<div class="alert alert-warning" role="alert">${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</div>
+					      <c:if test="${msg}">
+					      	<div class="alert alert-info" role="alert">${msg}</div>
 						</c:if>
 					    </div>
 					  </div>

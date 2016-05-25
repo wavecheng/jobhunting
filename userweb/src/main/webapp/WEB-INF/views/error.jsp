@@ -13,7 +13,7 @@
 						<div class="alert alert-danger" role="alert">
 								${ex.message}								
 					    </div>	
-					    <div class="show"><pre>:${ex.stackTrace}</pre></div>	
+					    <div class="hide"><pre>:${ex.stackTrace}</pre></div>	
 					   </div>
 				</div>
              </div>

@@ -17,6 +17,9 @@
 	                 			<c:when test="${type=='verify' }">
 	                 				Email验证成功，请 <a href="user/mine" class="alert-link">登录</a>
 	                 			</c:when>
+	                 			<c:when test="${type=='change_password' }">
+	                 				密码修改成功!
+	                 			</c:when>
 							 </c:choose>
 						</div>
                  	</c:if>
