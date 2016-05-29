@@ -65,20 +65,5 @@
 		<%@ include file="footer.jsp" %>
         </div>
     </div> 
-    
-    <script>
-			$(document).ready(function(){
-				$("#email").on('blur',function(){
-					var email = $(this).val();
-					if(email){
-					  $.get("register/check_email",{"email":email},function(data){
-						if(data == "1"){
-					  		$("#email ~ .help-block").html("<label>Email has been used</label>").css("color","red");	
-						}
-					  });
-					}
-				})	
-			});
-	</script>
 </body>
 </html>
