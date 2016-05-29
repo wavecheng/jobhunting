@@ -3,6 +3,7 @@ package com.citrix.apac.recruiting.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -26,14 +27,21 @@ import com.citrix.apac.recruiting.entity.Job;
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.login.JobUser;
 import com.citrix.apac.recruiting.service.JobService;
+import com.citrix.apac.recruiting.service.SmtpMailService;
 import com.citrix.apac.recruiting.service.UserService;
 
 @Controller
 @SessionAttributes("userId")
 public class HomeController extends BaseController {
 
+	public final String MAIL_RESET_PWD_TITLE = "Citrix Job password reset!";
+	public final String MAIL_RESET_PWD_BODY = "Your new password has been set to <b>%1$s</b><br/> Please try log in again! ";
+	
 	@Autowired
 	private JobService jobService;
+	
+	@Autowired
+	private SmtpMailService smtpMailService;
 	
 	@RequestMapping(value="/")
 	public String index(ModelMap model) {
@@ -93,7 +101,7 @@ public class HomeController extends BaseController {
 	}
 
 	@RequestMapping(value="/reset_password",method=RequestMethod.POST)
-	public String updatePassword(@RequestParam(name="email",required=true) String email, ModelMap model){
+	public String updatePassword(@RequestParam(name="email",required=true) String email, ModelMap model) throws MessagingException{
 		User u = userService.findByEmail(email);
 		if(u == null){
 			model.addAttribute("msg", "User account is not valid!");
@@ -108,6 +116,8 @@ public class HomeController extends BaseController {
 			System.out.println(u.getEmail() + ":" + random);
 			u.setPassword(pwd);
 			userService.saveUser(u);
+			String msgBody = String.format(MAIL_RESET_PWD_BODY,random);
+			smtpMailService.sendMail(u.getEmail(), MAIL_RESET_PWD_TITLE, msgBody);
 			return "redirect:/message?success=true&type=reset_password";			
 		}
 		return "redirect:/message?success=false&type=reset_password";

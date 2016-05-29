@@ -42,7 +42,7 @@
 										  <div class="form-group">
 										    <label for="email" class="col-sm-4 control-label">Email:<span class="required"></span></label>
 										    <div class="col-sm-8">
-										      <input type="email" class="form-control" data-bind="value:email" placeholder="Email" required="required" data-error="Email is invalid" >
+										      <input type="email" class="form-control" data-bind="value:email" placeholder="Email" required="required" readonly="readonly" data-error="Email is invalid" >
 										      <div class="help-block with-errors"></div>	
 										    </div>
 										  </div>
@@ -540,7 +540,13 @@
 			}
 			
 			viewModel.enableSave = ko.computed(function(){
-				return !$("#submitBasic").hasClass("disabled");
+				return !$("#submitBasic").hasClass("disabled") && viewModel.name().length > 0  && 
+				   viewModel.nameEng() && viewModel.nameEng().length > 0 &&
+				   viewModel.birthDate() && viewModel.birthDate().length > 0 &&  
+				   viewModel.mobile() && viewModel.mobile().length > 0 &&
+				   viewModel.major() && viewModel.major().length > 0 &&
+				   viewModel.university() && viewModel.university().length > 0 &&
+				   viewModel.idNo() && viewModel.idNo().length > 0;
 			});
 			
 			//exam city list
@@ -806,6 +812,10 @@
 			$('.date').each(function(){
 				$(this).datetimepicker({ format: 'yyyy-mm-dd', minView: 2, autoclose: 1, bootcssVer:3, });
 			});	
+			
+			$( document ).ajaxError(function(event, request, settings) {
+				toastr.error("", "Can't complete the request",{positionClass: "toast-top-center"});
+			});
 			
 		</script>
         </div>

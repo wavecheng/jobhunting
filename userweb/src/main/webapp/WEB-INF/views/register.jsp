@@ -23,7 +23,7 @@
 					    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 					    <div class="col-sm-10">
 					      <input type="email" class="form-control"  placeholder="Email will be your login name" name='email' required="required" 
-					      placeholder="Email" data-error="email address is invalid" >
+					      placeholder="Email" id="email" data-error="email address is invalid" >
 					      <div class="help-block with-errors"></div>
 					    </div>
 					  </div>
@@ -62,9 +62,23 @@
                  </div>
              </div>
          </section>
-
 		<%@ include file="footer.jsp" %>
         </div>
     </div> 
+    
+    <script>
+			$(document).ready(function(){
+				$("#email").on('blur',function(){
+					var email = $(this).val();
+					if(email){
+					  $.get("register/check_email",{"email":email},function(data){
+						if(data == "1"){
+					  		$("#email ~ .help-block").html("<label>Email has been used</label>").css("color","red");	
+						}
+					  });
+					}
+				})	
+			});
+	</script>
 </body>
 </html>

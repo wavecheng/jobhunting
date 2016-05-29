@@ -15,7 +15,7 @@
 	                 				注册成功，请检查您的邮箱进行账号激活！
 	                 			</c:when>
 	                 			<c:when test="${type=='verify' }">
-	                 				Email验证成功，请 <a href="user/mine" class="alert-link">登录</a>
+	                 				Email验证成功，请 <a href="user/update_resume" class="alert-link">登录</a>
 	                 			</c:when>
 	                 			<c:when test="${type=='change_password' }">
 	                 				密码修改成功!
@@ -35,9 +35,15 @@
 	                 			<c:when test="${type=='verify' }">
 	                 				无效的验证信息!
 	                 			</c:when>
+	                 			<c:when test="${type=='reset_password' }">
+	                 				Can't reset password:User status is invalid.
+	                 			</c:when>
 							 </c:choose>
 						</div>
                  	</c:if>
+				</div>
+				<div class="row text-center">
+					<h4>Please contact us for help. </h4>
 				</div>
              </div>
          </section>

@@ -15,7 +15,7 @@ import com.citrix.apac.recruiting.reporsitory.MailTemplateRepository;
 
 @Service
 @Transactional
-public class MailService {
+public class DatabaseMailService {
 
 	@Autowired
 	private MailEntryRepository mailRepository;
