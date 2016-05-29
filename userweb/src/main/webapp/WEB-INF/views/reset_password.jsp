@@ -19,7 +19,7 @@
 					  <div class="form-group">
 					    <label for="inputEmail3" class="col-sm-3 control-label">Please input your Email:</label>
 					    <div class="col-sm-5">
-					      <input type="email" class="form-control"  placeholder="Email" name="email" required="required" value="a@b.com">
+					      <input type="email" class="form-control"  placeholder="Email" name="email" required="required" value="">
 					      <div class="help-block with-errors"></div>
 					    </div>
 					  </div>

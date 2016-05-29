@@ -89,7 +89,7 @@
 							  	  	</div>
 							  	  	<div class="col-sm-6">
 										  <div class="form-group">
-										    <label for="" class="col-sm-4 control-label">Gender:</label>
+										    <label for="" class="col-sm-4 control-label">Gender:<span class="required"></span></label>
 										    <div class="col-sm-8">
 										    	<label class="radio-inline ">
 												  <input type="radio" name="genderGroup" data-bind="checked:gender" value="Male" />Male 
