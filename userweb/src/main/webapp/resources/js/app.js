@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 	$( document ).ajaxError(function(event, request, settings) {
 		if(request.status != 200){
-			toastr.error("", "Duplicate keys error!",{positionClass: "toast-top-center"});
+			toastr.error("Please check data integrity", "Can't complete your request!",{positionClass: "toast-top-center"});
 		}
 	});
 	
