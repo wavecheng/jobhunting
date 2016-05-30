@@ -2,14 +2,13 @@ package com.citrix.apac.recruiting.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.citrix.apac.recruiting.entity.User;
-import com.citrix.apac.recruiting.entity.UserApply;
 import com.citrix.apac.recruiting.entity.UserEducation;
 import com.citrix.apac.recruiting.entity.UserProject;
 import com.citrix.apac.recruiting.entity.UserWork;
+import com.citrix.apac.recruiting.helper.ConstraintViolationException;
 import com.citrix.apac.recruiting.helper.XssSanitizeObjectMapper;
 import com.citrix.apac.recruiting.service.JobService;
 import com.citrix.apac.recruiting.service.WorkerService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -129,9 +125,14 @@ public class UserController extends BaseController{
 
 	@RequestMapping(value="/save_education",method=RequestMethod.POST)
 	@ResponseBody 
-	public List<UserEducation> saveEducation(@RequestBody UserEducation edu){
-		User cu = getCurrentUser();		
-		userService.saveUserEducation(cu, edu);
+	public List<UserEducation> saveEducation(@RequestBody UserEducation edu,HttpServletResponse response){
+		User cu = getCurrentUser();	
+		try{
+			userService.saveUserEducation(cu, edu);
+		}catch(Exception ex){
+			log.error(ex);
+			throw new ConstraintViolationException(ex.getMessage());
+		}
 		return userService.getUserEducations(cu.getId());
 	}
 

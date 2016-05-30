@@ -26,7 +26,7 @@ import com.citrix.apac.recruiting.service.UserService;
 @RequestMapping(value="/register")
 public class RegisterController {
 
-	public final String MAIL_REGISTER_TITLE = "Citrix Job register Email confirmation!";
+	public final String MAIL_REGISTER_TITLE = "Citrix Job account activation!";
 	public final String MAIL_REGISTER_BODY = "Please click following link <br/> <a href='%1$s'>%1$s</a> <br/> to activate your account! ";
 	
 	

@@ -24,7 +24,7 @@ $(document).ready(function(){
 
 	$( document ).ajaxError(function(event, request, settings) {
 		if(request.status != 200){
-			toastr.error("", "Can't complete the request",{positionClass: "toast-top-center"});
+			toastr.error("", "Duplicate keys error!",{positionClass: "toast-top-center"});
 		}
 	});
 	
@@ -72,7 +72,7 @@ function loadData(user_json, examCityList){
 	}
 	
 	viewModel.enableSave = ko.computed(function(){
-		return !$("#submitBasic").hasClass("disabled") && viewModel.name().length > 0  && 
+		return viewModel.name().length > 0  && 
 		   viewModel.nameEng() && viewModel.nameEng().length > 0 &&
 		   viewModel.birthDate() && viewModel.birthDate().length > 0 &&  
 		   viewModel.mobile() && viewModel.mobile().length > 0 &&

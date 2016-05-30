@@ -16,4 +16,5 @@
 <script src="${pageContext.request.contextPath}/resources/js/vendors.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.validator.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/toastr.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/app.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/app.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/app.min.js"></script> --%>

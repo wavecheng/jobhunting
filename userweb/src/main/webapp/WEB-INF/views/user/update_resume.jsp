@@ -19,7 +19,6 @@
                 	<div class="col-md-12">
                 		<div class="panel panel-default">
 							  <div class="panel-heading">Personal Information
-<!-- 							  	<div class="pull-right"><a href="resume" class="btn btn-success ">查看简历</a></div> -->
 							  </div>
 							  <div class="panel-body">
 							  	<form class="form-horizontal" action="#" data-toggle="validator" role="form">
@@ -28,14 +27,14 @@
 										  <div class="form-group">
 										    <label for="" class="col-sm-4 control-label">Name in Chinese:<span class="required"></span></label>
 										    <div class="col-sm-8">
-										      <input type="text" class="form-control" data-bind="value:name" placeholder="name in Chinese" required="required" data-error="Chinese name is required" >
+										      <input type="text" class="form-control" data-bind="textInput:name" placeholder="name in Chinese" required="required" data-error="Chinese name is required" >
 										      <div class="help-block with-errors"></div>
 										    </div>
 										   </div>
 										   <div class="form-group">
 										    <label for="" class="col-sm-4 control-label">Name in English:<span class="required"></span></label>
 										    <div class="col-sm-8">
-										      <input type="text" class="form-control" data-bind="value:nameEng" placeholder="name in English or Pinyin" required="required" data-error=" English name is required" >
+										      <input type="text" class="form-control" data-bind="textInput:nameEng" placeholder="name in English or Pinyin" required="required" data-error=" English name is required" >
 										      <div class="help-block with-errors"></div>
 										    </div>
 										  </div>
@@ -49,7 +48,7 @@
 										  <div class="form-group"> 
 										    <label for="" class="col-sm-4 control-label">ID card No:<span class="required"></span></label>
 										    <div class="col-sm-8">
-										      <input type="text" class="form-control" pattern="^[xX\d]{18}$"  data-bind="value:idNo" placeholder="National ID card No" required="required" data-error="ID card No is invalid" >
+										      <input type="text" class="form-control" pattern="^[xX\d]{18}$"  data-bind="textInput:idNo" placeholder="National ID card No" required="required"  autocomplete="on"  data-error="ID card No is invalid" >
 										      <div class="help-block with-errors"></div>
 										    </div>
 										  </div>
@@ -81,7 +80,7 @@
 										  <div class="form-group">
 									  	  		<label for="" class="col-sm-4 control-label">Major:<span class="required"></span></label>
 											    <div class="col-sm-8">
-											      <input type="text" class="form-control"  id="major" data-provide="typeahead" autocomplete="off" data-bind="value:major"
+											      <input type="text" class="form-control"  id="major" data-provide="typeahead" autocomplete="off" data-bind="textInput:major"
 											        placeholder="input major name" required="required" data-error="major number is invalid" >
 											      <div class="help-block with-errors"></div>
 											    </div>
@@ -97,20 +96,19 @@
 												<label class="radio-inline">
 												  <input type="radio" name="genderGroup" data-bind="checked:gender" value="Female" />Female 
 												</label>
-												<div class="help-block with-errors"></div>
 										    </div>							  	  	
 									  	  </div>
 									  	  <div class="form-group">
 									  	  		<label for="" class="col-sm-4 control-label">Mobile:<span class="required"></span></label>
 											    <div class="col-sm-8">
-											      <input type="text" class="form-control" pattern="^[\d\s]{1,15}$"   data-bind="value:mobile"  placeholder="mobile phone number" required="required" data-error="phone number is invalid" >
+											      <input type="text" class="form-control" pattern="^[\d\s]{1,15}$"   data-bind="textInput:mobile"  placeholder="mobile phone number" required="required" data-error="phone number is invalid" >
 											      <div class="help-block with-errors"></div>
 											    </div>
 									  	  </div>
 									  	  <div class="form-group">
 										    <label for="" class="col-sm-4 control-label">Date of Birth:<span class="required"></span></label>
 										    <div class="col-sm-8">
-										      <input type="text" class="form-control date" pattern="^\d{4}-\d{2}-\d{2}$"   data-bind="value:birthDate" placeholder="birth date" required="required" data-error="date is invalid" >
+										      <input type="text" class="form-control date" pattern="^\d{4}-\d{2}-\d{2}$"   data-bind="textInput:birthDate" placeholder="birth date" required="required" data-error="date is invalid" >
 										      <div class="help-block with-errors"></div>
 										    </div>
 										  </div>
@@ -137,7 +135,7 @@
 										  <div class="form-group">
 									  	  		<label for="" class="col-sm-4 control-label">University:<span class="required"></span></label>
 											    <div class="col-sm-8">
-											      <input type="text" class="form-control" type="text" id="university" data-provide="typeahead" autocomplete="off" data-bind="value:universityName"
+											      <input type="text" class="form-control" type="text" id="university" data-provide="typeahead" autocomplete="off" data-bind="textInput:universityName"
 											        placeholder="input university name" required="required" data-error="university number is invalid" >
 											      <div class="help-block with-errors"></div>
 											    </div>
@@ -491,7 +489,7 @@
 		<script src="${pageContext.request.contextPath}/resources/js/const_data.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap3-typeahead.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-knockout-modal.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/app.min.js"></script>	
+		
 		<script>
 			loadData(${user_json}, ${examCityList});
 		</script>
