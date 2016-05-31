@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.client.HttpClientErrorException;
 
 import com.citrix.apac.recruiting.entity.User;
 import com.citrix.apac.recruiting.entity.UserEducation;
 import com.citrix.apac.recruiting.entity.UserProject;
 import com.citrix.apac.recruiting.entity.UserWork;
-import com.citrix.apac.recruiting.helper.ConstraintViolationException;
 import com.citrix.apac.recruiting.helper.XssSanitizeObjectMapper;
 import com.citrix.apac.recruiting.service.JobService;
 import com.citrix.apac.recruiting.service.WorkerService;
@@ -131,11 +132,12 @@ public class UserController extends BaseController{
 			userService.saveUserEducation(cu, edu);
 		}catch(Exception ex){
 			log.error(ex);
-			throw new ConstraintViolationException(ex.getMessage());
+			throw new HttpClientErrorException(HttpStatus.CONFLICT);
 		}
 		return userService.getUserEducations(cu.getId());
 	}
 
+	
 	@RequestMapping(value="/delete_education",method=RequestMethod.POST)
 	@ResponseBody
 	public List<UserEducation> deleteEducation(@RequestBody UserEducation edu){
