@@ -68,16 +68,17 @@
 	     </property>
 	</bean>
  
-<!--     <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> -->
-<!--             <property name="exceptionMappings"> -->
-<!-- 	             <props>      -->
-<!-- 	                 <prop key="java.lang.RuntimeException">error</prop> -->
-<!-- 	                 <prop key="java.lang.Exception">error</prop>           -->
-<!-- 	                 <prop key="java.lang.Throwable">error</prop>      -->
-<!-- 	             </props>  -->
-<!--             </property> -->
-<!--             <property name="defaultErrorView" value="error"/> -->
-<!--             <property name="exceptionAttribute" value="ex"/>          -->
-<!--             <property name="warnLogCategory" value="WARN"/> -->
-<!--         </bean> -->
+    <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+            <property name="exceptionMappings">
+	             <props>     
+	             	 <prop key="org.springframework.web.client.HttpClientErrorException">statusError</prop>
+	                 <prop key="java.lang.RuntimeException">error</prop>
+	                 <prop key="java.lang.Exception">error</prop>          
+	                 <prop key="java.lang.Throwable">error</prop>     
+	             </props> 
+            </property>
+            <property name="defaultErrorView" value="error"/>
+            <property name="exceptionAttribute" value="ex"/>         
+            <property name="warnLogCategory" value="WARN"/>
+        </bean>
 </beans>
