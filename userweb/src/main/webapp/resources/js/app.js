@@ -139,8 +139,8 @@ function loadData(user_json, examCityList){
 	    viewModel.major = ko.observable("");	
 	    viewModel.degree = ko.observable("");
 	    viewModel.degreeList = pageViewModel.degreeList;
-	    viewModel.rankList = [{"name":">5%","value":5},{"name":">10%","value":10},{"name":">20%","value":20},
-	                          {"name":">30%","value":30},{"name":">50%","value":50}];
+	    viewModel.rankList = [{"name":"<5%","value":5},{"name":"<10%","value":10},{"name":"<20%","value":20},
+	                          {"name":"<30%","value":30},{"name":"<50%","value":50}];
 	    viewModel.totalRank = ko.observable(10);
 	    
 	    if(item){

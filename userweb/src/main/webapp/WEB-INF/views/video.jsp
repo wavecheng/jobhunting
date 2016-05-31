@@ -39,7 +39,5 @@
 			<%@ include file="footer.jsp" %>
         </div>
     </div> <!-- sb-site -->
- 
-    <script src="${pageContext.request.contextPath}/js/vendors.js"></script>
 </body>
 </html>

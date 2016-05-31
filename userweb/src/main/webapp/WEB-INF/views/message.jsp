@@ -42,9 +42,6 @@
 						</div>
                  	</c:if>
 				</div>
-				<div class="row text-center">
-					<h4>Please contact us for help. </h4>
-				</div>
              </div>
          </section>
 		

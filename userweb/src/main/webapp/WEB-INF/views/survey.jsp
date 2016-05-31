@@ -373,6 +373,5 @@
 
         </div>
     </div> <!-- sb-site -->
- <script src="js/vendors.js"></script>
 </body>
 </html>

@@ -24,8 +24,8 @@
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label for="inputPassword3" class="col-sm-2 control-label"></label>
-					    <div class="col-sm-10">
+					    <label for="inputPassword3" class="col-sm-3 control-label"></label>
+					    <div class="col-sm-5">
 					      <c:if test="${msg!=null}">
 					      	<div class="alert alert-warning" role="alert">${msg}</div>
 						</c:if>

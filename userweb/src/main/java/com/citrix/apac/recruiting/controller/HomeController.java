@@ -104,11 +104,11 @@ public class HomeController extends BaseController {
 	public String updatePassword(@RequestParam(name="email",required=true) String email, ModelMap model) throws MessagingException{
 		User u = userService.findByEmail(email);
 		if(u == null){
-			model.addAttribute("msg", "User account is not valid!");
+			model.addAttribute("msg", "User account is invalid!");
 			return "reset_password";
 		}
 		else if(!u.isEnabled() && !u.isVerified()){
-			model.addAttribute("msg", "User status is not valid");
+			model.addAttribute("msg", "User status is invalid!");
 		}else{
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			String random = u.getPassword().substring(12, 17);

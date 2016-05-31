@@ -243,7 +243,7 @@
 							    		<td><span data-bind="text:university"></span></td>
 							    		<td><span data-bind="text:major"></span></td>
 							    		<td><span data-bind="text:degree"></span></td>
-							    		<td>><span data-bind="text:totalRank"></span>%</td>
+							    		<td><<span data-bind="text:totalRank"></span>%</td>
 							    		<td width="100px">
 							    			<a data-bind="click:$parent.editUserEducation" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
 							    			<a data-bind="click:$parent.deleteUserEducation" class="btn btn-danger" title="Delete"><i class="fa fa-remove"></i></a>

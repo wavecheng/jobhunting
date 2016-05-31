@@ -3281,7 +3281,7 @@ textarea.form-control:focus {
   padding: 5px 0px;
   margin-top: -5px;
   margin-right: -15px;
-  width: 33px;
+  width: 53px;
   text-align: center;
 }
 .panel-primary .panel-heading-link a:after,
@@ -3294,7 +3294,7 @@ textarea.form-control:focus {
   background-color: #333;
 }
 .panel .panel-heading-link a.collapsed:after {
-  content: "\f107";
+  content: "Apply";
 }
 
 .panel-success .panel-heading-link a:after {
